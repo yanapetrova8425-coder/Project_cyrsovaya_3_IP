@@ -3,12 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Курсовая</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>Салон красоты Neonka</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Курсовая работа</h1>
-  <button onclick="alert('Работает!')">Тест</button>
-  <script src="js/javascript.js"></script>
+  <!-- ШАПКА САЙТА -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">Neonka</div>
+      <nav class="menu">
+        <a href="#services">Услуги</a>
+        <a href="#prices">Цены</a>
+        <a href="#contact">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ГЕРОЙ-БЛОК -->
+  <section class="hero">
+    <div class="container">
+      <h1>Салон красоты Neonka</h1>
+      <p>Красота в каждом взгляде</p>
+      <button class="btn" onclick="alert('Запишитесь на консультацию!')">Записаться</button>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Наши услуги</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Стрижка</h3>
+          <p>Классическая, каскад, боб</p>
+        </div>
+        <div class="service-card">
+          <h3>Окрашивание</h3>
+          <p>Однотонное, мелирование, омбре</p>
+        </div>
+        <div class="service-card">
+          <h3>Укладка</h3>
+          <p>Повседневная, вечерняя</p>
+        </div>
+        <div class="service-card">
+          <h3>Маникюр</h3>
+          <p>Классика, аппаратный, дизайн</p>
+        </div>
+        <div class="service-card">
+          <h3>Педикюр</h3>
+          <p>Полный уход за стопами</p>
+        </div>
+        <div class="service-card">
+          <h3>Визаж</h3>
+          <p>Дневной, вечерний макияж</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ФУТЕР -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Права защищены Neonka</p>
+    </div>
+  </footer>
+
+  <script src="javascript.js"></script>
 </body>
 </html>
