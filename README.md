@@ -2,4 +2,4 @@
 html/js/css
 <!-- курсовая -->
 Демка сайта:
-file:///C:/Курсовая/index.html#contact
+
