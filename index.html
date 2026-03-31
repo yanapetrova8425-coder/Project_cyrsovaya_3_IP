@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Салон красоты Neonka</title>
+  <title>Салон красоты Neonka | Щумерля</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- ШАПКА САЙТА -->
+
+  <!-- Шапка сайта: логотип и меню -->
   <header class="header">
     <div class="container">
       <div class="logo">Neonka</div>
@@ -15,59 +17,199 @@
         <a href="#services">Услуги</a>
         <a href="#prices">Цены</a>
         <a href="#contact">Контакты</a>
+
+        <!-- Блок авторизации: гость / кнопки входа и регистрации -->
+        <input type="checkbox" id="auth-toggle" class="auth-toggle">
+        <label for="auth-toggle" class="auth-section">
+          <span class="user-info">
+            <span class="user-name">Гость</span>
+            <span class="user-status">Войти</span>
+          </span>
+          <div class="auth-buttons">
+            <label for="login-modal" class="btn-auth login-btn">Вход</label>
+            <label for="register-modal" class="btn-auth register-btn">Регистрация</label>
+          </div>
+        </label>
       </nav>
     </div>
   </header>
 
-  <!-- ГЕРОЙ-БЛОК -->
+  <!-- Главный экран (геро–блок) -->
   <section class="hero">
     <div class="container">
-      <h1>Салон красоты Neonka</h1>
-      <p>Красота в каждом взгляде</p>
-      <button class="btn" onclick="alert('Запишитесь на консультацию!')">Записаться</button>
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Салон красоты Neonka</h1>
+          <p>Профессиональный уход за волосами, маникюром и макияжем в Щумерле</p>
+          <div class="hero-buttons">
+            <a href="#services" class="btn btn-primary">Все услуги</a>
+            <label for="login-modal" class="btn btn-secondary">Записаться</label>
+          </div>
+          <div class="hero-stats">
+            <div class="stat"><span>10+</span> лет опыта</div>
+            <div class="stat"><span>50+</span> довольных клиентов в месяц</div>
+            <div class="stat"><span>5+</span> мастеров</div>
+          </div>
+        </div>
+        <div class="hero-image"></div>
+      </div>
     </div>
   </section>
 
-  <!-- УСЛУГИ -->
-  <section id="services" class="services">
+  <!-- Блок преимуществ салона -->
+  <section class="advantages">
     <div class="container">
-      <h2>Наши услуги</h2>
-      <div class="service-grid">
-        <div class="service-card">
-          <h3>Стрижка</h3>
-          <p>Классическая, каскад, боб</p>
+      <h2>Почему выбирают Neonka?</h2>
+      <div class="advantages-grid">
+        <div class="advantage-card">
+          <h3>Профессионализм мастеров</h3>
+          <p>Опытные мастера, постоянное обучение и индивидуальный подход к каждому клиенту</p>
         </div>
-        <div class="service-card">
-          <h3>Окрашивание</h3>
-          <p>Однотонное, мелирование, омбре</p>
+        <div class="advantage-card">
+          <h3>Комфортная атмосфера</h3>
+          <p>Уютный интерьер, мягкие кресла и спокойная обстановка для релакса</p>
         </div>
-        <div class="service-card">
-          <h3>Укладка</h3>
-          <p>Повседневная, вечерняя</p>
+        <div class="advantage-card">
+          <h3>Качественные материалы</h3>
+          <p>Премиальные средства и материалы от проверенных брендов</p>
         </div>
-        <div class="service-card">
-          <h3>Маникюр</h3>
-          <p>Классика, аппаратный, дизайн</p>
-        </div>
-        <div class="service-card">
-          <h3>Педикюр</h3>
-          <p>Полный уход за стопами</p>
-        </div>
-        <div class="service-card">
-          <h3>Визаж</h3>
-          <p>Дневной, вечерний макияж</p>
+        <div class="advantage-card">
+          <h3>Специальные предложения</h3>
+          <p>Акции, скидки для новых клиентов и бонусы за отзывы</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ФУТЕР -->
+  <!-- Блок услуг -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Наши услуги</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <div class="service-image service-image-1"></div>
+          <h3>Стрижка</h3>
+          <p>Классика, каскад, боб, стрижка под машинку</p>
+          <div class="service-price">от 1500₽</div>
+        </div>
+        <div class="service-card">
+          <div class="service-image service-image-2"></div>
+          <h3>Окрашивание</h3>
+          <p>Однотонное, мелирование, омбре, балаяж</p>
+          <div class="service-price">от 3000₽</div>
+        </div>
+        <div class="service-card">
+          <div class="service-image service-image-3"></div>
+          <h3>Укладка</h3>
+          <p>Повседневная, вечерняя, праздничная укладка</p>
+          <div class="service-price">от 1000₽</div>
+        </div>
+        <div class="service-card">
+          <div class="service-image service-image-4"></div>
+          <h3>Маникюр</h3>
+          <p>Классика, аппаратный, дизайн, покрытие гель</p>
+          <div class="service-price">от 120 plumber₽</div>
+        </div>
+        <div class="service-card">
+          <div class="service-image service-image-5"></div>
+          <h3>Педикюр</h3>
+          <p>Полный уход за стопами, аппаратный педикюр</p>
+          <div class="service-price">от 1500₽</div>
+        </div>
+        <div class="service-card">
+          <div class="service-image service-image-6"></div>
+          <h3>Визаж</h3>
+          <p>Дневной, вечерний, свадебный макияж</p>
+          <div class="service-price">от 2000₽</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок прайс-листа -->
+  <section id="prices" class="prices">
+    <div class="container">
+      <h2>Прайс‑лист</h2>
+      <div class="price-table">
+        <div class="price-row">
+          <div>Стрижка женская</div>
+          <div>1500₽</div>
+        </div>
+        <div class="price-row">
+          <div>Окрашивание полное</div>
+          <div>3500₽</div>
+        </div>
+        <div class="price-row">
+          <div>Маникюр + дизайн</div>
+          <div>1400₽</div>
+        </div>
+        <div class="price-row">
+          <div>Педикюр аппаратный</div>
+          <div>1800₽</div>
+        </div>
+        <div class="price-row">
+          <div>Визаж вечерний</div>
+          <div>2500₽</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Блок контактов и карты -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Приезжайте к нам</h2>
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-item">
+            <p>г. Щумерля, ул. Ленина, 25</p>
+          </div>
+          <div class="contact-item">
+            <p>8 (952) 029‑51‑18</p>
+          </div>
+          <div class="contact-item">
+            <p>Пн–Вс: 9:00–21:00</p>
+          </div>
+          <div class="contact-item">
+            <p>neonka.shumerlya@mail.ru</p>
+          </div>
+        </div>
+        <div class="contact-map">
+          <!-- Карту вставляю через iframe, чтобы не писать свой JS -->
+          <iframe
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aваша_ссылка_здесь&source=constructor"
+            width="100%"
+            height="400"
+            frameborder="0"
+            style="border-radius: 18px;"
+            title="Карта салона красоты Neonka в Щумерле"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Футер сайта -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2026 Права защищены Neonka</p>
+      <div class="footer-content">
+        <div class="footer-logo">Neonka</div>
+        <div class="footer-links">
+          <a href="#services">Услуги</a>
+          <a href="#prices">Цены</a>
+          <a href="#contact">Контакты</a>
+        </div>
+        <div class="footer-social">
+          <a href="#">VK</a>
+          <a href="#">Instagram</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Салон красоты Neonka, Щумерля.</p>
+      </div>
     </div>
-  </footer>
 
-  <script src="javascript.js"></script>
+
 </body>
 </html>

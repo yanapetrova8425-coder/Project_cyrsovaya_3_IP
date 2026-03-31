@@ -1,171 +1,541 @@
+/* сбрасываю стандартные отступы, чтобы всё выглядело одинаково на всех браузерах */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* основные глобальные стили */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Poppins", sans-serif;
   line-height: 1.6;
-  color: #4a4a6a;
+  color: #5a4f72;
+  background: #f9f7ff;
+  overflow-x: hidden;
 }
 
+/* общая обёртка для контента */
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ШАПКА */
+/* шапка сайта */
 .header {
-  background: linear-gradient(45deg, #d8bfd8, #e6e6fa);
-  color: #4b0082;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  color: #6b4e8c;
   padding: 15px 0;
   position: fixed;
-  width: 100%;
   top: 0;
-  box-shadow: 0 4px 15px rgba(216, 191, 216, 0.4);
+  width: 100%;
   z-index: 1000;
+  box-shadow: 0 2px 20px rgba(182, 155, 229, 0.25);
 }
 
+/* внутри header выравниваю логотип и меню */
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+/* стиль логотипа */
 .logo {
   font-size: 28px;
-  font-weight: bold;
-  color: #6a0dad;
-  text-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  font-weight: 700;
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* основное меню */
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* пункты меню */
 .menu a {
-  color: #4b0082;
+  color: #6b4e8c;
   text-decoration: none;
-  margin-left: 30px;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* красивая подчёркивание при наведении */
+.menu a::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+  transition: width 0.3s ease;
+}
+
+/* разворачиваю линию подчёркивания на весь пункт */
+.menu a:hover::after {
+  width: 100%;
+}
+
+/* чуть подсвечиваю текст при наведении */
+.menu a:hover {
+  color: #8b5cf6;
+}
+
+/* переключатель авторизации (скрытый чекбокс) */
+.auth-toggle {
+  display: none;
+}
+
+/* блок авторизации (гость / кнопки) */
+.auth-section {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 18px;
+  border-radius: 24px;
+  background: rgba(139, 92, 246, 0.12);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* при наведении слегка подсвечиваю фон */
+.auth-section:hover {
+  background: rgba(139, 92, 246, 0.2);
+}
+
+/* информация о пользователе (гость) */
+.user-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
   font-weight: 500;
 }
 
-.menu a:hover {
-  color: #9370db;
-  text-shadow: 0 0 10px rgba(147, 112, 219, 0.5);
+/* кнопки "Вход" и "Регистрация" */
+.auth-buttons {
+  display: none;
+  gap: 10px;
 }
 
-/*СВЕТЛО-ФИОЛЕТОВЫЙ */
-.hero {
-  background: linear-gradient(135deg, #e6e6fa, #d8bfd8, #dda0dd);
-  color: #4b0082;
-  padding: 120px 0 80px;
-  text-align: center;
-  min-height: 60vh;
+/* общие стили кнопок авторизации */
+.btn-auth {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12.5px;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* кнопка входа */
+.login-btn {
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+  color: white;
+}
+
+/* кнопка регистрации */
+.register-btn {
+  background: rgba(255, 255, 255, 0.92);
+  color: #6b4e8c;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+}
+
+/* показываю кнопки только тогда, когда чекбокс активен */
+.auth-toggle:checked ~ .auth-section .user-info {
+  display: none;
+}
+.auth-toggle:checked ~ .auth-section .auth-buttons {
   display: flex;
+}
+
+/* секция героя (главный экран) */
+.hero {
+  background: linear-gradient(
+    135deg,
+    #f8f7ff 0%,
+    #e8e0ff 50%,
+    #f0ebff 100%
+  );
+  color: #6b4e8c;
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* красивые градиенты в фоне героя */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(139, 92, 246, 0.12) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(167, 139, 250, 0.12) 0%,
+      transparent 50%
+    );
+}
+
+/* разметка героя по сетке */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
 }
 
-.hero h1 {
-  font-size: 48px;
+/* заголовок главного экрана */
+.hero-text h1 {
+  font-size: 52px;
   margin-bottom: 20px;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+  background: linear-gradient(45deg, #6b4e8c, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
 }
 
-.hero p {
-  font-size: 22px;
-  margin-bottom: 30px;
+/* подзаголовок */
+.hero-text p {
+  font-size: 20px;
+  margin-bottom: 36px;
+  color: #7c6ea8;
+  font-weight: 300;
+  line-height: 1.5;
 }
 
-/* КНОПКА */
+/* кнопки под текстом */
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 36px;
+}
+
+/* статистика под кнопками */
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+}
+
+/* отдельный блок одной статистики */
+.stat {
+  text-align: center;
+}
+
+/* значение в статистике */
+.stat span {
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+/* фоновое изображение героя (загрузится в JS / будет в классе) */
+.hero-image {
+  height: 500px;
+  background: #f0edff;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+}
+
+/* общие стили заголовков */
+h2 {
+  text-align: center;
+  font-size: 40px;
+  margin-bottom: 60px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #6b4e8c, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* базовый стиль кнопки */
 .btn {
-  background: linear-gradient(45deg, #9370db, #ba55d3);
-  color: white;
-  padding: 18px 40px;
+  padding: 16px 35px;
   border: none;
   border-radius: 50px;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
   cursor: pointer;
-  box-shadow: 0 8px 25px rgba(147, 112, 219, 0.4);
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  font-family: "Poppins", sans-serif;
 }
 
-.btn:hover {
+/* основная кнопка (цветная) */
+.btn-primary {
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+  color: white;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+}
+
+/* эффект при наведении на основную кнопку */
+.btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(147, 112, 219, 0.6);
+  box-shadow: 0 12px 35px rgba(139, 92, 246, 0.4);
 }
 
-/* УСЛУГИ */
-.services {
-  padding: 80px 0;
-  background: linear-gradient(135deg, #f5f0ff, #faf4ff);
+/* вторичная кнопка (светлая) */
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.92);
+  color: #6b4e8c;
+  border: 2px solid rgba(139, 92, 246, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.services h2 {
-  text-align: center;
-  font-size: 36px;
-  margin-bottom: 50px;
-  color: #6a0dad;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+/* небольшая анимация для вторичной кнопки */
+.btn-secondary:hover {
+  background: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.2);
 }
 
-.service-grid {
+/* блок преимущества */
+.advantages {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #fdfbff 0%, #f8f5ff 100%);
+}
+
+/* сетка карточек преимуществ */
+.advantages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
 }
 
-.service-card {
-  background: white;
-  padding: 30px 20px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(216, 191, 216, 0.3);
+/* карточка преимущества */
+.advantage-card {
   text-align: center;
-  border: 2px solid #e6e6fa;
-  transition: all 0.3s;
+  padding: 40px 20px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(182, 155, 229, 0.3);
+  transition: all 0.3s ease;
 }
 
-.service-card:hover {
+/* эффект при наведении */
+.advantage-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(216, 191, 216, 0.4);
-  border-color: #d8bfd8;
+  box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
 }
 
-.service-card h3 {
-  color: #9370db;
-  font-size: 24px;
-  margin-bottom: 15px;
+/* заголовок в карточке преимуществ */
+.advantage-card h3 {
+  color: #6b4e8c;
+  font-size: 22px;
+  margin-bottom: 16px;
+  font-weight: 600;
 }
 
-/* ФУТЕР */
-.footer {
-  background: linear-gradient(45deg, #8a2be2, #6a0dad);
-  color: white;
+/* текст в карточке */
+.advantage-card p {
+  color: #7c6ea8;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* секция услуг */
+.services {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8f5ff 0%, #e8e0ff 100%);
+}
+
+/* сетка карточек услуг */
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 30px;
+}
+
+/* карточка услуги */
+.service-card {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
   text-align: center;
-  padding: 30px 0;
+  border: 1px solid rgba(182, 155, 229, 0.3);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.1);
 }
 
-.footer p {
+/* градиентная линия вверху карточки */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6);
+  background-size: 200% 100%;
+  animation: shimmer 3s infinite;
+}
+
+/* анимация "мерцания" линии */
+@keyframes shimmer {
+  0%, 100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: 0 0;
+  }
+}
+
+/* эффект карточки при наведении */
+.service-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 25px 50px rgba(139, 92, 246, 0.2);
+}
+
+/* блок с изображением услуги */
+.service-image {
+  width: 100%;
+  height: 200px;
+  background: #f0edff;
+  border-radius: 20px 20px 0 0;
+  margin-bottom: 25px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* слегка увеличиваю изображение при наведении */
+.service-card:hover .service-image {
+  transform: scale(1.05);
+}
+
+/* заголовок услуги */
+.service-card h3 {
+  color: #6b4e8c;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+/* описание услуги */
+.service-card p {
+  color: #7c6ea8;
+  font-size: 15px;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* цена услуги */
+.service-price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.12);
+  padding: 12px 25px;
+  border-radius: 24px;
+  margin: 0 auto;
+  display: inline-block;
+}
+
+/* блок прайс-листа */
+.prices {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #fdfbff 0%, #f8f5ff 100%);
+}
+
+/* таблица цен */
+.price-table {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.15);
+}
+
+/* строка таблицы */
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px 40px;
+  border-bottom: 1px solid rgba(182, 155, 229, 0.2);
+}
+
+/* последняя строка без нижней границы */
+.price-row:last-child {
+  border-bottom: none;
+}
+
+/* название услуги */
+.price-row div:first-child {
+  font-size: 18px;
+  color: #6b4e8c;
+  font-weight: 500;
+}
+
+/* цена */
+.price-row div:last-child {
+  font-size: 24px;
+  font-weight: 700;
+  color: #8b5cf6;
+}
+
+/* блок контактов */
+.contact {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #f8f5ff 0%, #e8e0ff 100%);
+}
+
+/* сетка контактов и карты */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 60px;
+  align-items: start;
+}
+
+/* отдельный контакт */
+.contact-item {
+  margin-bottom: 30px;
+}
+
+/* текст контакта */
+.contact-item p {
+  margin: 0;
   font-size: 16px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  color: #6b4e8c;
+  line-height: 1.6;
 }
 
-/* АДАПТИВ */
-@media (max-width: 768px) {
-  .header .container {
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  .menu a {
-    margin: 0 10px;
-  }
-  
-  .hero h1 {
-    font-size: 32px;
-  }
-  
-  .service-grid {
-    grid-template-columns: 1fr;
-  }
+/* контейнер карты */
+.contact-map {
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(139, 92, 246, 0.2);
+}
+
+/* стили для iframe карты */
+.contact-map iframe {
+  border: none;
+  width: 100%;
+  height: 100%;
 }
