@@ -231,7 +231,6 @@ body {
 .hero-stats {
   display: flex;
   gap: 40px;
-  justify-content: center;
 }
 
 /* отдельный блок одной статистики */
@@ -247,12 +246,28 @@ body {
   color: #8b5cf6;
 }
 
-/* фоновое изображение героя (загрузится в JS / будет в классе) */
+/* изображение героя */
 .hero-image {
   height: 500px;
-  background: #f0edff;
   border-radius: 24px;
   box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.02);
+}
+
+.hero-image:hover img {
+  transform: scale(1.05);
 }
 
 /* общие стили заголовков */
@@ -318,14 +333,14 @@ h2 {
 /* сетка карточек преимуществ */
 .advantages-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 30px;
 }
 
 /* карточка преимущества */
 .advantage-card {
   text-align: center;
-  padding: 40px 20px;
+  padding: 30px 20px;
   border-radius: 25px;
   background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(10px);
@@ -339,18 +354,39 @@ h2 {
   box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
 }
 
+/* изображение преимущества */
+.advantage-image {
+  width: 100%;
+  height: 160px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.15);
+}
+
+.advantage-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.advantage-card:hover .advantage-image img {
+  transform: scale(1.1);
+}
+
 /* заголовок в карточке преимуществ */
 .advantage-card h3 {
   color: #6b4e8c;
-  font-size: 22px;
-  margin-bottom: 16px;
+  font-size: 20px;
+  margin-bottom: 12px;
   font-weight: 600;
 }
 
 /* текст в карточке */
 .advantage-card p {
   color: #7c6ea8;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -363,7 +399,7 @@ h2 {
 /* сетка карточек услуг */
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 30px;
 }
 
@@ -412,51 +448,23 @@ h2 {
 /* блок с изображением услуги */
 .service-image {
   width: 100%;
-  height: 200px;
-  background: #f0edff;
+  height: 220px;
   border-radius: 20px 20px 0 0;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   position: relative;
   overflow: hidden;
-  transition: all 0.4s ease;
-  background-size: cover;
-  background-position: center;
+}
+
+.service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 /* слегка увеличиваю изображение при наведении */
-.service-card:hover .service-image {
-  transform: scale(1.05);
-}
-
-/* изображения для каждой услуги */
-.service-image-1 {
-  background-image: url('img/haircut.jpg');
-  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-}
-
-.service-image-2 {
-  background-image: url('img/coloring.jpg');
-  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
-}
-
-.service-image-3 {
-  background-image: url('img/styling.jpg');
-  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
-}
-
-.service-image-4 {
-  background-image: url('img/manicure.jpg');
-  background: linear-gradient(135deg, #f5d0fe 0%, #e9d5ff 100%);
-}
-
-.service-image-5 {
-  background-image: url('img/pedicure.jpg');
-  background: linear-gradient(135deg, #f0abfc 0%, #e9d5ff 100%);
-}
-
-.service-image-6 {
-  background-image: url('img/makeup.jpg');
-  background: linear-gradient(135deg, #fb7185 0%, #fda4af 100%);
+.service-card:hover .service-image img {
+  transform: scale(1.1);
 }
 
 /* заголовок услуги */
@@ -464,15 +472,17 @@ h2 {
   color: #6b4e8c;
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  padding: 0 15px;
 }
 
 /* описание услуги */
 .service-card p {
   color: #7c6ea8;
-  font-size: 15px;
+  font-size: 14px;
   margin-bottom: 18px;
   line-height: 1.5;
+  padding: 0 15px;
 }
 
 /* цена услуги */
@@ -483,7 +493,7 @@ h2 {
   background: rgba(139, 92, 246, 0.12);
   padding: 12px 25px;
   border-radius: 24px;
-  margin: 0 auto;
+  margin: 0 auto 20px;
   display: inline-block;
 }
 
@@ -508,8 +518,13 @@ h2 {
 .price-row {
   display: flex;
   justify-content: space-between;
-  padding: 25px 40px;
+  padding: 20px 35px;
   border-bottom: 1px solid rgba(182, 155, 229, 0.2);
+  transition: background 0.3s ease;
+}
+
+.price-row:hover {
+  background: rgba(139, 92, 246, 0.05);
 }
 
 /* последняя строка без нижней границы */
@@ -519,14 +534,14 @@ h2 {
 
 /* название услуги */
 .price-row div:first-child {
-  font-size: 18px;
+  font-size: 17px;
   color: #6b4e8c;
   font-weight: 500;
 }
 
 /* цена */
 .price-row div:last-child {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 700;
   color: #8b5cf6;
 }
@@ -546,8 +561,27 @@ h2 {
 }
 
 /* отдельный контакт */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
 .contact-item {
-  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 25px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  border: 1px solid rgba(139, 92, 246, 0.15);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 8px 25px rgba(139, 92, 246, 0.1);
+  transform: translateX(10px);
 }
 
 /* текст контакта */
@@ -555,7 +589,7 @@ h2 {
   margin: 0;
   font-size: 16px;
   color: #6b4e8c;
-  line-height: 1.6;
+  font-weight: 500;
 }
 
 /* контейнер карты */
@@ -571,26 +605,127 @@ h2 {
   border: none;
   width: 100%;
   height: 100%;
-}
-.hero-image {
-  height: 500px;
-  border-radius: 24px;
-  box-shadow: 0 20px 60px rgba(139, 92, 246, 0.2);
-  overflow: hidden;
-  transition: all 0.4s ease;
+  min-height: 400px;
 }
 
-.hero-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.4s ease;
+/* футер */
+.footer {
+  background: linear-gradient(135deg, #6b4e8c 0%, #8b5cf6 100%);
+  color: white;
+  padding: 50px 0 25px;
 }
 
-.hero-image:hover {
-  transform: scale(1.02);
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.hero-image:hover img {
-  transform: scale(1.05);
+.footer-logo {
+  font-size: 32px;
+  font-weight: 700;
+  background: linear-gradient(45deg, #fff, #e9d5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.footer-links {
+  display: flex;
+  gap: 25px;
+}
+
+.footer-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+  color: white;
+}
+
+.footer-social {
+  display: flex;
+  gap: 15px;
+}
+
+.footer-social a {
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* адаптивность для мобильных */
+@media (max-width: 768px) {
+  .hero-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .hero-text h1 {
+    font-size: 36px;
+  }
+  
+  .hero-stats {
+    gap: 20px;
+  }
+  
+  .stat span {
+    font-size: 22px;
+  }
+  
+  .advantages-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .menu {
+    gap: 20px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-links {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
