@@ -419,11 +419,44 @@ h2 {
   position: relative;
   overflow: hidden;
   transition: all 0.4s ease;
+  background-size: cover;
+  background-position: center;
 }
 
 /* слегка увеличиваю изображение при наведении */
 .service-card:hover .service-image {
   transform: scale(1.05);
+}
+
+/* изображения для каждой услуги */
+.service-image-1 {
+  background-image: url('img/haircut.jpg');
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+}
+
+.service-image-2 {
+  background-image: url('img/coloring.jpg');
+  background: linear-gradient(135deg, #c4b5fd 0%, #a78bfa 100%);
+}
+
+.service-image-3 {
+  background-image: url('img/styling.jpg');
+  background: linear-gradient(135deg, #ddd6fe 0%, #c4b5fd 100%);
+}
+
+.service-image-4 {
+  background-image: url('img/manicure.jpg');
+  background: linear-gradient(135deg, #f5d0fe 0%, #e9d5ff 100%);
+}
+
+.service-image-5 {
+  background-image: url('img/pedicure.jpg');
+  background: linear-gradient(135deg, #f0abfc 0%, #e9d5ff 100%);
+}
+
+.service-image-6 {
+  background-image: url('img/makeup.jpg');
+  background: linear-gradient(135deg, #fb7185 0%, #fda4af 100%);
 }
 
 /* заголовок услуги */
