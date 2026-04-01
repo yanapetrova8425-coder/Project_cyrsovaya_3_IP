@@ -10,10 +10,7 @@ body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
   color: #4a4a4a;
-  background: url("img/fon.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  background: #f5f5f5;
   overflow-x: hidden;
   padding-top: 70px;
 }
@@ -162,7 +159,10 @@ body {
 
 /* секция героя (главный экран) */
 .hero {
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: #555;
   padding: 160px 0 100px;
   position: relative;
@@ -302,7 +302,10 @@ h2 {
 /* блок преимущества */
 .advantages {
   padding: 100px 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -371,7 +374,10 @@ h2 {
 /* секция услуг */
 .services {
   padding: 100px 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -481,7 +487,10 @@ h2 {
 /* блок прайс-листа */
 .prices {
   padding: 100px 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -624,7 +633,10 @@ h2 {
 /* блок контактов */
 .contact {
   padding: 100px 0;
-  background: rgba(255, 255, 255, 0.85);
+  background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   margin: 20px;
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -848,7 +860,7 @@ h2 {
   }
 }
 body {
-  background: url("img/fon.jpg");
+  background: url("img/fon1jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
