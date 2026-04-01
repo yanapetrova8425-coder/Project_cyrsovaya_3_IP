@@ -623,10 +623,6 @@ h2 {
   font-size: 24px;
   font-weight: 700;
   color: #8b5cf6;
-  background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
   padding: 8px 16px;
   border-radius: 14px;
   background: rgba(139, 92, 246, 0.1);
@@ -637,7 +633,7 @@ h2 {
 
 .price-item:hover .price-value {
   background: linear-gradient(135deg, #8b5cf6, #a78bfa);
-  -webkit-text-fill-color: white;
+  color: white;
   transform: scale(1.05);
 }
 
