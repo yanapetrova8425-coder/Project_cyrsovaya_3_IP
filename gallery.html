@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Галерея / Отзывы — Салон красоты Neonka</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- Подключаю свои стили -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Шрифт Poppins с Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
+  <!-- Шапка сайта с навигацией -->
   <header class="header">
     <div class="container">
       <div class="logo">Neonka</div>
@@ -22,6 +25,7 @@
     </div>
   </header>
 
+  <!-- Заголовок страницы -->
   <section class="page-hero">
     <div class="container">
       <h1>Галерея / Отзывы</h1>
@@ -29,10 +33,11 @@
     </div>
   </section>
 
-  <!-- Слайдер до/после -->
+  <!-- Слайдер работ до/после -->
   <section class="slider-section">
     <div class="container">
       <h2>До и После</h2>
+      <!-- Сам слайдер с треком слайдов -->
       <div class="slider" id="gallery-slider">
         <div class="slider-track">
           <div class="slider-slide">
@@ -60,14 +65,16 @@
             <div class="slide-caption">Полный педикюр с покрытием</div>
           </div>
         </div>
+        <!-- Кнопки переключения слайдов -->
         <button class="slider-btn slider-prev" id="slider-prev">&#10094;</button>
         <button class="slider-btn slider-next" id="slider-next">&#10095;</button>
+        <!-- Точки навигации (генерируются через JS) -->
         <div class="slider-dots" id="slider-dots"></div>
       </div>
     </div>
   </section>
 
-  <!-- Сетка галереи -->
+  <!-- Сетка с фото работ -->
   <section class="gallery-grid">
     <div class="container">
       <h2>Наши работы</h2>
@@ -130,10 +137,11 @@
     </div>
   </section>
 
-  <!-- Отзывы -->
+  <!-- Блок с отзывами клиентов -->
   <section class="reviews">
     <div class="container">
       <h2>Отзывы клиентов</h2>
+      <!-- Карточки отзывов -->
       <div class="reviews-grid">
         <div class="review-card">
           <div class="review-header">
@@ -167,15 +175,17 @@
         </div>
       </div>
 
-      <!-- Форма отзыва -->
+      <!-- Форма для отправки нового отзыва -->
       <div class="review-form-container">
         <h3>Оставить отзыв</h3>
         <form class="review-form" id="review-form" novalidate>
+          <!-- Поле: имя -->
           <div class="form-group">
             <label for="review-name">Ваше имя *</label>
             <input type="text" id="review-name" name="review_name" placeholder="Ваше имя" required>
             <span class="error-message" id="review-name-error"></span>
           </div>
+          <!-- Поле: оценка (select) -->
           <div class="form-group">
             <label for="review-rating">Оценка *</label>
             <select id="review-rating" name="review_rating" required>
@@ -188,18 +198,21 @@
             </select>
             <span class="error-message" id="review-rating-error"></span>
           </div>
+          <!-- Поле: текст отзыва (textarea) -->
           <div class="form-group">
             <label for="review-text">Отзыв *</label>
             <textarea id="review-text" name="review_text" rows="4" placeholder="Расскажите о вашем опыте..." required></textarea>
             <span class="error-message" id="review-text-error"></span>
           </div>
           <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+          <!-- Сюда выводится результат отправки -->
           <div class="form-result" id="review-result"></div>
         </form>
       </div>
     </div>
   </section>
 
+  <!-- Подвал сайта -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
@@ -222,6 +235,7 @@
     </div>
   </footer>
 
+  <!-- Подключаю свои скрипты -->
   <script src="js/slider.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
