@@ -1,2 +1,1 @@
-console.log('JS работает?!');
-console.log('работает!');
+// JavaScript для сайта салона красоты Neonka

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Галерея — Салон красоты Neonka</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">Neonka</div>
+      <nav class="menu">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="booking.html">Запись</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="account.html">Кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Галерея работ</h1>
+      <p>Результаты наших мастеров</p>
+    </div>
+  </section>
+
+  <!-- Слайдер до/после -->
+  <section class="slider-section">
+    <div class="container">
+      <h2>До и После</h2>
+      <div class="slider" id="gallery-slider">
+        <div class="slider-track">
+          <div class="slider-slide">
+            <img src="img/strishka.jpg" alt="Стрижка до и после">
+            <div class="slide-caption">Стрижка каскад — трансформация</div>
+          </div>
+          <div class="slider-slide">
+            <img src="img/okras.jpg" alt="Окрашивание до и после">
+            <div class="slide-caption">Окрашивание в технике балаяж</div>
+          </div>
+          <div class="slider-slide">
+            <img src="img/ykladka.jpg" alt="Укладка до и после">
+            <div class="slide-caption">Вечерняя укладка локонами</div>
+          </div>
+          <div class="slider-slide">
+            <img src="img/manukur.jpg" alt="Маникюр до и после">
+            <div class="slide-caption">Дизайн ногтей — френч</div>
+          </div>
+          <div class="slider-slide">
+            <img src="img/vizash.jpg" alt="Визаж до и после">
+            <div class="slide-caption">Свадебный образ невесты</div>
+          </div>
+          <div class="slider-slide">
+            <img src="img/pedukur.jpg" alt="Педикюр до и после">
+            <div class="slide-caption">Полный педикюр с покрытием</div>
+          </div>
+        </div>
+        <button class="slider-btn slider-prev" id="slider-prev">&#10094;</button>
+        <button class="slider-btn slider-next" id="slider-next">&#10095;</button>
+        <div class="slider-dots" id="slider-dots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Сетка галереи -->
+  <section class="gallery-grid">
+    <div class="container">
+      <h2>Наши работы</h2>
+      <div class="gallery-grid-container">
+        <div class="gallery-item">
+          <img src="img/strishka.jpg" alt="Стрижка" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Стрижка каскад</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/okras.jpg" alt="Окрашивание" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Окрашивание балаяж</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/ykladka.jpg" alt="Укладка" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Вечерняя укладка</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/manukur.jpg" alt="Маникюр" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Дизайн ногтей</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/pedukur.jpg" alt="Педикюр" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Аппаратный педикюр</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/vizash.jpg" alt="Визаж" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Свадебный макияж</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/salona.jpg" alt="Интерьер салона" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Интерьер салона</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/rfoffisional.jpg" alt="Мастера" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Наши мастера</span>
+          </div>
+        </div>
+        <div class="gallery-item">
+          <img src="img/atmosvera.jpg" alt="Атмосфера" loading="lazy">
+          <div class="gallery-overlay">
+            <span>Атмосфера уюта</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Отзывы -->
+  <section class="reviews">
+    <div class="container">
+      <h2>Отзывы клиентов</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">А</div>
+            <div class="review-info">
+              <strong>Анна К.</strong>
+              <div class="review-rating">★★★★★</div>
+            </div>
+          </div>
+          <p>Отличная стрижка! Мастер Елена — настоящий профессионал. Рекомендую!</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">М</div>
+            <div class="review-info">
+              <strong>Мария П.</strong>
+              <div class="review-rating">★★★★★</div>
+            </div>
+          </div>
+          <p>Делала балаяж — результат потрясающий. Цвет именно такой, как хотела.</p>
+        </div>
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-avatar">Е</div>
+            <div class="review-info">
+              <strong>Елена С.</strong>
+              <div class="review-rating">★★★★☆</div>
+            </div>
+          </div>
+          <p>Маникюр держится 3 недели! Очень довольна, хожу только сюда.</p>
+        </div>
+      </div>
+
+      <!-- Форма отзыва -->
+      <div class="review-form-container">
+        <h3>Оставить отзыв</h3>
+        <form class="review-form" id="review-form" novalidate>
+          <div class="form-group">
+            <label for="review-name">Ваше имя *</label>
+            <input type="text" id="review-name" name="review_name" placeholder="Ваше имя" required>
+            <span class="error-message" id="review-name-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="review-rating">Оценка *</label>
+            <select id="review-rating" name="review_rating" required>
+              <option value="">— Выберите —</option>
+              <option value="5">★★★★★ (5)</option>
+              <option value="4">★★★★☆ (4)</option>
+              <option value="3">★★★☆☆ (3)</option>
+              <option value="2">★★☆☆☆ (2)</option>
+              <option value="1">★☆☆☆☆ (1)</option>
+            </select>
+            <span class="error-message" id="review-rating-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="review-text">Отзыв *</label>
+            <textarea id="review-text" name="review_text" rows="4" placeholder="Расскажите о вашем опыте..." required></textarea>
+            <span class="error-message" id="review-text-error"></span>
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить отзыв</button>
+          <div class="form-result" id="review-result"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Neonka</div>
+        <div class="footer-links">
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="booking.html">Запись</a>
+          <a href="gallery.html">Галерея</a>
+          <a href="account.html">Кабинет</a>
+        </div>
+        <div class="footer-social">
+          <a href="#">VK</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/slider.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

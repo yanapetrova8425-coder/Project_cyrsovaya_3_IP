@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Запись — Салон красоты Neonka</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container">
+      <div class="logo">Neonka</div>
+      <nav class="menu">
+        <a href="index.html">Главная</a>
+        <a href="services.html">Услуги</a>
+        <a href="booking.html">Запись</a>
+        <a href="gallery.html">Галерея</a>
+        <a href="account.html">Кабинет</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-hero">
+    <div class="container">
+      <h1>Онлайн-запись</h1>
+      <p>Запишитесь на удобное время за пару минут</p>
+    </div>
+  </section>
+
+  <section class="booking-section">
+    <div class="container">
+      <form class="booking-form" id="booking-form" novalidate>
+
+        <!-- 1. Текстовое поле — имя -->
+        <div class="form-group">
+          <label for="client-name">Ваше имя *</label>
+          <input type="text" id="client-name" name="client_name" placeholder="Иванова Анна" required>
+          <span class="error-message" id="name-error"></span>
+        </div>
+
+        <!-- 2. Телефон -->
+        <div class="form-group">
+          <label for="client-phone">Телефон *</label>
+          <input type="tel" id="client-phone" name="client_phone" placeholder="+7 (999) 123-45-67" required>
+          <span class="error-message" id="phone-error"></span>
+        </div>
+
+        <!-- 3. Email -->
+        <div class="form-group">
+          <label for="client-email">Email</label>
+          <input type="email" id="client-email" name="client_email" placeholder="example@mail.ru">
+          <span class="error-message" id="email-error"></span>
+        </div>
+
+        <!-- 4. Select — выбор услуги -->
+        <div class="form-group">
+          <label for="service-select">Услуга *</label>
+          <select id="service-select" name="service" required>
+            <option value="">— Выберите услугу —</option>
+            <optgroup label="Парикмахерский зал">
+              <option value="haircut_woman">Стрижка женская</option>
+              <option value="haircut_man">Стрижка мужская</option>
+              <option value="coloring">Окрашивание полное</option>
+              <option value="melirovanie">Мелирование</option>
+              <option value="balayazh">Балаяж / Омбре</option>
+            </optgroup>
+            <optgroup label="Ногтевой сервис">
+              <option value="manicure">Маникюр классический</option>
+              <option value="manicure_gel">Маникюр + покрытие гель</option>
+              <option value="nail_design">Дизайн ногтей</option>
+              <option value="pedicure">Педикюр полный</option>
+              <option value="pedicure_express">Педикюр экспресс</option>
+            </optgroup>
+            <optgroup label="Визаж и стиль">
+              <option value="makeup_day">Визаж дневной</option>
+              <option value="makeup_evening">Визаж вечерний</option>
+              <option value="wedding">Свадебный образ</option>
+              <option value="styling">Укладка праздничная</option>
+            </optgroup>
+          </select>
+          <span class="error-message" id="service-error"></span>
+        </div>
+
+        <!-- 5. Select — выбор мастера -->
+        <div class="form-group">
+          <label for="master-select">Мастер</label>
+          <select id="master-select" name="master">
+            <option value="">Любой мастер</option>
+            <option value="elena">Елена — парикмахер-стилист</option>
+            <option value="marina">Марина — мастер маникюра</option>
+            <option value="olga">Ольга — визажист</option>
+            <option value="natasha">Наташа — универсальный мастер</option>
+          </select>
+        </div>
+
+        <!-- 6. Date — дата -->
+        <div class="form-group">
+          <label for="booking-date">Дата *</label>
+          <input type="date" id="booking-date" name="booking_date" required>
+          <span class="error-message" id="date-error"></span>
+        </div>
+
+        <!-- 7. Time — время -->
+        <div class="form-group">
+          <label for="booking-time">Время *</label>
+          <input type="time" id="booking-time" name="booking_time" min="09:00" max="20:00" required>
+          <span class="error-message" id="time-error"></span>
+        </div>
+
+        <!-- 8. Radio — способ подтверждения -->
+        <div class="form-group">
+          <label>Подтверждение записи</label>
+          <div class="radio-group">
+            <label class="radio-label">
+              <input type="radio" name="confirm_method" value="phone" checked>
+              По телефону
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="confirm_method" value="email">
+              На email
+            </label>
+            <label class="radio-label">
+              <input type="radio" name="confirm_method" value="whatsapp">
+              WhatsApp
+            </label>
+          </div>
+        </div>
+
+        <!-- 9. Checkbox — согласие -->
+        <div class="form-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="agree-terms" name="agree_terms" required>
+            Согласен(а) на обработку персональных данных *
+          </label>
+          <span class="error-message" id="agree-error"></span>
+        </div>
+
+        <!-- 10. Textarea — комментарий -->
+        <div class="form-group">
+          <label for="client-comment">Комментарий</label>
+          <textarea id="client-comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">Записаться</button>
+        <div class="form-result" id="booking-result"></div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">Neonka</div>
+        <div class="footer-links">
+          <a href="index.html">Главная</a>
+          <a href="services.html">Услуги</a>
+          <a href="booking.html">Запись</a>
+          <a href="gallery.html">Галерея</a>
+          <a href="account.html">Кабинет</a>
+        </div>
+        <div class="footer-social">
+          <a href="#">VK</a>
+          <a href="#">WhatsApp</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/validation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
