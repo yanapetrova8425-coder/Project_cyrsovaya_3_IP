@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  <!-- Шапка сайта с навигацией -->
   <header class="header">
     <div class="container">
       <div class="logo">Neonka</div>
@@ -22,40 +23,42 @@
     </div>
   </header>
 
-  <section class="page-hero">
+  <!-- Заголовок страницы -->
+  <section class="page_hero">
     <div class="container">
       <h1>Онлайн-запись</h1>
       <p>Запишитесь на удобное время за пару минут</p>
     </div>
   </section>
 
-  <section class="booking-section">
+  <!-- Форма записи -->
+  <section class="booking_section">
     <div class="container">
-      <form class="booking-form" id="booking-form" novalidate>
+      <form class="booking_form" id="booking-form" novalidate>
 
-        <!-- 1. Текстовое поле — имя -->
-        <div class="form-group">
+        <!-- Поле: имя (text) -->
+        <div class="form_group">
           <label for="client-name">Ваше имя *</label>
           <input type="text" id="client-name" name="client_name" placeholder="Иванова Анна" required>
-          <span class="error-message" id="name-error"></span>
+          <span class="error_message" id="name-error"></span>
         </div>
 
-        <!-- 2. Телефон -->
-        <div class="form-group">
+        <!-- Поле: телефон (tel) -->
+        <div class="form_group">
           <label for="client-phone">Телефон *</label>
           <input type="tel" id="client-phone" name="client_phone" placeholder="+7 (999) 123-45-67" required>
-          <span class="error-message" id="phone-error"></span>
+          <span class="error_message" id="phone-error"></span>
         </div>
 
-        <!-- 3. Email -->
-        <div class="form-group">
+        <!-- Поле: email (email) -->
+        <div class="form_group">
           <label for="client-email">Email</label>
           <input type="email" id="client-email" name="client_email" placeholder="example@mail.ru">
-          <span class="error-message" id="email-error"></span>
+          <span class="error_message" id="email-error"></span>
         </div>
 
-        <!-- 4. Select — выбор услуги -->
-        <div class="form-group">
+        <!-- Поле: выбор услуги (select) -->
+        <div class="form_group">
           <label for="service-select">Услуга *</label>
           <select id="service-select" name="service" required>
             <option value="">— Выберите услугу —</option>
@@ -80,11 +83,11 @@
               <option value="styling">Укладка праздничная</option>
             </optgroup>
           </select>
-          <span class="error-message" id="service-error"></span>
+          <span class="error_message" id="service-error"></span>
         </div>
 
-        <!-- 5. Select — выбор мастера -->
-        <div class="form-group">
+        <!-- Поле: выбор мастера (select) -->
+        <div class="form_group">
           <label for="master-select">Мастер</label>
           <select id="master-select" name="master">
             <option value="">Любой мастер</option>
@@ -95,82 +98,84 @@
           </select>
         </div>
 
-        <!-- 6. Date — дата -->
-        <div class="form-group">
+        <!-- Поле: дата (date) -->
+        <div class="form_group">
           <label for="booking-date">Дата *</label>
           <input type="date" id="booking-date" name="booking_date" required>
-          <span class="error-message" id="date-error"></span>
+          <span class="error_message" id="date-error"></span>
         </div>
 
-        <!-- 7. Time — время -->
-        <div class="form-group">
+        <!-- Поле: время (time) -->
+        <div class="form_group">
           <label for="booking-time">Время *</label>
           <input type="time" id="booking-time" name="booking_time" min="09:00" max="20:00" required>
-          <span class="error-message" id="time-error"></span>
+          <span class="error_message" id="time-error"></span>
         </div>
 
-        <!-- 8. Radio — способ подтверждения -->
-        <div class="form-group">
+        <!-- Поле: способ подтверждения (radio) -->
+        <div class="form_group">
           <label>Подтверждение записи</label>
-          <div class="radio-group">
-            <label class="radio-label">
+          <div class="radio_group">
+            <label class="radio_label">
               <input type="radio" name="confirm_method" value="phone" checked>
               По телефону
             </label>
-            <label class="radio-label">
+            <label class="radio_label">
               <input type="radio" name="confirm_method" value="email">
               На email
             </label>
-            <label class="radio-label">
+            <label class="radio_label">
               <input type="radio" name="confirm_method" value="whatsapp">
               WhatsApp
             </label>
           </div>
         </div>
 
-        <!-- 9. Checkbox — согласие -->
-        <div class="form-group">
-          <label class="checkbox-label">
+        <!-- Поле: согласие (checkbox) -->
+        <div class="form_group">
+          <label class="checkbox_label">
             <input type="checkbox" id="agree-terms" name="agree_terms" required>
             Согласен(а) на обработку персональных данных *
           </label>
-          <span class="error-message" id="agree-error"></span>
+          <span class="error_message" id="agree-error"></span>
         </div>
 
-        <!-- 10. Textarea — комментарий -->
-        <div class="form-group">
+        <!-- Поле: комментарий (textarea) -->
+        <div class="form_group">
           <label for="client-comment">Комментарий</label>
           <textarea id="client-comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-full">Записаться</button>
-        <div class="form-result" id="booking-result"></div>
+        <button type="submit" class="btn btn_primary btn_full">Записаться</button>
+        <div class="form_result" id="booking-result"></div>
       </form>
     </div>
   </section>
 
+  <!-- Подвал сайта -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">Neonka</div>
-        <div class="footer-links">
+      <div class="footer_content">
+        <div class="footer_logo">Neonka</div>
+        <div class="footer_links">
           <a href="index.html">Главная</a>
           <a href="services.html">Услуги</a>
           <a href="booking.html">Запись</a>
           <a href="gallery.html">Галерея / Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
-        <div class="footer-social">
+        <div class="footer_social">
           <a href="#">VK</a>
           <a href="#">WhatsApp</a>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer_bottom">
         <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Подключаю свои скрипты -->
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
 </body>

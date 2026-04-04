@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  <!-- Шапка сайта с навигацией -->
   <header class="header">
     <div class="container">
       <div class="logo">Neonka</div>
@@ -22,22 +23,24 @@
     </div>
   </header>
 
-  <section class="page-hero">
+  <!-- Заголовок страницы -->
+  <section class="page_hero">
     <div class="container">
       <h1>Личный кабинет</h1>
       <p>Войдите или зарегистрируйтесь для записи онлайн</p>
     </div>
   </section>
 
-  <section class="account-section">
+  <!-- Блок авторизации -->
+  <section class="account_section">
     <div class="container">
-      <div class="account-guest">
-        <div class="account-card">
+      <div class="account_guest">
+        <div class="account_card">
           <h2>Добро пожаловать!</h2>
           <p>Для записи на услуги и просмотра истории войдите в аккаунт или создайте новый.</p>
-          <div class="account-buttons">
-            <button class="btn btn-primary" id="open-login-modal">Войти</button>
-            <button class="btn btn-secondary" id="open-register-modal">Регистрация</button>
+          <div class="account_buttons">
+            <button class="btn btn_primary" id="open-login-modal">Войти</button>
+            <button class="btn btn_secondary" id="open-register-modal">Регистрация</button>
           </div>
         </div>
       </div>
@@ -45,24 +48,24 @@
   </section>
 
   <!-- Модальное окно: Вход -->
-  <div class="modal-overlay" id="login-modal">
+  <div class="modal_overlay" id="login-modal">
     <div class="modal">
-      <button class="modal-close" id="close-login-modal">&times;</button>
+      <button class="modal_close" id="close-login-modal">&times;</button>
       <h2>Вход в аккаунт</h2>
-      <form class="modal-form" id="login-form" novalidate>
-        <div class="form-group">
+      <form class="modal_form" id="login-form" novalidate>
+        <div class="form_group">
           <label for="login-email">Email</label>
           <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
-          <span class="error-message" id="login-email-error"></span>
+          <span class="error_message" id="login-email-error"></span>
         </div>
-        <div class="form-group">
+        <div class="form_group">
           <label for="login-password">Пароль</label>
           <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
-          <span class="error-message" id="login-password-error"></span>
+          <span class="error_message" id="login-password-error"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Войти</button>
-        <div class="form-result" id="login-result"></div>
-        <p class="modal-switch">
+        <button type="submit" class="btn btn_primary btn_full">Войти</button>
+        <div class="form_result" id="login-result"></div>
+        <p class="modal_switch">
           Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a>
         </p>
       </form>
@@ -70,74 +73,76 @@
   </div>
 
   <!-- Модальное окно: Регистрация -->
-  <div class="modal-overlay" id="register-modal">
+  <div class="modal_overlay" id="register-modal">
     <div class="modal">
-      <button class="modal-close" id="close-register-modal">&times;</button>
+      <button class="modal_close" id="close-register-modal">&times;</button>
       <h2>Регистрация</h2>
-      <form class="modal-form" id="register-form" novalidate>
-        <div class="form-group">
+      <form class="modal_form" id="register-form" novalidate>
+        <div class="form_group">
           <label for="reg-name">Имя *</label>
           <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
-          <span class="error-message" id="reg-name-error"></span>
+          <span class="error_message" id="reg-name-error"></span>
         </div>
-        <div class="form-group">
+        <div class="form_group">
           <label for="reg-phone">Телефон *</label>
           <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
-          <span class="error-message" id="reg-phone-error"></span>
+          <span class="error_message" id="reg-phone-error"></span>
         </div>
-        <div class="form-group">
+        <div class="form_group">
           <label for="reg-email">Email *</label>
           <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
-          <span class="error-message" id="reg-email-error"></span>
+          <span class="error_message" id="reg-email-error"></span>
         </div>
-        <div class="form-group">
+        <div class="form_group">
           <label for="reg-password">Пароль *</label>
           <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
-          <span class="error-message" id="reg-password-error"></span>
+          <span class="error_message" id="reg-password-error"></span>
         </div>
-        <div class="form-group">
+        <div class="form_group">
           <label for="reg-password-confirm">Подтвердите пароль *</label>
           <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
-          <span class="error-message" id="reg-password-confirm-error"></span>
+          <span class="error_message" id="reg-password-confirm-error"></span>
         </div>
-        <div class="form-group">
-          <label class="checkbox-label">
+        <div class="form_group">
+          <label class="checkbox_label">
             <input type="checkbox" id="reg-agree" name="reg_agree" required>
             Согласен(а) на обработку персональных данных
           </label>
-          <span class="error-message" id="reg-agree-error"></span>
+          <span class="error_message" id="reg-agree-error"></span>
         </div>
-        <button type="submit" class="btn btn-primary btn-full">Зарегистрироваться</button>
-        <div class="form-result" id="register-result"></div>
-        <p class="modal-switch">
+        <button type="submit" class="btn btn_primary btn_full">Зарегистрироваться</button>
+        <div class="form_result" id="register-result"></div>
+        <p class="modal_switch">
           Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a>
         </p>
       </form>
     </div>
   </div>
 
+  <!-- Подвал сайта -->
   <footer class="footer">
     <div class="container">
-      <div class="footer-content">
-        <div class="footer-logo">Neonka</div>
-        <div class="footer-links">
+      <div class="footer_content">
+        <div class="footer_logo">Neonka</div>
+        <div class="footer_links">
           <a href="index.html">Главная</a>
           <a href="services.html">Услуги</a>
           <a href="booking.html">Запись</a>
           <a href="gallery.html">Галерея / Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
-        <div class="footer-social">
+        <div class="footer_social">
           <a href="#">VK</a>
           <a href="#">WhatsApp</a>
         </div>
       </div>
-      <div class="footer-bottom">
+      <div class="footer_bottom">
         <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
       </div>
     </div>
   </footer>
 
+  <!-- Подключаю свои скрипты -->
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>

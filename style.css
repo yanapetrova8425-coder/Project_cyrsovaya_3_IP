@@ -514,7 +514,7 @@ h2 {
   background: rgba(255, 255, 255, 0.9);
 }
 
-.slider_dot {
+.slider-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -524,7 +524,7 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.slider_dot.active {
+.slider-dot.active {
   background: #333;
   transform: scale(1.2);
 }
@@ -637,6 +637,25 @@ h2 {
   background: linear-gradient(135deg, #555, #333);
   color: white;
   transform: scale(1.05);
+}
+
+.price_note {
+  text-align: center;
+  padding: 25px 30px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.08) 100%);
+  border-radius: 20px;
+  border: 2px dashed rgba(0, 0, 0, 0.2);
+}
+
+.price_note p {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.price_note strong {
+  color: #333;
+  font-weight: 700;
 }
 
 /* ===== Contact ===== */
@@ -891,14 +910,14 @@ h2 {
   border-radius: 20px;
 }
 
-.reviews-grid {
+.reviews_grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
   margin-bottom: 50px;
 }
 
-.review-card {
+.review_card {
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   padding: 30px;
@@ -908,19 +927,19 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.review-card:hover {
+.review_card:hover {
   transform: translateY(-5px);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
 }
 
-.review-header {
+.review_header {
   display: flex;
   align-items: center;
   gap: 15px;
   margin-bottom: 15px;
 }
 
-.review-avatar {
+.review_avatar {
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -933,24 +952,24 @@ h2 {
   font-weight: 700;
 }
 
-.review-info strong {
+.review_info strong {
   display: block;
   font-size: 16px;
   color: #333;
 }
 
-.review-rating {
+.review_rating {
   color: #f39c12;
   font-size: 16px;
 }
 
-.review-card p {
+.review_card p {
   color: #666;
   font-size: 14px;
   line-height: 1.6;
 }
 
-.review-form-container {
+.review_form_container {
   max-width: 600px;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.95);
@@ -961,7 +980,7 @@ h2 {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.review-form-container h3 {
+.review_form_container h3 {
   text-align: center;
   font-size: 24px;
   margin-bottom: 30px;
@@ -969,7 +988,7 @@ h2 {
 }
 
 /* ===== Account ===== */
-.account-section {
+.account_section {
   padding: 80px 0;
   background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)), url("img/фон/fon.jpg");
   background-size: cover;
@@ -979,13 +998,13 @@ h2 {
   border-radius: 20px;
 }
 
-.account-guest {
+.account_guest {
   max-width: 600px;
   margin: 0 auto;
   text-align: center;
 }
 
-.account-card {
+.account_card {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   padding: 50px 40px;
@@ -994,19 +1013,19 @@ h2 {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.account-card h2 {
+.account_card h2 {
   font-size: 32px;
   margin-bottom: 15px;
   color: #333;
 }
 
-.account-card p {
+.account_card p {
   color: #666;
   margin-bottom: 30px;
   font-size: 16px;
 }
 
-.account-buttons {
+.account_buttons {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -1014,7 +1033,7 @@ h2 {
 }
 
 /* ===== Modal ===== */
-.modal-overlay {
+.modal_overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -1031,7 +1050,7 @@ h2 {
   padding: 20px;
 }
 
-.modal-overlay.active {
+.modal_overlay.active {
   display: flex;
 }
 
@@ -1059,7 +1078,7 @@ h2 {
   }
 }
 
-.modal-close {
+.modal_close {
   position: absolute;
   top: 15px;
   right: 20px;
@@ -1072,7 +1091,7 @@ h2 {
   line-height: 1;
 }
 
-.modal-close:hover {
+.modal_close:hover {
   color: #333;
 }
 
@@ -1083,24 +1102,24 @@ h2 {
   color: #333;
 }
 
-.modal-form .form-group {
+.modal_form .form_group {
   margin-bottom: 20px;
 }
 
-.modal-switch {
+.modal_switch {
   text-align: center;
   margin-top: 20px;
   font-size: 14px;
   color: #888;
 }
 
-.modal-switch a {
+.modal_switch a {
   color: #555;
   font-weight: 600;
   text-decoration: none;
 }
 
-.modal-switch a:hover {
+.modal_switch a:hover {
   text-decoration: underline;
 }
 
@@ -1111,7 +1130,7 @@ h2 {
   padding: 50px 0 25px;
 }
 
-.footer-content {
+.footer_content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1122,19 +1141,19 @@ h2 {
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.footer-logo {
+.footer_logo {
   font-size: 32px;
   font-weight: 700;
   color: white;
   letter-spacing: 1px;
 }
 
-.footer-links {
+.footer_links {
   display: flex;
   gap: 25px;
 }
 
-.footer-links a {
+.footer_links a {
   color: rgba(255, 255, 255, 0.9);
   text-decoration: none;
   font-size: 15px;
@@ -1142,16 +1161,16 @@ h2 {
   transition: color 0.3s ease;
 }
 
-.footer-links a:hover {
+.footer_links a:hover {
   color: white;
 }
 
-.footer-social {
+.footer_social {
   display: flex;
   gap: 15px;
 }
 
-.footer-social a {
+.footer_social a {
   color: white;
   text-decoration: none;
   padding: 10px 18px;
@@ -1162,17 +1181,17 @@ h2 {
   transition: all 0.3s ease;
 }
 
-.footer-social a:hover {
+.footer_social a:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: translateY(-3px);
 }
 
-.footer-bottom {
+.footer_bottom {
   text-align: center;
   padding-top: 20px;
 }
 
-.footer-bottom p {
+.footer_bottom p {
   margin: 0;
   font-size: 14px;
   color: rgba(255, 255, 255, 0.7);
@@ -1185,31 +1204,31 @@ h2 {
   }
 
   .hero,
-  .page-hero,
+  .page_hero,
   .advantages,
-  .services-preview,
-  .services-full,
+  .services_preview,
+  .services_full,
   .prices,
   .contact,
-  .slider-section,
-  .booking-section,
-  .gallery-grid,
+  .slider_section,
+  .booking_section,
+  .gallery_grid,
   .reviews,
-  .account-section {
+  .account_section {
     margin: 10px;
     border-radius: 15px;
   }
 
-  .hero-content {
+  .hero_content {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
-  .hero-text h1 {
+  .hero_text h1 {
     font-size: 36px;
   }
 
-  .page-hero h1 {
+  .page_hero h1 {
     font-size: 32px;
   }
 
@@ -1217,7 +1236,7 @@ h2 {
     font-size: 30px;
   }
 
-  .hero-stats {
+  .hero_stats {
     gap: 20px;
   }
 
@@ -1225,14 +1244,14 @@ h2 {
     font-size: 22px;
   }
 
-  .advantages-grid,
-  .service-grid,
-  .price-categories,
-  .reviews-grid {
+  .advantages_grid,
+  .service_grid,
+  .price_categories,
+  .reviews_grid {
     grid-template-columns: 1fr;
   }
 
-  .contact-content {
+  .contact_content {
     grid-template-columns: 1fr;
   }
 
@@ -1245,23 +1264,23 @@ h2 {
     font-size: 13px;
   }
 
-  .footer-content {
+  .footer_content {
     flex-direction: column;
     text-align: center;
   }
 
-  .footer-links {
+  .footer_links {
     flex-wrap: wrap;
     justify-content: center;
   }
 
-  .slider-slide img {
+  .slider_slide img {
     height: 300px;
   }
 
-  .booking-form,
-  .review-form-container,
-  .account-card {
+  .booking_form,
+  .review_form_container,
+  .account_card {
     padding: 25px;
   }
 
@@ -1271,11 +1290,11 @@ h2 {
     max-width: 100%;
   }
 
-  .gallery-grid-container {
+  .gallery_grid_container {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   }
 
-  .gallery-item img {
+  .gallery_item img {
     height: 200px;
   }
 }

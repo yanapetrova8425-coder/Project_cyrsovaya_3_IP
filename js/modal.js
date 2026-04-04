@@ -17,7 +17,7 @@ function closeModal(modalId) {
 }
 
 function closeAllModals() {
-  document.querySelectorAll(".modal-overlay").forEach(function (overlay) {
+  document.querySelectorAll(".modal_overlay").forEach(function (overlay) {
     overlay.classList.remove("active");
   });
   document.body.style.overflow = "";

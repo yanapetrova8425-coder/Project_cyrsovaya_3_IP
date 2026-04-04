@@ -9,8 +9,8 @@ function initSlider(sliderId) {
   var slider = document.getElementById(sliderId);
   if (!slider) return;
 
-  var track = slider.querySelector(".slider-track");
-  var slides = slider.querySelectorAll(".slider-slide");
+  var track = slider.querySelector(".slider_track");
+  var slides = slider.querySelectorAll(".slider_slide");
   var prevBtn = document.getElementById("slider-prev");
   var nextBtn = document.getElementById("slider-next");
   var dotsContainer = document.getElementById("slider-dots");
@@ -20,7 +20,7 @@ function initSlider(sliderId) {
   var currentIndex = 0;
   var totalSlides = slides.length;
 
-  // Создаём точки
+  // Создаём точки навигации
   if (dotsContainer) {
     dotsContainer.innerHTML = "";
     for (var i = 0; i < totalSlides; i++) {
@@ -32,26 +32,30 @@ function initSlider(sliderId) {
     }
   }
 
+  // Переход к конкретному слайду по точке
   function goToSlide(e) {
     var index = parseInt(e.target.getAttribute("data-index"));
     currentIndex = index;
     updateSlider();
   }
 
+  // Следующий слайд
   function goNext() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlider();
   }
 
+  // Предыдущий слайд
   function goPrev() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateSlider();
   }
 
+  // Обновление позиции слайдера
   function updateSlider() {
     track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
 
-    // Обновляем точки
+    // Обновляем активную точку
     if (dotsContainer) {
       dotsContainer.querySelectorAll(".slider-dot").forEach(function (dot, i) {
         dot.classList.toggle("active", i === currentIndex);
@@ -59,13 +63,25 @@ function initSlider(sliderId) {
     }
   }
 
-  // Кнопки
-  if (prevBtn) prevBtn.addEventListener("click", goPrev);
-  if (nextBtn) nextBtn.addEventListener("click", goNext);
+  // Обработчики кнопок
+  if (prevBtn) {
+    prevBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      goPrev();
+    });
+  }
 
-  // Автопрокрутка
+  if (nextBtn) {
+    nextBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      goNext();
+    });
+  }
+
+  // Автопрокрутка каждые 5 секунд
   var autoPlay = setInterval(goNext, 5000);
 
+  // Остановка при наведении
   slider.addEventListener("mouseenter", function () {
     clearInterval(autoPlay);
   });
@@ -74,7 +90,7 @@ function initSlider(sliderId) {
     autoPlay = setInterval(goNext, 5000);
   });
 
-  // Свайп на мобильных
+  // Свайп на мобильных устройствах
   var startX = 0;
   var endX = 0;
 

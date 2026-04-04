@@ -16,8 +16,10 @@
     <div class="container">
       <div class="logo">Neonka</div>
       <nav class="menu">
-        <a href="index.html">Главная</a>
-        <a href="services.html">Услуги</a>
+        <a href="#services">Услуги</a>
+        <a href="#prices">Цены</a>
+        <a href="#contact">Контакты</a>
+        <a href="services.html">Все услуги</a>
         <a href="booking.html">Запись</a>
         <a href="gallery.html">Галерея / Отзывы</a>
         <a href="account.html">Кабинет</a>
@@ -33,7 +35,7 @@
           <h1>Салон красоты Neonka</h1>
           <p>Профессиональный уход за волосами, маникюром и макияжем в Шумерле</p>
           <div class="hero_buttons">
-            <a href="services.html" class="btn btn_primary">Все услуги</a>
+            <a href="#services" class="btn btn_primary">Все услуги</a>
             <a href="booking.html" class="btn btn_secondary">Записаться</a>
           </div>
           <div class="hero_stats">
@@ -86,8 +88,8 @@
     </div>
   </section>
 
-  <!-- Превью услуг -->
-  <section class="services_preview">
+  <!-- Блок услуг -->
+  <section id="services" class="services_preview">
     <div class="container">
       <h2>Наши услуги</h2>
       <div class="service_grid">
@@ -109,11 +111,27 @@
         </div>
         <div class="service_card">
           <div class="service_image">
+            <img src="img/ykladka.jpg" alt="Укладка" loading="lazy">
+          </div>
+          <h3>Укладка</h3>
+          <p>Повседневная, вечерняя, праздничная укладка</p>
+          <div class="service_price">от 1000₽</div>
+        </div>
+        <div class="service_card">
+          <div class="service_image">
             <img src="img/manukur.jpg" alt="Маникюр" loading="lazy">
           </div>
           <h3>Маникюр</h3>
           <p>Классика, аппаратный, дизайн, покрытие гель</p>
           <div class="service_price">от 1200₽</div>
+        </div>
+        <div class="service_card">
+          <div class="service_image">
+            <img src="img/pedukur.jpg" alt="Педикюр" loading="lazy">
+          </div>
+          <h3>Педикюр</h3>
+          <p>Полный уход за стопами, аппаратный педикюр</p>
+          <div class="service_price">от 1500₽</div>
         </div>
         <div class="service_card">
           <div class="service_image">
@@ -124,17 +142,146 @@
           <div class="service_price">от 2000₽</div>
         </div>
       </div>
-      <!-- Ссылка на полную страницу услуг -->
-      <div class="section_link">
-        <a href="services.html" class="btn btn_primary">Все услуги и цены</a>
+    </div>
+  </section>
+
+  <!-- Блок прайс-листа -->
+  <section id="prices" class="prices">
+    <div class="container">
+      <h2>Прайс‑лист</h2>
+      <div class="price_categories">
+        <div class="price_category">
+          <div class="category_header">
+            <h3>Парикмахерский зал</h3>
+          </div>
+          <div class="price_list">
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Стрижка женская</span>
+                <span class="price_desc">мытье, укладка, стайлинг</span>
+              </div>
+              <div class="price_value">1500₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Стрижка мужская</span>
+                <span class="price_desc">мытье, укладка</span>
+              </div>
+              <div class="price_value">1200₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Окрашивание полное</span>
+                <span class="price_desc">любая длина до 40 см</span>
+              </div>
+              <div class="price_value">3500₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Мелирование</span>
+                <span class="price_desc">фольга, до 3 оттенков</span>
+              </div>
+              <div class="price_value">4500₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Балаяж / Омбре</span>
+                <span class="price_desc">градиентное окрашивание</span>
+              </div>
+              <div class="price_value">5000₽</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price_category">
+          <div class="category_header">
+            <h3>Ногтевой сервис</h3>
+          </div>
+          <div class="price_list">
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Маникюр классический</span>
+                <span class="price_desc">обрезной / аппаратный</span>
+              </div>
+              <div class="price_value">900₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Маникюр + покрытие гель</span>
+                <span class="price_desc">однотонное покрытие</span>
+              </div>
+              <div class="price_value">1400₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Дизайн ногтей</span>
+                <span class="price_desc">френч, стемпинг, рисунок</span>
+              </div>
+              <div class="price_value">+300₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Педикюр полный</span>
+                <span class="price_desc">стопа + пальчики</span>
+              </div>
+              <div class="price_value">1800₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Педикюр экспресс</span>
+                <span class="price_desc">только пальчики</span>
+              </div>
+              <div class="price_value">1200₽</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="price_category">
+          <div class="category_header">
+            <h3>Визаж и стиль</h3>
+          </div>
+          <div class="price_list">
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Визаж дневной</span>
+                <span class="price_desc">лёгкий макияж на каждый день</span>
+              </div>
+              <div class="price_value">1500₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Визаж вечерний</span>
+                <span class="price_desc">стойкий макияж для событий</span>
+              </div>
+              <div class="price_value">2500₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Свадебный образ</span>
+                <span class="price_desc">макияж + причёска + репетиция</span>
+              </div>
+              <div class="price_value">8000₽</div>
+            </div>
+            <div class="price_item">
+              <div class="price_info">
+                <span class="price_name">Укладка праздничная</span>
+                <span class="price_desc">локоны, волны, объём</span>
+              </div>
+              <div class="price_value">2000₽</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="price_note">
+        <p><strong>Скидка 10%</strong> на первое посещение! | <strong>Скидка 15%</strong> в день рождения</p>
       </div>
     </div>
   </section>
 
   <!-- Блок контактов -->
-  <section class="contact">
+  <section id="contact" class="contact">
     <div class="container">
-      <h2>Контакты</h2>
+      <h2>Приезжайте к нам</h2>
       <div class="contact_content">
         <div class="contact_info">
           <div class="contact_item">
@@ -152,12 +299,12 @@
         </div>
         <div class="contact_map">
           <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=46.413700%2C55.497300&z=14"
+            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aваша_ссылка_здесь&source=constructor"
             width="100%"
             height="400"
             frameborder="0"
             style="border-radius: 18px;"
-            title="Карта салона"
+            title="Карта салона красоты Neonka в Шумерле"
           ></iframe>
         </div>
       </div>
@@ -170,14 +317,17 @@
       <div class="footer_content">
         <div class="footer_logo">Neonka</div>
         <div class="footer_links">
-          <a href="index.html">Главная</a>
-          <a href="services.html">Услуги</a>
+          <a href="#services">Услуги</a>
+          <a href="#prices">Цены</a>
+          <a href="#contact">Контакты</a>
+          <a href="services.html">Все услуги</a>
           <a href="booking.html">Запись</a>
           <a href="gallery.html">Галерея / Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
         <div class="footer_social">
           <a href="#">VK</a>
+          <a href="#">Instagram</a>
           <a href="#">WhatsApp</a>
         </div>
       </div>
