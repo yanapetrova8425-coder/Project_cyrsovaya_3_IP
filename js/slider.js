@@ -1,10 +1,9 @@
-// ===== Слайдер (чистый JS, без jQuery) =====
-
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("work-slider");
   initSlider("gallery-slider");
 });
 
+// запускаю слайдер по ID — создаю точки, кнопки и автопрокрутку
 function initSlider(sliderId) {
   var slider = document.getElementById(sliderId);
   if (!slider) return;
@@ -20,7 +19,7 @@ function initSlider(sliderId) {
   var currentIndex = 0;
   var totalSlides = slides.length;
 
-  // Создаём точки навигации
+  // создаю точки навигации — по одной на каждый слайд
   if (dotsContainer) {
     dotsContainer.innerHTML = "";
     for (var i = 0; i < totalSlides; i++) {
@@ -32,30 +31,29 @@ function initSlider(sliderId) {
     }
   }
 
-  // Переход к конкретному слайду по точке
+  // перехожу к нужному слайду по клику на точку
   function goToSlide(e) {
     var index = parseInt(e.target.getAttribute("data-index"));
     currentIndex = index;
     updateSlider();
   }
 
-  // Следующий слайд
+  // следующий слайд — по кругу
   function goNext() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlider();
   }
 
-  // Предыдущий слайд
+  // предыдущий слайд — тоже по кругу
   function goPrev() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateSlider();
   }
 
-  // Обновление позиции слайдера
+  // двигаю дорожку слайдов и обновляю активную точку
   function updateSlider() {
     track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
 
-    // Обновляем активную точку
     if (dotsContainer) {
       dotsContainer.querySelectorAll(".slider-dot").forEach(function (dot, i) {
         dot.classList.toggle("active", i === currentIndex);
@@ -63,7 +61,7 @@ function initSlider(sliderId) {
     }
   }
 
-  // Обработчики кнопок
+  // кнопки «вперёд/назад»
   if (prevBtn) {
     prevBtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -78,19 +76,20 @@ function initSlider(sliderId) {
     });
   }
 
-  // Автопрокрутка каждые 5 секунд
+  // автопрокрутка каждые 5 секунд
   var autoPlay = setInterval(goNext, 5000);
 
-  // Остановка при наведении
+  // ставлю на паузу при наведении курсора
   slider.addEventListener("mouseenter", function () {
     clearInterval(autoPlay);
   });
 
+  // продолжаю когда курсор уходит
   slider.addEventListener("mouseleave", function () {
     autoPlay = setInterval(goNext, 5000);
   });
 
-  // Свайп на мобильных устройствах
+  // свайп пальцем на мобильных — влево/вправо
   var startX = 0;
   var endX = 0;
 

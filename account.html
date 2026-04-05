@@ -6,7 +6,7 @@
   <meta name="description" content="Личный кабинет салона красоты Neonka — вход, регистрация, просмотр истории записей.">
   <title>Личный кабинет — Салон красоты Neonka</title>
   <link rel="icon" href="img/salona.jpg" type="image/jpeg">
-  <link rel="stylesheet"img/salona.jpg href="style.css">
+  <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -41,8 +41,8 @@
           <h2>Добро пожаловать!</h2>
           <p>Для записи на услуги и просмотра истории войдите в аккаунт или создайте новый.</p>
           <div class="account_buttons">
-            <button class="btn btn_primary" id="open-login-modal">Войти</button>
-            <button class="btn btn_secondary" id="open-register-modal">Регистрация</button>
+            <button class="btn btn_primary" id="btn-open-login">Войти</button>
+            <button class="btn btn_secondary" id="btn-open-register">Регистрация</button>
           </div>
         </div>
       </div>
@@ -50,9 +50,9 @@
   </section>
 
   <!-- Модальное окно: Вход -->
-  <div class="modal_overlay" id="login-modal">
-    <div class="modal">
-      <button class="modal_close" id="close-login-modal">&times;</button>
+  <div class="modal_overlay" id="modal-login">
+    <div class="modal_content">
+      <button class="modal_close" id="modal-login-close">&times;</button>
       <h2>Вход в аккаунт</h2>
       <form class="modal_form" id="login-form" novalidate>
         <div class="form_group">
@@ -75,9 +75,9 @@
   </div>
 
   <!-- Модальное окно: Регистрация -->
-  <div class="modal_overlay" id="register-modal">
-    <div class="modal">
-      <button class="modal_close" id="close-register-modal">&times;</button>
+  <div class="modal_overlay" id="modal-register">
+    <div class="modal_content">
+      <button class="modal_close" id="modal-register-close">&times;</button>
       <h2>Регистрация</h2>
       <form class="modal_form" id="register-form" novalidate>
         <div class="form_group">

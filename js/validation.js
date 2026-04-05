@@ -1,201 +1,237 @@
-// ===== Валидация форм с регулярными выражениями =====
+// Валидация форм с использованием регулярных выражений
 
-var patterns = {
-  name: /^[a-zA-Zа-яА-ЯёЁ\s'-]{2,50}$/,
-  phone: /^(\+7|8)\s?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/,
+// Регулярные выражения
+const regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-  password: /^.{6,}$/,
-  date: /^\d{4}-\d{2}-\d{2}$/,
-  text: /^[\s\S]{10,}$/,
+  phone: /^\+7\s?\(?[0-9]{3}\)?\s?[0-9]{3}[-\s]?[0-9]{2}[-\s]?[0-9]{2}$/,
+  password: /^[a-zA-Z0-9!@#$%^&*()_+]{6,}$/,
+  name: /^[a-zA-Zа-яА-ЯёЁ\s-]{2,50}$/
 };
 
-function validateField(input, pattern, errorMessage) {
-  var value = input.value.trim();
-  var errorEl = document.getElementById(input.id + "-error");
+// Показать ошибку
+function showError(inputId, errorId, message) {
+  const input = document.getElementById(inputId);
+  const error = document.getElementById(errorId);
+  if (input) input.classList.add("error");
+  if (error) error.textContent = message;
+}
 
+// Очистить ошибку
+function clearError(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  const error = document.getElementById(errorId);
+  if (input) input.classList.remove("error");
+  if (error) error.textContent = "";
+}
+
+// Валидация email
+function validateEmail(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  if (!input || !input.required) return true;
+  const value = input.value.trim();
   if (!value) {
-    showError(input, errorEl, "Поле обязательно для заполнения");
+    showError(inputId, errorId, "Введите email");
     return false;
   }
-
-  if (!pattern.test(value)) {
-    showError(input, errorEl, errorMessage);
+  if (!regex.email.test(value)) {
+    showError(inputId, errorId, "Некорректный email");
     return false;
   }
-
-  clearError(input, errorEl);
+  clearError(inputId, errorId);
   return true;
 }
 
-function showError(input, errorEl, message) {
-  input.classList.add("error");
-  if (errorEl) errorEl.textContent = message;
+// Валидация телефона
+function validatePhone(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  if (!input || !input.required) return true;
+  const value = input.value.trim();
+  if (!value) {
+    showError(inputId, errorId, "Введите телефон");
+    return false;
+  }
+  if (!regex.phone.test(value)) {
+    showError(inputId, errorId, "Формат: +7 (952) 029-51-18");
+    return false;
+  }
+  clearError(inputId, errorId);
+  return true;
 }
 
-function clearError(input, errorEl) {
-  input.classList.remove("error");
-  if (errorEl) errorEl.textContent = "";
+// Валидация пароля
+function validatePassword(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  if (!input || !input.required) return true;
+  const value = input.value;
+  if (!value) {
+    showError(inputId, errorId, "Введите пароль");
+    return false;
+  }
+  if (!regex.password.test(value)) {
+    showError(inputId, errorId, "Минимум 8 символов");
+    return false;
+  }
+  clearError(inputId, errorId);
+  return true;
 }
 
-function showResult(elementId, message, isSuccess) {
-  var el = document.getElementById(elementId);
-  if (!el) return;
-  el.textContent = message;
-  el.className = "form-result " + (isSuccess ? "success" : "error");
+// Валидация имени
+function validateName(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  if (!input || !input.required) return true;
+  const value = input.value.trim();
+  if (!value) {
+    showError(inputId, errorId, "Введите имя");
+    return false;
+  }
+  if (!regex.name.test(value)) {
+    showError(inputId, errorId, "Только буквы, 2-50 символов");
+    return false;
+  }
+  clearError(inputId, errorId);
+  return true;
 }
 
-// ===== Валидация формы записи =====
-
-function validateBookingForm() {
-  var isValid = true;
-
-  var nameInput = document.getElementById("client-name");
-  var phoneInput = document.getElementById("client-phone");
-  var emailInput = document.getElementById("client-email");
-  var serviceInput = document.getElementById("service-select");
-  var dateInput = document.getElementById("booking-date");
-  var timeInput = document.getElementById("booking-time");
-  var agreeInput = document.getElementById("agree-terms");
-
-  if (nameInput && !validateField(nameInput, patterns.name, "Введите корректное имя (2-50 символов)")) {
-    isValid = false;
+// Валидация чекбокса
+function validateCheckbox(inputId, errorId) {
+  const input = document.getElementById(inputId);
+  if (!input || !input.required) return true;
+  if (!input.checked) {
+    showError(inputId, errorId, "Необходимо ваше согласие");
+    return false;
   }
-
-  if (phoneInput && !validateField(phoneInput, patterns.phone, "Формат: +7 (999) 123-45-67")) {
-    isValid = false;
-  }
-
-  if (emailInput && emailInput.value.trim() && !validateField(emailInput, patterns.email, "Введите корректный email")) {
-    isValid = false;
-  }
-
-  if (serviceInput && !serviceInput.value) {
-    showError(serviceInput, document.getElementById("service-error"), "Выберите услугу");
-    isValid = false;
-  } else if (serviceInput) {
-    clearError(serviceInput, document.getElementById("service-error"));
-  }
-
-  if (dateInput) {
-    var selectedDate = new Date(dateInput.value);
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    if (!dateInput.value) {
-      showError(dateInput, document.getElementById("date-error"), "Выберите дату");
-      isValid = false;
-    } else if (selectedDate < today) {
-      showError(dateInput, document.getElementById("date-error"), "Дата не может быть в прошлом");
-      isValid = false;
-    } else {
-      clearError(dateInput, document.getElementById("date-error"));
-    }
-  }
-
-  if (timeInput && !timeInput.value) {
-    showError(timeInput, document.getElementById("time-error"), "Выберите время");
-    isValid = false;
-  } else if (timeInput) {
-    clearError(timeInput, document.getElementById("time-error"));
-  }
-
-  if (agreeInput && !agreeInput.checked) {
-    var agreeError = document.getElementById("agree-error");
-    if (agreeError) agreeError.textContent = "Необходимо согласие";
-    isValid = false;
-  }
-
-  return isValid;
+  clearError(inputId, errorId);
+  return true;
 }
 
-// ===== Валидация формы входа =====
-
+// Валидация формы входа
 function validateLoginForm() {
-  var isValid = true;
-
-  var emailInput = document.getElementById("login-email");
-  var passwordInput = document.getElementById("login-password");
-
-  if (emailInput && !validateField(emailInput, patterns.email, "Введите корректный email")) {
-    isValid = false;
-  }
-
-  if (passwordInput && !passwordInput.value.trim()) {
-    showError(passwordInput, document.getElementById("login-password-error"), "Введите пароль");
-    isValid = false;
-  } else if (passwordInput) {
-    clearError(passwordInput, document.getElementById("login-password-error"));
-  }
-
+  let isValid = true;
+  if (!validateEmail("login-email", "login-email-error")) isValid = false;
+  if (!validatePassword("login-password", "login-password-error")) isValid = false;
   return isValid;
 }
 
-// ===== Валидация формы регистрации =====
-
+// Валидация формы регистрации
 function validateRegisterForm() {
-  var isValid = true;
+  let isValid = true;
+  if (!validateName("reg-name", "reg-name-error")) isValid = false;
+  if (!validatePhone("reg-phone", "reg-phone-error")) isValid = false;
+  if (!validateEmail("reg-email", "reg-email-error")) isValid = false;
+  if (!validatePassword("reg-password", "reg-password-error")) isValid = false;
+  if (!validateCheckbox("reg-agree", "reg-agree-error")) isValid = false;
 
-  var nameInput = document.getElementById("reg-name");
-  var phoneInput = document.getElementById("reg-phone");
-  var emailInput = document.getElementById("reg-email");
-  var passwordInput = document.getElementById("reg-password");
-  var confirmInput = document.getElementById("reg-password-confirm");
-  var agreeInput = document.getElementById("reg-agree");
+  // Проверка совпадения паролей
+  const pass = document.getElementById("reg-password");
+  const passConfirm = document.getElementById("reg-password-confirm");
+  if (pass && passConfirm && pass.value !== passConfirm.value) {
+    showError("reg-password-confirm", "reg-password-confirm-error", "Пароли не совпадают");
+    isValid = false;
+  } else if (passConfirm) {
+    clearError("reg-password-confirm", "reg-password-confirm-error");
+  }
 
-  if (nameInput && !validateField(nameInput, patterns.name, "Введите корректное имя (2-50 символов)")) {
+  return isValid;
+}
+
+// Валидация формы записи
+function validateBookingForm() {
+  let isValid = true;
+  if (!validateName("client-name", "name-error")) isValid = false;
+  if (!validatePhone("client-phone", "phone-error")) isValid = false;
+  if (!validateEmail("client-email", "email-error")) isValid = false;
+  if (!validateCheckbox("agree-terms", "agree-error")) isValid = false;
+
+  const service = document.getElementById("service-select");
+  if (service && service.required && !service.value) {
+    showError("service-select", "service-error", "Выберите услугу");
     isValid = false;
   }
 
-  if (phoneInput && !validateField(phoneInput, patterns.phone, "Формат: +7 (999) 123-45-67")) {
+  const date = document.getElementById("booking-date");
+  if (date && date.required && !date.value) {
+    showError("booking-date", "date-error", "Выберите дату");
     isValid = false;
   }
 
-  if (emailInput && !validateField(emailInput, patterns.email, "Введите корректный email")) {
-    isValid = false;
-  }
-
-  if (passwordInput && !validateField(passwordInput, patterns.password, "Минимум 6 символов")) {
-    isValid = false;
-  }
-
-  if (confirmInput && confirmInput.value !== passwordInput.value) {
-    showError(confirmInput, document.getElementById("reg-password-confirm-error"), "Пароли не совпадают");
-    isValid = false;
-  } else if (confirmInput) {
-    clearError(confirmInput, document.getElementById("reg-password-confirm-error"));
-  }
-
-  if (agreeInput && !agreeInput.checked) {
-    var agreeError = document.getElementById("reg-agree-error");
-    if (agreeError) agreeError.textContent = "Необходимо согласие";
+  const time = document.getElementById("booking-time");
+  if (time && time.required && !time.value) {
+    showError("booking-time", "time-error", "Выберите время");
     isValid = false;
   }
 
   return isValid;
 }
 
-// ===== Валидация формы отзыва =====
-
-function validateReviewForm() {
-  var isValid = true;
-
-  var nameInput = document.getElementById("review-name");
-  var ratingInput = document.getElementById("review-rating");
-  var textInput = document.getElementById("review-text");
-
-  if (nameInput && !validateField(nameInput, patterns.name, "Введите корректное имя")) {
-    isValid = false;
+// Инициализация валидации при отправке форм
+document.addEventListener("DOMContentLoaded", function () {
+  // Форма входа
+  const loginForm = document.getElementById("login-form");
+  if (loginForm) {
+    loginForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (validateLoginForm()) {
+        const result = document.getElementById("login-result");
+        if (result) {
+          result.className = "form_result success";
+          result.textContent = "Вход выполнен успешно!";
+        }
+      }
+    });
   }
 
-  if (ratingInput && !ratingInput.value) {
-    showError(ratingInput, document.getElementById("review-rating-error"), "Выберите оценку");
-    isValid = false;
-  } else if (ratingInput) {
-    clearError(ratingInput, document.getElementById("review-rating-error"));
+  // Форма регистрации
+  const registerForm = document.getElementById("register-form");
+  if (registerForm) {
+    registerForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (validateRegisterForm()) {
+        const result = document.getElementById("register-result");
+        if (result) {
+          result.className = "form_result success";
+          result.textContent = "Регистрация прошла успешно!";
+        }
+      }
+    });
   }
 
-  if (textInput && !validateField(textInput, patterns.text, "Отзыв должен содержать минимум 10 символов")) {
-    isValid = false;
+  // Форма записи
+  const bookingForm = document.getElementById("booking-form");
+  if (bookingForm) {
+    bookingForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (validateBookingForm()) {
+        const result = document.getElementById("booking-result");
+        if (result) {
+          result.className = "form_result success";
+          result.textContent = "Вы успешно записаны!";
+        }
+      }
+    });
   }
 
-  return isValid;
-}
+  // Валидация в реальном времени
+  const inputs = document.querySelectorAll("input, select, textarea");
+  inputs.forEach(function (input) {
+    input.addEventListener("blur", function () {
+      const id = input.id;
+      if (id === "login-email") validateEmail("login-email", "login-email-error");
+      if (id === "login-password") validatePassword("login-password", "login-password-error");
+      if (id === "reg-name") validateName("reg-name", "reg-name-error");
+      if (id === "reg-phone") validatePhone("reg-phone", "reg-phone-error");
+      if (id === "reg-email") validateEmail("reg-email", "reg-email-error");
+      if (id === "reg-password") validatePassword("reg-password", "reg-password-error");
+      if (id === "reg-password-confirm") {
+        const pass = document.getElementById("reg-password");
+        if (pass && input.value !== pass.value) {
+          showError("reg-password-confirm", "reg-password-confirm-error", "Пароли не совпадают");
+        } else {
+          clearError("reg-password-confirm", "reg-password-confirm-error");
+        }
+      }
+      if (id === "client-name") validateName("client-name", "name-error");
+      if (id === "client-phone") validatePhone("client-phone", "phone-error");
+      if (id === "client-email") validateEmail("client-email", "email-error");
+    });
+  });
+});
