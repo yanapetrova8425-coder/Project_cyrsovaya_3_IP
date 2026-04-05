@@ -1138,6 +1138,253 @@ h2 {
   text-decoration: underline;
 }
 
+/* ===== Акции ===== */
+.offers {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.offers_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.offer_card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.offer_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
+}
+
+.offer_hot {
+  border: 2px solid #e74c3c;
+}
+
+.offer_badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #e74c3c;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.offer_image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.offer_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.offer_card:hover .offer_image img {
+  transform: scale(1.1);
+}
+
+.offer_content {
+  padding: 25px;
+}
+
+.offer_content h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.offer_desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.offer_price {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.offer_old {
+  font-size: 18px;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.offer_new {
+  font-size: 26px;
+  font-weight: 700;
+  color: #e74c3c;
+}
+
+/* ===== Команда ===== */
+.team {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.team_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+}
+
+.team_card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.team_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.team_photo {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
+
+.team_photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.team_card:hover .team_photo img {
+  transform: scale(1.05);
+}
+
+.team_info {
+  padding: 20px;
+}
+
+.team_info h3 {
+  font-size: 20px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.team_role {
+  font-size: 14px;
+  color: #8b5cf6;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.team_exp {
+  font-size: 13px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.team_rating {
+  color: #f39c12;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+/* ===== Отзывы на главной ===== */
+.reviews_home {
+  padding: 100px 0;
+  background: rgba(255, 255, 255, 0.3);
+  margin: 20px;
+  border-radius: 20px;
+}
+
+.reviews_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.review_card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.review_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+.review_header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.review_avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #555, #333);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.review_info strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+.review_rating {
+  color: #f39c12;
+  font-size: 16px;
+}
+
+.review_card p {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  font-style: italic;
+}
+
+.section_link {
+  text-align: center;
+  margin-top: 40px;
+}
+
 /* ===== Footer ===== */
 .footer {
   background: linear-gradient(135deg, #555 0%, #333 100%);
