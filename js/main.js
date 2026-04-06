@@ -1,8 +1,5 @@
-// ===== Основной JS =====
-
 document.addEventListener("DOMContentLoaded", function () {
 
-  // --- Плавная прокрутка для якорных ссылок ---
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
       var targetId = this.getAttribute("href");
@@ -15,159 +12,135 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // --- Установка минимальной даты в форме записи ---
   var dateInput = document.getElementById("booking-date");
   if (dateInput) {
-    var today = new Date().toISOString().split("T")[0];
-    dateInput.setAttribute("min", today);
+    dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
   }
 
-  // --- Отправка формы записи ---
   var bookingForm = document.getElementById("booking-form");
   if (bookingForm) {
     bookingForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
       if (!validateBookingForm()) return;
 
       var formData = new FormData(bookingForm);
       var data = {};
-      formData.forEach(function (value, key) {
-        data[key] = value;
-      });
+      formData.forEach(function (value, key) { data[key] = value; });
 
-      // AJAX-запрос (будет работать после подключения PHP)
       fetch("php/booking.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then(function (response) { return response.json(); })
+        .then(function (r) { return r.json(); })
         .then(function (result) {
-          if (result.success) {
-            showResult("booking-result", "Вы успешно записаны! Мы свяжемся с вами.", true);
-            bookingForm.reset();
-          } else {
-            showResult("booking-result", result.message || "Ошибка при записи", false);
-          }
+          if (result.success) { showSuccess("booking-result", "Вы успешно записаны!"); bookingForm.reset(); }
+          else { showError("booking-result", result.message || "Ошибка при записи"); }
         })
         .catch(function () {
-          // Демонстрация без сервера
-          showResult("booking-result", "Заявка отправлена! (сервер не подключён)", true);
+          showSuccess("booking-result", "Заявка отправлена! (сервер не подключён)");
           bookingForm.reset();
         });
     });
   }
 
-  // --- Отправка формы входа ---
   var loginForm = document.getElementById("login-form");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
       if (!validateLoginForm()) return;
 
       var formData = new FormData(loginForm);
       var data = {};
-      formData.forEach(function (value, key) {
-        data[key] = value;
-      });
+      formData.forEach(function (value, key) { data[key] = value; });
 
       fetch("php/auth.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then(function (response) { return response.json(); })
+        .then(function (r) { return r.json(); })
         .then(function (result) {
           if (result.success) {
-            showResult("login-result", "Вход выполнен!", true);
-            setTimeout(function () {
-              window.location.href = "account.html";
-            }, 1000);
-          } else {
-            showResult("login-result", result.message || "Ошибка входа", false);
-          }
+            showSuccess("login-result", "Вход выполнен!");
+            setTimeout(function () { window.location.href = "account.html"; }, 1000);
+          } else { showError("login-result", result.message || "Ошибка входа"); }
         })
         .catch(function () {
-          showResult("login-result", "Демо: вход выполнен (сервер не подключён)", true);
+          showSuccess("login-result", "Демо: вход выполнен (сервер не подключён)");
         });
     });
   }
 
-  // --- Отправка формы регистрации ---
   var registerForm = document.getElementById("register-form");
   if (registerForm) {
     registerForm.addEventListener("submit", function (e) {
       e.preventDefault();
-
       if (!validateRegisterForm()) return;
 
       var formData = new FormData(registerForm);
       var data = {};
-      formData.forEach(function (value, key) {
-        data[key] = value;
-      });
+      formData.forEach(function (value, key) { data[key] = value; });
 
       fetch("php/auth.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then(function (response) { return response.json(); })
+        .then(function (r) { return r.json(); })
         .then(function (result) {
           if (result.success) {
-            showResult("register-result", "Регистрация успешна!", true);
+            showSuccess("register-result", "Регистрация успешна!");
             setTimeout(function () {
-              closeModal("register-modal");
-              openModal("login-modal");
+              document.getElementById("modal-register").classList.remove("active");
+              document.getElementById("modal-login").classList.add("active");
             }, 1500);
-          } else {
-            showResult("register-result", result.message || "Ошибка регистрации", false);
-          }
+          } else { showError("register-result", result.message || "Ошибка регистрации"); }
         })
         .catch(function () {
-          showResult("register-result", "Демо: регистрация успешна (сервер не подключён)", true);
+          showSuccess("register-result", "Демо: регистрация успешна (сервер не подключён)");
         });
     });
   }
 
-  // --- Отправка формы отзыва ---
   var reviewForm = document.getElementById("review-form");
   if (reviewForm) {
     reviewForm.addEventListener("submit", function (e) {
       e.preventDefault();
 
-      if (!validateReviewForm()) return;
+      var nameEl = document.getElementById("review-name");
+      var textEl = document.getElementById("review-text");
+      var valid = true;
+
+      if (!nameEl.value.trim()) { showError("review-name", "review-name-error", "Введите имя"); valid = false; }
+      else { clearError("review-name", "review-name-error"); }
+
+      if (!textEl.value.trim()) { showError("review-text", "review-text-error", "Напишите отзыв"); valid = false; }
+      else { clearError("review-text", "review-text-error"); }
+
+      if (!valid) return;
 
       var formData = new FormData(reviewForm);
       var data = {};
-      formData.forEach(function (value, key) {
-        data[key] = value;
-      });
+      formData.forEach(function (value, key) { data[key] = value; });
 
       fetch("php/reviews.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       })
-        .then(function (response) { return response.json(); })
+        .then(function (r) { return r.json(); })
         .then(function (result) {
-          if (result.success) {
-            showResult("review-result", "Спасибо за ваш отзыв!", true);
-            reviewForm.reset();
-          } else {
-            showResult("review-result", result.message || "Ошибка отправки", false);
-          }
+          if (result.success) { showSuccess("review-result", "Спасибо за отзыв!"); reviewForm.reset(); }
+          else { showError("review-result", result.message || "Ошибка"); }
         })
         .catch(function () {
-          showResult("review-result", "Демо: отзыв отправлен (сервер не подключён)", true);
+          showSuccess("review-result", "Демо: отзыв отправлен (сервер не подключён)");
           reviewForm.reset();
         });
     });
   }
 
-  // --- Подсветка активного пункта меню ---
   var currentPage = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".menu a").forEach(function (link) {
     if (link.getAttribute("href") === currentPage) {
@@ -176,3 +149,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+function showSuccess(id, msg) {
+  var el = document.getElementById(id);
+  if (el) { el.className = "form_result success"; el.textContent = msg; }
+}
+
+function showError(id, msg) {
+  var el = document.getElementById(id);
+  if (el) { el.className = "form_result error"; el.textContent = msg; }
+}

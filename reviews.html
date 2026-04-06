@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Личный кабинет салона красоты Neonka — вход, регистрация, просмотр истории записей.">
-  <title>Личный кабинет — Салон красоты Neonka</title>
+  <meta name="description" content="Отзывы клиентов салона красоты Neonka в Шумерле — реальные мнения о наших услугах.">
+  <title>Отзывы — Салон красоты Neonka</title>
   <link rel="icon" href="img/salona.jpg" type="image/jpeg">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -40,23 +40,90 @@
   <!-- заголовок страницы -->
   <section class="page_hero">
     <div class="container">
-      <h1>Личный кабинет</h1>
-      <p>Войдите или зарегистрируйтесь для записи онлайн</p>
+      <h1>Отзывы клиентов</h1>
+      <p>Что говорят о нас наши посетители</p>
     </div>
   </section>
 
-  <!-- авторизация -->
-  <section class="account_section">
+  <!-- отзывы клиентов -->
+  <section class="reviews_home">
     <div class="container">
-      <div class="account_guest">
-        <div class="account_card">
-          <h2>Добро пожаловать!</h2>
-          <p>Для записи на услуги и просмотра истории войдите в аккаунт или создайте новый.</p>
-          <div class="account_buttons">
-            <button class="btn btn_primary" id="btn-open-login">Войти</button>
-            <button class="btn btn_secondary" id="btn-open-register">Регистрация</button>
+      <div class="reviews_grid">
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">А</div>
+            <div class="review_info"><strong>Анна К.</strong><span class="review_date">15 марта 2026</span><div class="review_rating">★★★★★</div></div>
           </div>
+          <p>«Делала окрашивание у Елены — результат просто потрясающий! Цвет именно такой, как я хотела. Теперь только к ней!»</p>
         </div>
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">М</div>
+            <div class="review_info"><strong>Мария С.</strong><span class="review_date">10 марта 2026</span><div class="review_rating">★★★★★</div></div>
+          </div>
+          <p>«Маникюр держится уже 3 недели! Марина — настоящий профессионал. Атмосфера в салоне очень уютная.»</p>
+        </div>
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">Д</div>
+            <div class="review_info"><strong>Дарья Л.</strong><span class="review_date">5 марта 2026</span><div class="review_rating">★★★★★</div></div>
+          </div>
+          <p>«Кератиновое выпрямление — это что-то! Волосы как шёлк. Обязательно вернусь ещё раз!»</p>
+        </div>
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">Е</div>
+            <div class="review_info"><strong>Елена В.</strong><span class="review_date">28 февраля 2026</span><div class="review_rating">★★★★☆</div></div>
+          </div>
+          <p>«Ходила на педикюр к Наташе — всё аккуратно и быстро. Единственное — пришлось немного подождать, но результат стоит того.»</p>
+        </div>
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">О</div>
+            <div class="review_info"><strong>Ольга Н.</strong><span class="review_date">20 февраля 2026</span><div class="review_rating">★★★★★</div></div>
+          </div>
+          <p>«Свадебный макияж от Ольги — это произведение искусства! Все гости были в восторге. Спасибо огромное!»</p>
+        </div>
+        <div class="review_card">
+          <div class="review_header">
+            <div class="review_avatar">Т</div>
+            <div class="review_info"><strong>Татьяна П.</strong><span class="review_date">14 февраля 2026</span><div class="review_rating">★★★★★</div></div>
+          </div>
+          <p>«Ламинирование волос — моя новая любовь! Объём и блеск невероятные. Рекомендую всем подругам.»</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- форма отзыва -->
+  <section class="reviews_home">
+    <div class="container">
+      <h2>Оставить отзыв</h2>
+      <div class="review_form_container">
+        <form class="modal_form" id="review-form" novalidate>
+          <div class="form_group">
+            <label for="review-name">Ваше имя *</label>
+            <input type="text" id="review-name" name="review_name" placeholder="Как вас зовут?" required>
+            <span class="error_message" id="review-name-error"></span>
+          </div>
+          <div class="form_group">
+            <label>Оценка *</label>
+            <div class="radio_group">
+              <label class="radio_label"><input type="radio" name="review_rating" value="5" checked> ★★★★★</label>
+              <label class="radio_label"><input type="radio" name="review_rating" value="4"> ★★★★☆</label>
+              <label class="radio_label"><input type="radio" name="review_rating" value="3"> ★★★☆☆</label>
+              <label class="radio_label"><input type="radio" name="review_rating" value="2"> ★★☆☆☆</label>
+              <label class="radio_label"><input type="radio" name="review_rating" value="1"> ★☆☆☆☆</label>
+            </div>
+          </div>
+          <div class="form_group">
+            <label for="review-text">Ваш отзыв *</label>
+            <textarea id="review-text" name="review_text" rows="5" placeholder="Расскажите о вашем опыте..." required></textarea>
+            <span class="error_message" id="review-text-error"></span>
+          </div>
+          <button type="submit" class="btn btn_primary btn_full">Отправить отзыв</button>
+          <div class="form_result" id="review-result"></div>
+        </form>
       </div>
     </div>
   </section>
@@ -143,6 +210,7 @@
         </div>
         <div class="footer_social">
           <a href="#">VK</a>
+          <a href="#">Instagram</a>
           <a href="#">Telegram</a>
         </div>
       </div>
