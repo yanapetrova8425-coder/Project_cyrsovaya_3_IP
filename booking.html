@@ -1,3 +1,4 @@
+<!-- booking.html — страница онлайн-записи (text, tel, email, select, date, time, radio, checkbox, textarea) -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -11,33 +12,25 @@
 </head>
 <body>
 
-  <!-- шапка -->
+  <!-- Шапка -->
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">Neonka</a>
       <nav class="nav">
-        <a href="index.html#services">Услуги</a>
-        <div class="sep"></div>
-        <a href="index.html#offers">Акции</a>
-        <div class="sep"></div>
-        <a href="index.html#team">Команда</a>
-        <div class="sep"></div>
-        <a href="services.html">Каталог</a>
-        <div class="sep"></div>
-        <a href="booking.html">Запись</a>
-        <div class="sep"></div>
-        <a href="gallery.html">Галерея</a>
-        <div class="sep"></div>
-        <a href="reviews.html">Отзывы</a>
-        <div class="sep"></div>
-        <button class="btn-auth btn-in" id="btn-open-login">Вход</button>
-        <div class="sep"></div>
+        <a href="index.html#services">Услуги</a><div class="sep"></div>
+        <a href="index.html#offers">Акции</a><div class="sep"></div>
+        <a href="index.html#team">Команда</a><div class="sep"></div>
+        <a href="services.html">Каталог</a><div class="sep"></div>
+        <a href="booking.html">Запись</a><div class="sep"></div>
+        <a href="gallery.html">Галерея</a><div class="sep"></div>
+        <a href="reviews.html">Отзывы</a><div class="sep"></div>
+        <button class="btn-auth btn-in" id="btn-open-login">Вход</button><div class="sep"></div>
         <button class="btn-auth btn-up" id="btn-open-register">Регистрация</button>
       </nav>
     </div>
   </header>
 
-  <!-- заголовок -->
+  <!-- Заголовок -->
   <section class="pagehead">
     <div class="container">
       <h1>Онлайн-запись</h1>
@@ -45,25 +38,33 @@
     </div>
   </section>
 
-  <!-- форма -->
+  <!-- Форма записи (novalidate — своя валидация через validation.js) -->
   <section class="booking">
     <div class="container">
       <form class="form" id="booking-form" novalidate>
+
+        <!-- type="text" -->
         <div class="field">
           <label for="client-name">Ваше имя *</label>
           <input type="text" id="client-name" name="client_name" placeholder="Иванова Анна" required>
           <span class="err" id="name-error"></span>
         </div>
+
+        <!-- type="tel" -->
         <div class="field">
           <label for="client-phone">Телефон *</label>
           <input type="tel" id="client-phone" name="client_phone" placeholder="+7 (999) 123-45-67" required>
           <span class="err" id="phone-error"></span>
         </div>
+
+        <!-- type="email" -->
         <div class="field">
           <label for="client-email">Email</label>
           <input type="email" id="client-email" name="client_email" placeholder="example@mail.ru">
           <span class="err" id="email-error"></span>
         </div>
+
+        <!-- type="select" — выпадающий список с услугами -->
         <div class="field">
           <label for="service-select">Услуга *</label>
           <select id="service-select" name="service" required>
@@ -93,6 +94,8 @@
           </select>
           <span class="err" id="service-error"></span>
         </div>
+
+        <!-- type="select" — выбор мастера -->
         <div class="field">
           <label for="master-select">Мастер</label>
           <select id="master-select" name="master">
@@ -103,16 +106,22 @@
             <option value="natasha">Наташа — универсальный мастер</option>
           </select>
         </div>
+
+        <!-- type="date" -->
         <div class="field">
           <label for="booking-date">Дата *</label>
           <input type="date" id="booking-date" name="booking_date" required>
           <span class="err" id="date-error"></span>
         </div>
+
+        <!-- type="time" -->
         <div class="field">
           <label for="booking-time">Время *</label>
           <input type="time" id="booking-time" name="booking_time" min="09:00" max="20:00" required>
           <span class="err" id="time-error"></span>
         </div>
+
+        <!-- type="radio" -->
         <div class="field">
           <label>Подтверждение записи</label>
           <div class="radios">
@@ -121,44 +130,44 @@
             <label class="radio"><input type="radio" name="confirm_method" value="Telegram"> Telegram</label>
           </div>
         </div>
+
+        <!-- type="checkbox" -->
         <div class="field">
           <label class="check"><input type="checkbox" id="agree-terms" name="agree_terms" required> Согласен(а) на обработку данных *</label>
           <span class="err" id="agree-error"></span>
         </div>
+
+        <!-- textarea -->
         <div class="field">
           <label for="client-comment">Комментарий</label>
           <textarea id="client-comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
         </div>
+
         <button type="submit" class="btn btn-dark btn-full">Записаться</button>
         <div class="result" id="booking-result"></div>
       </form>
     </div>
   </section>
 
-  <!-- подвал -->
+  <!-- Подвал -->
   <footer class="footer">
     <div class="container">
       <div class="footer-wrap">
         <div class="flogo">Neonka</div>
         <div class="flinks">
-          <a href="index.html#services">Услуги</a>
-          <a href="index.html#offers">Акции</a>
-          <a href="index.html#team">Команда</a>
-          <a href="services.html">Каталог</a>
-          <a href="booking.html">Запись</a>
-          <a href="gallery.html">Галерея</a>
-          <a href="reviews.html">Отзывы</a>
-          <a href="account.html">Кабинет</a>
+          <a href="index.html#services">Услуги</a><a href="index.html#offers">Акции</a><a href="index.html#team">Команда</a>
+          <a href="services.html">Каталог</a><a href="booking.html">Запись</a><a href="gallery.html">Галерея</a>
+          <a href="reviews.html">Отзывы</a><a href="account.html">Кабинет</a>
         </div>
         <div class="fsocial">
-          <a href="#">VK</a>
-          <a href="#">Telegram</a>
+          <a href="#">VK</a><a href="#">Telegram</a>
         </div>
       </div>
       <div class="fcopy"><p>&copy; 2026 Салон красоты Neonka, Шумерля.</p></div>
     </div>
   </footer>
 
+  <!-- validation.js — валидация регулярными выражениями; main.js — AJAX-отправка через fetch -->
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
 </body>

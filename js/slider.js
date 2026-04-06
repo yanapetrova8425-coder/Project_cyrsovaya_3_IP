@@ -1,3 +1,7 @@
+/*
+ * slider.js — слайдер на чистом JS (без jQuery).
+ * Поддерживает: кнопки «Назад/Вперёд», точки, автопрокрутку, паузу при наведении, свайпы.
+ */
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("work-slider");
   initSlider("gallery-slider");
@@ -18,6 +22,7 @@ function initSlider(sliderId) {
   var currentIndex = 0;
   var totalSlides = slides.length;
 
+  // Создаю точки-индикаторы (по одной на каждый слайд)
   if (dotsContainer) {
     dotsContainer.innerHTML = "";
     for (var i = 0; i < totalSlides; i++) {
@@ -29,22 +34,26 @@ function initSlider(sliderId) {
     }
   }
 
+  // Переход к слайду по клику на точку
   function goToSlide(e) {
     var index = parseInt(e.target.getAttribute("data-index"));
     currentIndex = index;
     updateSlider();
   }
 
+  // Следующий слайд (% обеспечивает цикличность)
   function goNext() {
     currentIndex = (currentIndex + 1) % totalSlides;
     updateSlider();
   }
 
+  // Предыдущий слайд
   function goPrev() {
     currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
     updateSlider();
   }
 
+  // Двигаю трек через transform: translateX, обновляю активную точку
   function updateSlider() {
     track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
     if (dotsContainer) {
@@ -54,6 +63,7 @@ function initSlider(sliderId) {
     }
   }
 
+  // Кнопки «Назад» / «Вперёд»
   if (prevBtn) {
     prevBtn.addEventListener("click", function (e) {
       e.preventDefault();
@@ -68,8 +78,10 @@ function initSlider(sliderId) {
     });
   }
 
+  // Автопрокрутка каждые 5 секунд
   var autoPlay = setInterval(goNext, 5000);
 
+  // Пауза при наведении мыши
   slider.addEventListener("mouseenter", function () {
     clearInterval(autoPlay);
   });
@@ -78,6 +90,7 @@ function initSlider(sliderId) {
     autoPlay = setInterval(goNext, 5000);
   });
 
+  // Свайпы на мобильных
   var startX = 0;
   var endX = 0;
 

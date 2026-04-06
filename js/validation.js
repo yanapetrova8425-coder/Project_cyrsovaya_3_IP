@@ -1,3 +1,11 @@
+/*
+ * validation.js — валидация форм регулярными выражениями.
+ * Функции checkEmail, checkPhone, checkPass, checkName, checkCheck проверяют поля.
+ * validLogin, validReg, validBooking — комплексная проверка форм.
+ * При blur (потере фокуса) поле сразу проверяется.
+ */
+
+// Регулярные выражения
 var regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   phone: /^\+7\s?\(?[0-9]{3}\)?\s?[0-9]{3}[-\s]?[0-9]{2}[-\s]?[0-9]{2}$/,
@@ -5,6 +13,7 @@ var regex = {
   name: /^[a-zA-Zа-яА-ЯёЁ\s-]{2,50}$/
 };
 
+// Показать ошибку: добавляю класс "error" полю и текст в span
 function showErr(id, errId, msg) {
   var el = document.getElementById(id);
   var err = document.getElementById(errId);
@@ -12,6 +21,7 @@ function showErr(id, errId, msg) {
   if (err) err.textContent = msg;
 }
 
+// Убрать ошибку
 function clearErr(id, errId) {
   var el = document.getElementById(id);
   var err = document.getElementById(errId);
@@ -19,6 +29,7 @@ function clearErr(id, errId) {
   if (err) err.textContent = "";
 }
 
+// Проверка email по regex
 function checkEmail(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
@@ -28,6 +39,7 @@ function checkEmail(id, errId) {
   return true;
 }
 
+// Проверка телефона по regex (+7 ...)
 function checkPhone(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
@@ -37,6 +49,7 @@ function checkPhone(id, errId) {
   return true;
 }
 
+// Проверка пароля (мин. 6 символов)
 function checkPass(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
@@ -46,6 +59,7 @@ function checkPass(id, errId) {
   return true;
 }
 
+// Проверка имени (только буквы, 2-50 символов)
 function checkName(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
@@ -55,6 +69,7 @@ function checkName(id, errId) {
   return true;
 }
 
+// Проверка чекбокса (галочка согласия)
 function checkCheck(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
@@ -63,6 +78,7 @@ function checkCheck(id, errId) {
   return true;
 }
 
+// Валидация формы входа
 function validLogin() {
   var ok = true;
   if (!checkEmail("login-email", "login-email-error")) ok = false;
@@ -70,6 +86,7 @@ function validLogin() {
   return ok;
 }
 
+// Валидация формы регистрации (имя, телефон, email, пароль, согласие)
 function validReg() {
   var ok = true;
   if (!checkName("reg-name", "reg-name-error")) ok = false;
@@ -77,6 +94,7 @@ function validReg() {
   if (!checkEmail("reg-email", "reg-email-error")) ok = false;
   if (!checkPass("reg-password", "reg-password-error")) ok = false;
   if (!checkCheck("reg-agree", "reg-agree-error")) ok = false;
+  // Сравнение паролей
   var p1 = document.getElementById("reg-password");
   var p2 = document.getElementById("reg-password-confirm");
   if (p1 && p2 && p1.value !== p2.value) { showErr("reg-password-confirm", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
@@ -84,6 +102,7 @@ function validReg() {
   return ok;
 }
 
+// Валидация формы записи
 function validBooking() {
   var ok = true;
   if (!checkName("client-name", "name-error")) ok = false;
@@ -98,6 +117,7 @@ function validBooking() {
   return ok;
 }
 
+// Проверка полей при потере фокуса (blur)
 document.addEventListener("DOMContentLoaded", function () {
   var inputs = document.querySelectorAll("input, select, textarea");
   inputs.forEach(function (inp) {

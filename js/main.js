@@ -1,6 +1,9 @@
+/*
+ * main.js — главный файл: плавная прокрутка, отправка 4 форм через AJAX (fetch + промисы).
+ */
 document.addEventListener("DOMContentLoaded", function () {
 
-  // плавная прокрутка
+  // Плавная прокрутка по якорям
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener("click", function (e) {
       var targetId = this.getAttribute("href");
@@ -13,18 +16,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // минимальная дата
+  // Минимальная дата — сегодня (нельзя выбрать прошедшую)
   var dateInput = document.getElementById("booking-date");
   if (dateInput) {
     dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
   }
 
-  // форма записи
+  // Форма записи — AJAX через fetch
   var bookingForm = document.getElementById("booking-form");
   if (bookingForm) {
     bookingForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      if (!validBooking()) return;
+      if (!validBooking()) return; // валидация из validation.js
       var formData = new FormData(bookingForm);
       var data = {};
       formData.forEach(function (value, key) { data[key] = value; });
@@ -45,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // форма входа
+  // Форма входа — AJAX
   var loginForm = document.getElementById("login-form");
   if (loginForm) {
     loginForm.addEventListener("submit", function (e) {
@@ -72,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // форма регистрации
+  // Форма регистрации — AJAX
   var regForm = document.getElementById("register-form");
   if (regForm) {
     regForm.addEventListener("submit", function (e) {
@@ -102,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // форма отзыва
+  // Форма отзыва — AJAX
   var reviewForm = document.getElementById("review-form");
   if (reviewForm) {
     reviewForm.addEventListener("submit", function (e) {
@@ -135,7 +138,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  // подсветка активного пункта меню
+  // Подсветка активного пункта меню
   var currentPage = window.location.pathname.split("/").pop() || "index.html";
   document.querySelectorAll(".nav a").forEach(function (link) {
     if (link.getAttribute("href") === currentPage) {
@@ -145,11 +148,13 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+// Показать сообщение об успехе (зелёный)
 function showSuccess(id, msg) {
   var el = document.getElementById(id);
   if (el) { el.className = "result ok"; el.textContent = msg; }
 }
 
+// Показать сообщение об ошибке (красный)
 function showErr(id, msg) {
   var el = document.getElementById(id);
   if (el) { el.className = "result bad"; el.textContent = msg; }

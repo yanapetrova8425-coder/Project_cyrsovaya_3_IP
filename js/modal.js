@@ -1,4 +1,10 @@
+/*
+ * modal.js — открытие/закрытие модалок входа и регистрации.
+ * Модалки открываются по кнопкам, закрываются по крестику, клику на фон и Escape.
+ * Также есть переключение между модалками (ссылки «Зарегистрируйтесь» / «Войдите»).
+ */
 document.addEventListener("DOMContentLoaded", function () {
+  // Нахожу все элементы модалок
   var openLogin = document.getElementById("btn-open-login");
   var openReg = document.getElementById("btn-open-register");
   var loginModal = document.getElementById("modal-login");
@@ -8,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var toReg = document.getElementById("switch-to-register");
   var toLogin = document.getElementById("switch-to-login");
 
+  // Открытие модалки входа — добавляю класс "show", блокирую скролл
   if (openLogin) {
     openLogin.addEventListener("click", function (e) {
       e.preventDefault();
@@ -16,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Открытие модалки регистрации
   if (openReg) {
     openReg.addEventListener("click", function (e) {
       e.preventDefault();
@@ -24,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Закрытие по крестику
   if (closeLogin) {
     closeLogin.addEventListener("click", function () {
       loginModal.classList.remove("show");
@@ -38,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Закрытие при клике на затемнённый фон (e.target === обёртка)
   if (loginModal) {
     loginModal.addEventListener("click", function (e) {
       if (e.target === loginModal) { loginModal.classList.remove("show"); document.body.style.overflow = ""; }
@@ -50,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Переключение: вход → регистрация (с задержкой для анимации)
   if (toReg) {
     toReg.addEventListener("click", function (e) {
       e.preventDefault();
@@ -58,6 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Переключение: регистрация → вход
   if (toLogin) {
     toLogin.addEventListener("click", function (e) {
       e.preventDefault();
@@ -66,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // Закрытие по Escape
   document.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {
       if (loginModal && loginModal.classList.contains("show")) { loginModal.classList.remove("show"); document.body.style.overflow = ""; }

@@ -1,7 +1,9 @@
+<!-- gallery.html — страница галереи работ салона Neonka -->
 <!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
+  <!-- Адаптивность для мобильных устройств -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Галерея работ салона красоты Neonka — фото стрижек, окрашиваний, маникюра и визажа.">
   <title>Галерея — Салон красоты Neonka</title>
@@ -11,7 +13,7 @@
 </head>
 <body>
 
-  <!-- шапка -->
+  <!-- Шапка: логотип + навигация -->
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">Neonka</a>
@@ -37,7 +39,7 @@
     </div>
   </header>
 
-  <!-- заголовок -->
+  <!-- Заголовок страницы -->
   <section class="pagehead">
     <div class="container">
       <h1>Галерея работ</h1>
@@ -45,11 +47,12 @@
     </div>
   </section>
 
-  <!-- слайдер -->
+  <!-- Слайдер «До и После» (логика — slider.js, без jQuery) -->
   <section class="slider-area">
     <div class="container">
       <h2>До и После</h2>
       <div class="slider" id="gallery-slider">
+        <!-- Лента слайдов (двигается через transform: translateX) -->
         <div class="track">
           <div class="slide"><img src="img/strishka.jpg" alt="Стрижка"><div class="caption">Стрижка каскад</div></div>
           <div class="slide"><img src="img/okras.jpg" alt="Окрашивание"><div class="caption">Окрашивание балаяж</div></div>
@@ -70,7 +73,7 @@
     </div>
   </section>
 
-  <!-- галерея -->
+  <!-- Сетка фотографий (loading="lazy" — отложенная загрузка) -->
   <section class="gallery">
     <div class="container">
       <h2>Наши работы</h2>
@@ -88,7 +91,7 @@
     </div>
   </section>
 
-  <!-- шаги -->
+  <!-- Блок «Как проходит визит» — 5 шагов -->
   <section class="steps">
     <div class="container">
       <h2>Как проходит визит</h2>
@@ -102,7 +105,7 @@
     </div>
   </section>
 
-  <!-- подвал -->
+  <!-- Подвал: навигация, соцсети, копирайт -->
   <footer class="footer">
     <div class="container">
       <div class="footer-wrap">
@@ -127,7 +130,7 @@
     </div>
   </footer>
 
-  <!-- модалки -->
+  <!-- Модалка входа (novalidate — своя валидация через validation.js) -->
   <div class="modal" id="modal-login">
     <div class="modal-box">
       <button class="modal-x" id="modal-login-close">&times;</button>
@@ -150,6 +153,7 @@
     </div>
   </div>
 
+  <!-- Модалка регистрации (text, tel, email, password, checkbox) -->
   <div class="modal modal-reg" id="modal-register">
     <div class="modal-box">
       <button class="modal-x" id="modal-register-close">&times;</button>
@@ -191,6 +195,7 @@
     </div>
   </div>
 
+  <!-- Подключение скриптов -->
   <script src="js/slider.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>
