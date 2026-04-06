@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Салон красоты Neonka в Шумерле — стрижки, окрашивание, маникюр, педикюр, визаж. Профессиональные мастера, доступные цены, онлайн-запись.">
+  <meta name="description" content="Салон красоты Neonka в Шумерле — стрижки, окрашивание, маникюр, педикюр, визаж.">
   <title>Салон красоты Neonka | Шумерля</title>
   <link rel="icon" href="img/salona.jpg" type="image/jpeg">
   <link rel="stylesheet" href="style.css">
@@ -11,86 +11,78 @@
 </head>
 <body>
 
-  <!-- Шапка сайта с навигацией -->
+  <!-- шапка -->
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">Neonka</a>
-      <nav class="menu">
+      <nav class="nav">
         <a href="#services">Услуги</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="#offers">Акции</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="#team">Команда</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="services.html">Каталог</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="booking.html">Запись</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="gallery.html">Галерея</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="reviews.html">Отзывы</a>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_login" id="btn-open-login">Вход</button>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_register" id="btn-open-register">Регистрация</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-in" id="btn-open-login">Вход</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-up" id="btn-open-register">Регистрация</button>
       </nav>
     </div>
   </header>
 
-  <!-- Главный экран (герой-блок) -->
+  <!-- герой -->
   <section class="hero">
     <div class="container">
-      <div class="hero_content">
-        <div class="hero_text">
+      <div class="hero-inner">
+        <div class="hero-text">
           <h1>Салон красоты Neonka</h1>
           <p>Профессиональный уход за волосами, маникюром и макияжем в Шумерле</p>
-          <div class="hero_buttons">
-            <a href="#services" class="btn btn_primary">Все услуги</a>
-            <a href="booking.html" class="btn btn_secondary">Записаться</a>
+          <div class="hero-btns">
+            <a href="#services" class="btn btn-dark">Все услуги</a>
+            <a href="booking.html" class="btn btn-light">Записаться</a>
           </div>
-          <div class="hero_stats">
+          <div class="hero-stats">
             <div class="stat"><span>5+</span> лет опыта</div>
             <div class="stat"><span>50+</span> клиентов в месяц</div>
             <div class="stat"><span>5+</span> мастеров</div>
           </div>
         </div>
-        <div class="hero_image">
+        <div class="hero-img">
           <img src="img/salona.jpg" alt="Салон красоты Neonka" loading="lazy">
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Блок преимуществ салона -->
+  <!-- преимущества -->
   <section class="advantages">
     <div class="container">
       <h2>Почему выбирают Neonka?</h2>
-      <div class="advantages_grid">
-        <div class="advantage_card">
-          <div class="advantage_image">
-            <img src="img/rfoffisional.jpg" alt="Профессионализм" loading="lazy">
-          </div>
+      <div class="adv-grid">
+        <div class="adv-card">
+          <div class="adv-img"><img src="img/rfoffisional.jpg" alt="Профессионализм" loading="lazy"></div>
           <h3>Профессионализм мастеров</h3>
           <p>Опытные мастера, постоянное обучение и индивидуальный подход</p>
         </div>
-        <div class="advantage_card">
-          <div class="advantage_image">
-            <img src="img/atmosvera.jpg" alt="Атмосфера" loading="lazy">
-          </div>
+        <div class="adv-card">
+          <div class="adv-img"><img src="img/atmosvera.jpg" alt="Атмосфера" loading="lazy"></div>
           <h3>Комфортная атмосфера</h3>
           <p>Уютный интерьер и спокойная обстановка для релакса</p>
         </div>
-        <div class="advantage_card">
-          <div class="advantage_image">
-            <img src="img/castesrvo.jpg" alt="Материалы" loading="lazy">
-          </div>
+        <div class="adv-card">
+          <div class="adv-img"><img src="img/castesrvo.jpg" alt="Материалы" loading="lazy"></div>
           <h3>Качественные материалы</h3>
           <p>Премиальные средства от проверенных брендов</p>
         </div>
-        <div class="advantage_card">
-          <div class="advantage_image">
-            <img src="img/predloheniya.jpg" alt="Скидки" loading="lazy">
-          </div>
+        <div class="adv-card">
+          <div class="adv-img"><img src="img/predloheniya.jpg" alt="Скидки" loading="lazy"></div>
           <h3>Специальные предложения</h3>
           <p>Акции, скидки для новых клиентов и бонусы</p>
         </div>
@@ -98,290 +90,245 @@
     </div>
   </section>
 
-  <!-- Блок услуг -->
-  <section id="services" class="services_preview">
+  <!-- услуги -->
+  <section id="services" class="services">
     <div class="container">
       <h2>Наши услуги</h2>
-      <div class="service_grid">
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/strishka.jpg" alt="Стрижка" loading="lazy">
-          </div>
+      <div class="svc-grid">
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/strishka.jpg" alt="Стрижка" loading="lazy"></div>
           <h3>Стрижка</h3>
           <p>Классика, каскад, боб, стрижка под машинку</p>
-          <div class="service_price">от 1500₽</div>
+          <div class="svc-price">от 1500₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/okras.jpg" alt="Окрашивание" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/okras.jpg" alt="Окрашивание" loading="lazy"></div>
           <h3>Окрашивание</h3>
           <p>Однотонное, мелирование, омбре, балаяж</p>
-          <div class="service_price">от 3000₽</div>
+          <div class="svc-price">от 3000₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/ykladka.jpg" alt="Укладка" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/ykladka.jpg" alt="Укладка" loading="lazy"></div>
           <h3>Укладка</h3>
           <p>Повседневная, вечерняя, праздничная укладка</p>
-          <div class="service_price">от 1000₽</div>
+          <div class="svc-price">от 1000₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/manukur.jpg" alt="Маникюр" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/manukur.jpg" alt="Маникюр" loading="lazy"></div>
           <h3>Маникюр</h3>
           <p>Классика, аппаратный, дизайн, покрытие гель</p>
-          <div class="service_price">от 1200₽</div>
+          <div class="svc-price">от 1200₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/pedukur.jpg" alt="Педикюр" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/pedukur.jpg" alt="Педикюр" loading="lazy"></div>
           <h3>Педикюр</h3>
           <p>Полный уход за стопами, аппаратный педикюр</p>
-          <div class="service_price">от 1500₽</div>
+          <div class="svc-price">от 1500₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/vizash.jpg" alt="Визаж" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/vizash.jpg" alt="Визаж" loading="lazy"></div>
           <h3>Визаж</h3>
           <p>Дневной, вечерний, свадебный макияж</p>
-          <div class="service_price">от 2000₽</div>
+          <div class="svc-price">от 2000₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/keratin.jpg" alt="Кератиновое выпрямление" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/keratin.jpg" alt="Кератин" loading="lazy"></div>
           <h3>Кератиновое выпрямление</h3>
           <p>Гладкость и блеск волос до 4 месяцев</p>
-          <div class="service_price">от 4000₽</div>
+          <div class="svc-price">от 4000₽</div>
         </div>
-        <div class="service_card">
-          <div class="service_image">
-            <img src="img/laminirovanie.jpg" alt="Ламинирование волос" loading="lazy">
-          </div>
+        <div class="svc-card">
+          <div class="svc-img"><img src="img/laminirovanie.jpg" alt="Ламинирование" loading="lazy"></div>
           <h3>Ламинирование волос</h3>
           <p>Защита, объём и здоровый блеск</p>
-          <div class="service_price">от 3000₽</div>
+          <div class="svc-price">от 3000₽</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Акции недели -->
+  <!-- акции -->
   <section id="offers" class="offers">
     <div class="container">
-      <h2> Акции недели</h2>
-      <div class="offers_grid">
-        <div class="offer_card offer_hot">
-          <div class="offer_badge">Хит</div>
-          <div class="offer_image">
-            <img src="img/okras.jpg" alt="Окрашивание" loading="lazy">
-          </div>
-          <div class="offer_content">
+      <h2>Акции недели</h2>
+      <div class="offer-grid">
+        <div class="offer-card offer-hot">
+          <div class="offer-tag">Хит</div>
+          <div class="offer-img"><img src="img/okras.jpg" alt="Окрашивание" loading="lazy"></div>
+          <div class="offer-body">
             <h3>Окрашивание + уход</h3>
-            <p class="offer_desc">Окрашивание полное + восстанавливающая маска в подарок</p>
-            <div class="offer_price">
-              <span class="offer_old">4500₽</span>
-              <span class="offer_new">3200₽</span>
+            <p class="offer-desc">Окрашивание полное + восстанавливающая маска в подарок</p>
+            <div class="offer-price">
+              <span class="old-price">4500₽</span>
+              <span class="new-price">3200₽</span>
             </div>
-            <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
+            <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
           </div>
         </div>
-        <div class="offer_card">
-          <div class="offer_badge">-30%</div>
-          <div class="offer_image">
-            <img src="img/manukur.jpg" alt="Маникюр" loading="lazy">
-          </div>
-          <div class="offer_content">
+        <div class="offer-card">
+          <div class="offer-tag">-30%</div>
+          <div class="offer-img"><img src="img/manukur.jpg" alt="Маникюр" loading="lazy"></div>
+          <div class="offer-body">
             <h3>Маникюр + гель</h3>
-            <p class="offer_desc">Маникюр с покрытием гель-лаком по специальной цене</p>
-            <div class="offer_price">
-              <span class="offer_old">1400₽</span>
-              <span class="offer_new">980₽</span>
+            <p class="offer-desc">Маникюр с покрытием гель-лаком по специальной цене</p>
+            <div class="offer-price">
+              <span class="old-price">1400₽</span>
+              <span class="new-price">980₽</span>
             </div>
-            <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
+            <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
           </div>
         </div>
-        <div class="offer_card">
-          <div class="offer_badge">Новинка</div>
-          <div class="offer_image">
-            <img src="img/keratin.jpg" alt="Кератин" loading="lazy">
-          </div>
-          <div class="offer_content">
+        <div class="offer-card">
+          <div class="offer-tag">Новинка</div>
+          <div class="offer-img"><img src="img/keratin.jpg" alt="Кератин" loading="lazy"></div>
+          <div class="offer-body">
             <h3>Кератиновое выпрямление</h3>
-            <p class="offer_desc">Гладкие волосы на 4 месяца по цене стрижки</p>
-            <div class="offer_price">
-              <span class="offer_old">4000₽</span>
-              <span class="offer_new">2800₽</span>
+            <p class="offer-desc">Гладкие волосы на 4 месяца по цене стрижки</p>
+            <div class="offer-price">
+              <span class="old-price">4000₽</span>
+              <span class="new-price">2800₽</span>
             </div>
-            <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
+            <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Наша команда -->
+  <!-- команда -->
   <section id="team" class="team">
     <div class="container">
       <h2>Наши мастера</h2>
-      <div class="team_grid">
-        <div class="team_card">
-          <div class="team_photo">
-            <img src="img/salona.jpg" alt="Елена" loading="lazy">
-          </div>
-          <div class="team_info">
+      <div class="team-grid">
+        <div class="member">
+          <div class="photo"><img src="img/salona.jpg" alt="Елена" loading="lazy"></div>
+          <div class="info">
             <h3>Елена</h3>
-            <p class="team_role">Парикмахер-стилист</p>
-            <p class="team_exp">Опыт: 8 лет</p>
-            <div class="team_rating">★★★★★</div>
+            <p class="role">Парикмахер-стилист</p>
+            <p class="exp">Опыт: 8 лет</p>
+            <div class="stars">★★★★★</div>
           </div>
         </div>
-        <div class="team_card">
-          <div class="team_photo">
-            <img src="img/atmosvera.jpg" alt="Марина" loading="lazy">
-          </div>
-          <div class="team_info">
+        <div class="member">
+          <div class="photo"><img src="img/atmosvera.jpg" alt="Марина" loading="lazy"></div>
+          <div class="info">
             <h3>Марина</h3>
-            <p class="team_role">Мастер маникюра</p>
-            <p class="team_exp">Опыт: 5 лет</p>
-            <div class="team_rating">★★★★★</div>
+            <p class="role">Мастер маникюра</p>
+            <p class="exp">Опыт: 5 лет</p>
+            <div class="stars">★★★★★</div>
           </div>
         </div>
-        <div class="team_card">
-          <div class="team_photo">
-            <img src="img/vizash.jpg" alt="Ольга" loading="lazy">
-          </div>
-          <div class="team_info">
+        <div class="member">
+          <div class="photo"><img src="img/vizash.jpg" alt="Ольга" loading="lazy"></div>
+          <div class="info">
             <h3>Ольга</h3>
-            <p class="team_role">Визажист</p>
-            <p class="team_exp">Опыт: 6 лет</p>
-            <div class="team_rating">★★★★☆</div>
+            <p class="role">Визажист</p>
+            <p class="exp">Опыт: 6 лет</p>
+            <div class="stars">★★★★☆</div>
           </div>
         </div>
-        <div class="team_card">
-          <div class="team_photo">
-            <img src="img/rfoffisional.jpg" alt="Наташа" loading="lazy">
-          </div>
-          <div class="team_info">
+        <div class="member">
+          <div class="photo"><img src="img/rfoffisional.jpg" alt="Наташа" loading="lazy"></div>
+          <div class="info">
             <h3>Наташа</h3>
-            <p class="team_role">Универсальный мастер</p>
-            <p class="team_exp">Опыт: 10 лет</p>
-            <div class="team_rating">★★★★★</div>
+            <p class="role">Универсальный мастер</p>
+            <p class="exp">Опыт: 10 лет</p>
+            <div class="stars">★★★★★</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Популярные комплексы услуг -->
-  <section class="packages_section">
+  <!-- комплексы -->
+  <section class="packages">
     <div class="container">
       <h2>Популярные комплексы</h2>
-      <p class="section_subtitle">Выгоднее, чем по отдельности — экономия до 20%</p>
-      <div class="packages_grid">
-        <div class="package_card">
-          <div class="package_badge">Хит</div>
-          <div class="package_header">
+      <p class="subtitle">Выгоднее, чем по отдельности — экономия до 20%</p>
+      <div class="packs">
+        <div class="pack">
+          <div class="pack-tag">Хит</div>
+          <div class="pack-head">
             <h3>Полный образ</h3>
-            <p class="package_time">~ 3 часа</p>
+            <p class="pack-time">~ 3 часа</p>
           </div>
-          <ul class="package_list">
-            <li> Стрижка + укладка</li>
-            <li> Окрашивание полное</li>
-            <li> Маникюр с покрытием</li>
-          </ul>
-          <div class="package_price">
-            <span class="package_old">5900₽</span>
-            <span class="package_new">4700₽</span>
-            <span class="package_save">−1200₽</span>
-          </div>
-          <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
-        </div>
-        <div class="package_card package_popular">
-          <div class="package_badge">Самый популярный</div>
-          <div class="package_header">
-            <h3>Королевский уход</h3>
-            <p class="package_time">~ 4 часа</p>
-          </div>
-          <ul class="package_list">
+          <ul class="pack-list">
             <li>Стрижка + укладка</li>
-            <li> Окрашивание + уход</li>
-            <li> Маникюр + педикюр</li>
-            <li> Визаж дневной</li>
+            <li>Окрашивание полное</li>
+            <li>Маникюр с покрытием</li>
           </ul>
-          <div class="package_price">
-            <span class="package_old">9400₽</span>
-            <span class="package_new">7200₽</span>
-            <span class="package_save">−2200₽</span>
+          <div class="pack-price">
+            <span class="old-price">5900₽</span>
+            <span class="new-price">4700₽</span>
+            <span class="save">−1200₽</span>
           </div>
-          <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
+          <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
         </div>
-        <div class="package_card">
-          <div class="package_badge">Новинка</div>
-          <div class="package_header">
-            <h3>Экспресс-преображение</h3>
-            <p class="package_time">~ 1.5 часа</p>
+        <div class="pack pack-popular">
+          <div class="pack-tag">Самый популярный</div>
+          <div class="pack-head">
+            <h3>Королевский уход</h3>
+            <p class="pack-time">~ 4 часа</p>
           </div>
-          <ul class="package_list">
-            <li> Укладка праздничная</li>
-            <li>Маникюр экспресс</li>
-            <li> Визаж вечерний</li>
+          <ul class="pack-list">
+            <li>Стрижка + укладка</li>
+            <li>Окрашивание + уход</li>
+            <li>Маникюр + педикюр</li>
+            <li>Визаж дневной</li>
           </ul>
-          <div class="package_price">
-            <span class="package_old">4500₽</span>
-            <span class="package_new">3600₽</span>
-            <span class="package_save">−900₽</span>
+          <div class="pack-price">
+            <span class="old-price">9400₽</span>
+            <span class="new-price">7200₽</span>
+            <span class="save">−2200₽</span>
           </div>
-          <a href="booking.html" class="btn btn_primary btn_small">Записаться</a>
+          <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
+        </div>
+        <div class="pack">
+          <div class="pack-tag">Новинка</div>
+          <div class="pack-head">
+            <h3>Экспресс-преображение</h3>
+            <p class="pack-time">~ 1.5 часа</p>
+          </div>
+          <ul class="pack-list">
+            <li>Укладка праздничная</li>
+            <li>Маникюр экспресс</li>
+            <li>Визаж вечерний</li>
+          </ul>
+          <div class="pack-price">
+            <span class="old-price">4500₽</span>
+            <span class="new-price">3600₽</span>
+            <span class="save">−900₽</span>
+          </div>
+          <a href="booking.html" class="btn btn-sm btn-dark">Записаться</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Контакты -->
+  <!-- контакты -->
   <section id="contact" class="contact">
     <div class="container">
       <h2>Приезжайте к нам</h2>
-      <div class="contact_content">
-        <div class="contact_info">
-          <div class="contact_item">
-            <p>г. Шумерля, ул. Ленина, 25</p>
-          </div>
-          <div class="contact_item">
-            <p>8 (952) 029‑51‑18</p>
-          </div>
-          <div class="contact_item">
-            <p>Пн–Вс: 9:00–21:00</p>
-          </div>
-          <div class="contact_item">
-            <p>neonka.shumerlya@gmail.ru</p>
-          </div>
+      <div class="contact-wrap">
+        <div class="contact-list">
+          <div class="contact-item"><p>г. Шумерля, ул. Ленина, 25</p></div>
+          <div class="contact-item"><p>8 (952) 029‑51‑18</p></div>
+          <div class="contact-item"><p>Пн–Вс: 9:00–21:00</p></div>
+          <div class="contact-item"><p>neonka.shumerlya@gmail.ru</p></div>
         </div>
-        <div class="contact_map">
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?um=constructor%3Aваша_ссылка_здесь&source=constructor"
-            width="100%"
-            height="400"
-            frameborder="0"
-            style="border-radius: 18px;"
-            title="Карта салона красоты Neonka в Шумерле"
-          ></iframe>
+        <div class="map">
+          <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Aваша_ссылка_здесь&source=constructor" width="100%" height="400" frameborder="0" style="border-radius:18px;" title="Карта"></iframe>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Подвал сайта -->
+  <!-- подвал -->
   <footer class="footer">
     <div class="container">
-      <div class="footer_content">
-        <div class="footer_logo">Neonka</div>
-        <div class="footer_links">
+      <div class="footer-wrap">
+        <div class="flogo">Neonka</div>
+        <div class="flinks">
           <a href="#services">Услуги</a>
           <a href="#offers">Акции</a>
           <a href="#team">Команда</a>
@@ -391,91 +338,81 @@
           <a href="reviews.html">Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
-        <div class="footer_social">
+        <div class="fsocial">
           <a href="#">VK</a>
           <a href="#">Instagram</a>
           <a href="#">Telegram</a>
         </div>
       </div>
-      <div class="footer_bottom">
-        <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
-      </div>
+      <div class="fcopy"><p>&copy; 2026 Салон красоты Neonka, Шумерля.</p></div>
     </div>
   </footer>
 
-  <!-- Модальное окно: Вход -->
-  <div class="modal_overlay" id="modal-login">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-login-close">&times;</button>
+  <!-- модалка вход -->
+  <div class="modal" id="modal-login">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-login-close">&times;</button>
       <h2>Вход в аккаунт</h2>
-      <form class="modal_form" id="login-form" novalidate>
-        <div class="form_group">
+      <form class="form" id="login-form" novalidate>
+        <div class="field">
           <label for="login-email">Email</label>
           <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="login-email-error"></span>
+          <span class="err" id="login-email-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="login-password">Пароль</label>
           <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
-          <span class="error_message" id="login-password-error"></span>
+          <span class="err" id="login-password-error"></span>
         </div>
-        <button type="submit" class="btn btn_primary btn_full">Войти</button>
-        <div class="form_result" id="login-result"></div>
-        <p class="modal_switch">
-          Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a>
-        </p>
+        <button type="submit" class="btn btn-dark btn-full">Войти</button>
+        <div class="result" id="login-result"></div>
+        <p class="modal-link">Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a></p>
       </form>
     </div>
   </div>
 
-  <!-- Модальное окно: Регистрация -->
-  <div class="modal_overlay" id="modal-register">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-register-close">&times;</button>
+  <!-- модалка регистрация -->
+  <div class="modal modal-reg" id="modal-register">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-register-close">&times;</button>
       <h2>Регистрация</h2>
-      <form class="modal_form" id="register-form" novalidate>
-        <div class="form_group">
+      <form class="form" id="register-form" novalidate>
+        <div class="field">
           <label for="reg-name">Имя *</label>
           <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
-          <span class="error_message" id="reg-name-error"></span>
+          <span class="err" id="reg-name-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-phone">Телефон *</label>
           <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
-          <span class="error_message" id="reg-phone-error"></span>
+          <span class="err" id="reg-phone-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-email">Email *</label>
           <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="reg-email-error"></span>
+          <span class="err" id="reg-email-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-password">Пароль *</label>
           <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
-          <span class="error_message" id="reg-password-error"></span>
+          <span class="err" id="reg-password-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-password-confirm">Подтвердите пароль *</label>
           <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
-          <span class="error_message" id="reg-password-confirm-error"></span>
+          <span class="err" id="reg-password-confirm-error"></span>
         </div>
-        <div class="form_group">
-          <label class="checkbox_label">
-            <input type="checkbox" id="reg-agree" name="reg_agree" required>
-            Согласен(а) на обработку персональных данных
-          </label>
-          <span class="error_message" id="reg-agree-error"></span>
+        <div class="field">
+          <label class="check"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
+          <span class="err" id="reg-agree-error"></span>
         </div>
-        <button type="submit" class="btn btn_primary btn_full">Зарегистрироваться</button>
-        <div class="form_result" id="register-result"></div>
-        <p class="modal_switch">
-          Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a>
-        </p>
+        <button type="submit" class="btn btn-dark btn-full">Зарегистрироваться</button>
+        <div class="result" id="register-result"></div>
+        <p class="modal-link">Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a></p>
       </form>
     </div>
   </div>
 
-  <!-- Подключаю свои скрипты -->
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>

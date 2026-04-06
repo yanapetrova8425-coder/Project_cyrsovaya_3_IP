@@ -11,168 +11,103 @@
 </head>
 <body>
 
-  <!-- шапка сайта -->
+  <!-- шапка -->
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">Neonka</a>
-      <nav class="menu">
+      <nav class="nav">
         <a href="index.html#services">Услуги</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="index.html#offers">Акции</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="index.html#team">Команда</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="services.html">Каталог</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="booking.html">Запись</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="gallery.html">Галерея</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="reviews.html">Отзывы</a>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_login" id="btn-open-login">Вход</button>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_register" id="btn-open-register">Регистрация</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-in" id="btn-open-login">Вход</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-up" id="btn-open-register">Регистрация</button>
       </nav>
     </div>
   </header>
 
-  <!-- заголовок страницы -->
-  <section class="page_hero">
+  <!-- заголовок -->
+  <section class="pagehead">
     <div class="container">
       <h1>Галерея работ</h1>
       <p>Результаты наших мастеров — от стрижки до свадебного образа</p>
     </div>
   </section>
 
-  <!-- слайдер до/после -->
-  <section class="slider_section">
+  <!-- слайдер -->
+  <section class="slider-area">
     <div class="container">
       <h2>До и После</h2>
       <div class="slider" id="gallery-slider">
-        <div class="slider_track">
-          <div class="slider_slide"><img src="img/strishka.jpg" alt="Стрижка"><div class="slide_caption">Стрижка каскад</div></div>
-          <div class="slider_slide"><img src="img/okras.jpg" alt="Окрашивание"><div class="slide_caption">Окрашивание балаяж</div></div>
-          <div class="slider_slide"><img src="img/ykladka.jpg" alt="Укладка"><div class="slide_caption">Вечерняя укладка</div></div>
-          <div class="slider_slide"><img src="img/manukur.jpg" alt="Маникюр"><div class="slide_caption">Дизайн ногтей</div></div>
-          <div class="slider_slide"><img src="img/pedukur.jpg" alt="Педикюр"><div class="slide_caption">Полный педикюр</div></div>
-          <div class="slider_slide"><img src="img/vizash.jpg" alt="Визаж"><div class="slide_caption">Свадебный образ</div></div>
-          <div class="slider_slide"><img src="img/salona.jpg" alt="Интерьер"><div class="slide_caption">Интерьер салона</div></div>
-          <div class="slider_slide"><img src="img/rfoffisional.jpg" alt="Мастера"><div class="slide_caption">Наши мастера</div></div>
-          <div class="slider_slide"><img src="img/atmosvera.jpg" alt="Атмосфера"><div class="slide_caption">Комфортная атмосфера</div></div>
-          <div class="slider_slide"><img src="img/castesrvo.jpg" alt="Материалы"><div class="slide_caption">Премиальные материалы</div></div>
-          <div class="slider_slide"><img src="img/predloheniya.jpg" alt="Акции"><div class="slide_caption">Специальные предложения</div></div>
+        <div class="track">
+          <div class="slide"><img src="img/strishka.jpg" alt="Стрижка"><div class="caption">Стрижка каскад</div></div>
+          <div class="slide"><img src="img/okras.jpg" alt="Окрашивание"><div class="caption">Окрашивание балаяж</div></div>
+          <div class="slide"><img src="img/ykladka.jpg" alt="Укладка"><div class="caption">Вечерняя укладка</div></div>
+          <div class="slide"><img src="img/manukur.jpg" alt="Маникюр"><div class="caption">Дизайн ногтей</div></div>
+          <div class="slide"><img src="img/pedukur.jpg" alt="Педикюр"><div class="caption">Полный педикюр</div></div>
+          <div class="slide"><img src="img/vizash.jpg" alt="Визаж"><div class="caption">Свадебный образ</div></div>
+          <div class="slide"><img src="img/salona.jpg" alt="Интерьер"><div class="caption">Интерьер салона</div></div>
+          <div class="slide"><img src="img/rfoffisional.jpg" alt="Мастера"><div class="caption">Наши мастера</div></div>
+          <div class="slide"><img src="img/atmosvera.jpg" alt="Атмосфера"><div class="caption">Комфортная атмосфера</div></div>
+          <div class="slide"><img src="img/castesrvo.jpg" alt="Материалы"><div class="caption">Премиальные материалы</div></div>
+          <div class="slide"><img src="img/predloheniya.jpg" alt="Акции"><div class="caption">Специальные предложения</div></div>
         </div>
-        <button class="slider_btn slider_prev" id="slider-prev">&#10094;</button>
-        <button class="slider_btn slider_next" id="slider-next">&#10095;</button>
-        <div class="slider_dots" id="slider-dots"></div>
+        <button class="s-btn s-prev" id="slider-prev">&#10094;</button>
+        <button class="s-btn s-next" id="slider-next">&#10095;</button>
+        <div class="dots" id="slider-dots"></div>
       </div>
     </div>
   </section>
 
-  <!-- галерея фото -->
-  <section class="gallery_grid">
+  <!-- галерея -->
+  <section class="gallery">
     <div class="container">
       <h2>Наши работы</h2>
-      <div class="gallery_grid_container">
-        <div class="gallery_item"><img src="img/strishka.jpg" alt="Стрижка" loading="lazy"><div class="gallery_overlay"><span>Стрижка каскад</span></div></div>
-        <div class="gallery_item"><img src="img/okras.jpg" alt="Окрашивание" loading="lazy"><div class="gallery_overlay"><span>Окрашивание балаяж</span></div></div>
-        <div class="gallery_item"><img src="img/ykladka.jpg" alt="Укладка" loading="lazy"><div class="gallery_overlay"><span>Вечерняя укладка</span></div></div>
-        <div class="gallery_item"><img src="img/manukur.jpg" alt="Маникюр" loading="lazy"><div class="gallery_overlay"><span>Дизайн ногтей</span></div></div>
-        <div class="gallery_item"><img src="img/pedukur.jpg" alt="Педикюр" loading="lazy"><div class="gallery_overlay"><span>Аппаратный педикюр</span></div></div>
-        <div class="gallery_item"><img src="img/vizash.jpg" alt="Визаж" loading="lazy"><div class="gallery_overlay"><span>Свадебный макияж</span></div></div>
-        <div class="gallery_item"><img src="img/salona.jpg" alt="Интерьер" loading="lazy"><div class="gallery_overlay"><span>Интерьер салона</span></div></div>
-        <div class="gallery_item"><img src="img/rfoffisional.jpg" alt="Мастера" loading="lazy"><div class="gallery_overlay"><span>Наши мастера</span></div></div>
-        <div class="gallery_item"><img src="img/atmosvera.jpg" alt="Атмосфера" loading="lazy"><div class="gallery_overlay"><span>Атмосфера уюта</span></div></div>
+      <div class="gal-grid">
+        <div class="gal-item"><img src="img/strishka.jpg" alt="Стрижка" loading="lazy"><div class="overlay"><span>Стрижка каскад</span></div></div>
+        <div class="gal-item"><img src="img/okras.jpg" alt="Окрашивание" loading="lazy"><div class="overlay"><span>Окрашивание балаяж</span></div></div>
+        <div class="gal-item"><img src="img/ykladka.jpg" alt="Укладка" loading="lazy"><div class="overlay"><span>Вечерняя укладка</span></div></div>
+        <div class="gal-item"><img src="img/manukur.jpg" alt="Маникюр" loading="lazy"><div class="overlay"><span>Дизайн ногтей</span></div></div>
+        <div class="gal-item"><img src="img/pedukur.jpg" alt="Педикюр" loading="lazy"><div class="overlay"><span>Аппаратный педикюр</span></div></div>
+        <div class="gal-item"><img src="img/vizash.jpg" alt="Визаж" loading="lazy"><div class="overlay"><span>Свадебный макияж</span></div></div>
+        <div class="gal-item"><img src="img/salona.jpg" alt="Интерьер" loading="lazy"><div class="overlay"><span>Интерьер салона</span></div></div>
+        <div class="gal-item"><img src="img/rfoffisional.jpg" alt="Мастера" loading="lazy"><div class="overlay"><span>Наши мастера</span></div></div>
+        <div class="gal-item"><img src="img/atmosvera.jpg" alt="Атмосфера" loading="lazy"><div class="overlay"><span>Атмосфера уюта</span></div></div>
       </div>
     </div>
   </section>
 
-  <!-- визит: шаги -->
-  <section class="process_section">
+  <!-- шаги -->
+  <section class="steps">
     <div class="container">
       <h2>Как проходит визит</h2>
-      <div class="process_steps">
-        <div class="process_step"><div class="step_number">1</div><h3>Запись онлайн</h3><p>Выберите услугу, мастера и удобное время</p></div>
-        <div class="process_step"><div class="step_number">2</div><h3>Приходите в салон</h3><p>Встречаем с улыбкой, предлагаем чай или кофе</p></div>
-        <div class="process_step"><div class="step_number">3</div><h3>Консультация</h3><p>Мастер обсудит пожелания и подберёт вариант</p></div>
-        <div class="process_step"><div class="step_number">4</div><h3>Процедура</h3><p>Вы наслаждаетесь процессом, мы создаём красоту</p></div>
-        <div class="process_step"><div class="step_number">5</div><h3>Результат</h3><p>Вы уходите счастливой и уверенной в себе</p></div>
+      <div class="step-list">
+        <div class="step"><div class="step-num">1</div><h3>Запись онлайн</h3><p>Выберите услугу, мастера и удобное время</p></div>
+        <div class="step"><div class="step-num">2</div><h3>Приходите в салон</h3><p>Встречаем с улыбкой, предлагаем чай или кофе</p></div>
+        <div class="step"><div class="step-num">3</div><h3>Консультация</h3><p>Мастер обсудит пожелания и подберёт вариант</p></div>
+        <div class="step"><div class="step-num">4</div><h3>Процедура</h3><p>Вы наслаждаетесь процессом, мы создаём красоту</p></div>
+        <div class="step"><div class="step-num">5</div><h3>Результат</h3><p>Вы уходите счастливой и уверенной в себе</p></div>
       </div>
     </div>
   </section>
 
-  <!-- модалка: вход -->
-  <div class="modal_overlay" id="modal-login">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-login-close">&times;</button>
-      <h2>Вход в аккаунт</h2>
-      <form class="modal_form" id="login-form" novalidate>
-        <div class="form_group">
-          <label for="login-email">Email</label>
-          <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="login-email-error"></span>
-        </div>
-        <div class="form_group">
-          <label for="login-password">Пароль</label>
-          <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
-          <span class="error_message" id="login-password-error"></span>
-        </div>
-        <button type="submit" class="btn btn_primary btn_full">Войти</button>
-        <div class="form_result" id="login-result"></div>
-        <p class="modal_switch">Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a></p>
-      </form>
-    </div>
-  </div>
-
-  <!-- модалка: регистрация -->
-  <div class="modal_overlay" id="modal-register">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-register-close">&times;</button>
-      <h2>Регистрация</h2>
-      <form class="modal_form" id="register-form" novalidate>
-        <div class="form_group">
-          <label for="reg-name">Имя *</label>
-          <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
-          <span class="error_message" id="reg-name-error"></span>
-        </div>
-        <div class="form_group">
-          <label for="reg-phone">Телефон *</label>
-          <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
-          <span class="error_message" id="reg-phone-error"></span>
-        </div>
-        <div class="form_group">
-          <label for="reg-email">Email *</label>
-          <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="reg-email-error"></span>
-        </div>
-        <div class="form_group">
-          <label for="reg-password">Пароль *</label>
-          <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
-          <span class="error_message" id="reg-password-error"></span>
-        </div>
-        <div class="form_group">
-          <label for="reg-password-confirm">Подтвердите пароль *</label>
-          <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
-          <span class="error_message" id="reg-password-confirm-error"></span>
-        </div>
-        <div class="form_group">
-          <label class="checkbox_label"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
-          <span class="error_message" id="reg-agree-error"></span>
-        </div>
-        <button type="submit" class="btn btn_primary btn_full">Зарегистрироваться</button>
-        <div class="form_result" id="register-result"></div>
-        <p class="modal_switch">Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a></p>
-      </form>
-    </div>
-  </div>
-
-  <!-- подвал сайта -->
+  <!-- подвал -->
   <footer class="footer">
     <div class="container">
-      <div class="footer_content">
-        <div class="footer_logo">Neonka</div>
-        <div class="footer_links">
+      <div class="footer-wrap">
+        <div class="flogo">Neonka</div>
+        <div class="flinks">
           <a href="index.html#services">Услуги</a>
           <a href="index.html#offers">Акции</a>
           <a href="index.html#team">Команда</a>
@@ -182,19 +117,80 @@
           <a href="reviews.html">Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
-        <div class="footer_social">
+        <div class="fsocial">
           <a href="#">VK</a>
           <a href="#">Instagram</a>
           <a href="#">Telegram</a>
         </div>
       </div>
-      <div class="footer_bottom">
-        <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
-      </div>
+      <div class="fcopy"><p>&copy; 2026 Салон красоты Neonka, Шумерля.</p></div>
     </div>
   </footer>
 
-  <!-- скрипты -->
+  <!-- модалки -->
+  <div class="modal" id="modal-login">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-login-close">&times;</button>
+      <h2>Вход в аккаунт</h2>
+      <form class="form" id="login-form" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
+          <span class="err" id="login-email-error"></span>
+        </div>
+        <div class="field">
+          <label for="login-password">Пароль</label>
+          <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
+          <span class="err" id="login-password-error"></span>
+        </div>
+        <button type="submit" class="btn btn-dark btn-full">Войти</button>
+        <div class="result" id="login-result"></div>
+        <p class="modal-link">Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a></p>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal modal-reg" id="modal-register">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-register-close">&times;</button>
+      <h2>Регистрация</h2>
+      <form class="form" id="register-form" novalidate>
+        <div class="field">
+          <label for="reg-name">Имя *</label>
+          <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
+          <span class="err" id="reg-name-error"></span>
+        </div>
+        <div class="field">
+          <label for="reg-phone">Телефон *</label>
+          <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
+          <span class="err" id="reg-phone-error"></span>
+        </div>
+        <div class="field">
+          <label for="reg-email">Email *</label>
+          <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
+          <span class="err" id="reg-email-error"></span>
+        </div>
+        <div class="field">
+          <label for="reg-password">Пароль *</label>
+          <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
+          <span class="err" id="reg-password-error"></span>
+        </div>
+        <div class="field">
+          <label for="reg-password-confirm">Подтвердите пароль *</label>
+          <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
+          <span class="err" id="reg-password-confirm-error"></span>
+        </div>
+        <div class="field">
+          <label class="check"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
+          <span class="err" id="reg-agree-error"></span>
+        </div>
+        <button type="submit" class="btn btn-dark btn-full">Зарегистрироваться</button>
+        <div class="result" id="register-result"></div>
+        <p class="modal-link">Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a></p>
+      </form>
+    </div>
+  </div>
+
   <script src="js/slider.js"></script>
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>

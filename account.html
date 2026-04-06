@@ -11,127 +11,126 @@
 </head>
 <body>
 
-  <!-- шапка сайта -->
+  <!-- шапка -->
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">Neonka</a>
-      <nav class="menu">
+      <nav class="nav">
         <a href="index.html#services">Услуги</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="index.html#offers">Акции</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="index.html#team">Команда</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="services.html">Каталог</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="booking.html">Запись</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="gallery.html">Галерея</a>
-        <div class="menu_divider"></div>
+        <div class="sep"></div>
         <a href="reviews.html">Отзывы</a>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_login" id="btn-open-login">Вход</button>
-        <div class="menu_divider"></div>
-        <button class="btn-auth btn_register" id="btn-open-register">Регистрация</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-in" id="btn-open-login">Вход</button>
+        <div class="sep"></div>
+        <button class="btn-auth btn-up" id="btn-open-register">Регистрация</button>
       </nav>
     </div>
   </header>
 
-  <!-- заголовок страницы -->
-  <section class="page_hero">
+  <!-- заголовок -->
+  <section class="pagehead">
     <div class="container">
       <h1>Личный кабинет</h1>
       <p>Войдите или зарегистрируйтесь для записи онлайн</p>
     </div>
   </section>
 
-  <!-- авторизация -->
-  <section class="account_section">
+  <!-- кабинет -->
+  <section class="account">
     <div class="container">
-      <div class="account_guest">
-        <div class="account_card">
+      <div class="account-box">
+        <div class="account-card">
           <h2>Добро пожаловать!</h2>
           <p>Для записи на услуги и просмотра истории войдите в аккаунт или создайте новый.</p>
-          <div class="account_buttons">
-            <button class="btn btn_primary" id="btn-open-login">Войти</button>
-            <button class="btn btn_secondary" id="btn-open-register">Регистрация</button>
+          <div class="account-btns">
+            <button class="btn btn-dark" id="btn-open-login">Войти</button>
+            <button class="btn btn-light" id="btn-open-register">Регистрация</button>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- модалка: вход -->
-  <div class="modal_overlay" id="modal-login">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-login-close">&times;</button>
+  <!-- модалки -->
+  <div class="modal" id="modal-login">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-login-close">&times;</button>
       <h2>Вход в аккаунт</h2>
-      <form class="modal_form" id="login-form" novalidate>
-        <div class="form_group">
+      <form class="form" id="login-form" novalidate>
+        <div class="field">
           <label for="login-email">Email</label>
           <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="login-email-error"></span>
+          <span class="err" id="login-email-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="login-password">Пароль</label>
           <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
-          <span class="error_message" id="login-password-error"></span>
+          <span class="err" id="login-password-error"></span>
         </div>
-        <button type="submit" class="btn btn_primary btn_full">Войти</button>
-        <div class="form_result" id="login-result"></div>
-        <p class="modal_switch">Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a></p>
+        <button type="submit" class="btn btn-dark btn-full">Войти</button>
+        <div class="result" id="login-result"></div>
+        <p class="modal-link">Нет аккаунта? <a href="#" id="switch-to-register">Зарегистрируйтесь</a></p>
       </form>
     </div>
   </div>
 
-  <!-- модалка: регистрация -->
-  <div class="modal_overlay" id="modal-register">
-    <div class="modal_content">
-      <button class="modal_close" id="modal-register-close">&times;</button>
+  <div class="modal modal-reg" id="modal-register">
+    <div class="modal-box">
+      <button class="modal-x" id="modal-register-close">&times;</button>
       <h2>Регистрация</h2>
-      <form class="modal_form" id="register-form" novalidate>
-        <div class="form_group">
+      <form class="form" id="register-form" novalidate>
+        <div class="field">
           <label for="reg-name">Имя *</label>
           <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
-          <span class="error_message" id="reg-name-error"></span>
+          <span class="err" id="reg-name-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-phone">Телефон *</label>
           <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
-          <span class="error_message" id="reg-phone-error"></span>
+          <span class="err" id="reg-phone-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-email">Email *</label>
           <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
-          <span class="error_message" id="reg-email-error"></span>
+          <span class="err" id="reg-email-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-password">Пароль *</label>
           <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
-          <span class="error_message" id="reg-password-error"></span>
+          <span class="err" id="reg-password-error"></span>
         </div>
-        <div class="form_group">
+        <div class="field">
           <label for="reg-password-confirm">Подтвердите пароль *</label>
           <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
-          <span class="error_message" id="reg-password-confirm-error"></span>
+          <span class="err" id="reg-password-confirm-error"></span>
         </div>
-        <div class="form_group">
-          <label class="checkbox_label"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
-          <span class="error_message" id="reg-agree-error"></span>
+        <div class="field">
+          <label class="check"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
+          <span class="err" id="reg-agree-error"></span>
         </div>
-        <button type="submit" class="btn btn_primary btn_full">Зарегистрироваться</button>
-        <div class="form_result" id="register-result"></div>
-        <p class="modal_switch">Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a></p>
+        <button type="submit" class="btn btn-dark btn-full">Зарегистрироваться</button>
+        <div class="result" id="register-result"></div>
+        <p class="modal-link">Уже есть аккаунт? <a href="#" id="switch-to-login">Войдите</a></p>
       </form>
     </div>
   </div>
 
-  <!-- подвал сайта -->
+  <!-- подвал -->
   <footer class="footer">
     <div class="container">
-      <div class="footer_content">
-        <div class="footer_logo">Neonka</div>
-        <div class="footer_links">
+      <div class="footer-wrap">
+        <div class="flogo">Neonka</div>
+        <div class="flinks">
           <a href="index.html#services">Услуги</a>
           <a href="index.html#offers">Акции</a>
           <a href="index.html#team">Команда</a>
@@ -141,18 +140,15 @@
           <a href="reviews.html">Отзывы</a>
           <a href="account.html">Кабинет</a>
         </div>
-        <div class="footer_social">
+        <div class="fsocial">
           <a href="#">VK</a>
           <a href="#">Telegram</a>
         </div>
       </div>
-      <div class="footer_bottom">
-        <p>&copy; 2026 Салон красоты Neonka, Шумерля.</p>
-      </div>
+      <div class="fcopy"><p>&copy; 2026 Салон красоты Neonka, Шумерля.</p></div>
     </div>
   </footer>
 
-  <!-- скрипты -->
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>

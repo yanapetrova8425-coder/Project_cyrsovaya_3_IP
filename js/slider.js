@@ -7,8 +7,8 @@ function initSlider(sliderId) {
   var slider = document.getElementById(sliderId);
   if (!slider) return;
 
-  var track = slider.querySelector(".slider_track");
-  var slides = slider.querySelectorAll(".slider_slide");
+  var track = slider.querySelector(".track");
+  var slides = slider.querySelectorAll(".slide");
   var prevBtn = document.getElementById("slider-prev");
   var nextBtn = document.getElementById("slider-next");
   var dotsContainer = document.getElementById("slider-dots");
@@ -22,7 +22,7 @@ function initSlider(sliderId) {
     dotsContainer.innerHTML = "";
     for (var i = 0; i < totalSlides; i++) {
       var dot = document.createElement("button");
-      dot.className = "slider_dot" + (i === 0 ? " active" : "");
+      dot.className = "dot" + (i === 0 ? " active" : "");
       dot.setAttribute("data-index", i);
       dot.addEventListener("click", goToSlide);
       dotsContainer.appendChild(dot);
@@ -47,9 +47,8 @@ function initSlider(sliderId) {
 
   function updateSlider() {
     track.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
-
     if (dotsContainer) {
-      dotsContainer.querySelectorAll(".slider_dot").forEach(function (dot, i) {
+      dotsContainer.querySelectorAll(".dot").forEach(function (dot, i) {
         dot.classList.toggle("active", i === currentIndex);
       });
     }
@@ -90,11 +89,7 @@ function initSlider(sliderId) {
     endX = e.changedTouches[0].clientX;
     var diff = startX - endX;
     if (Math.abs(diff) > 50) {
-      if (diff > 0) {
-        goNext();
-      } else {
-        goPrev();
-      }
+      if (diff > 0) { goNext(); } else { goPrev(); }
     }
   });
 }
