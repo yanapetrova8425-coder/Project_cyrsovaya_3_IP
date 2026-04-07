@@ -1,8 +1,8 @@
 <?php
 /**
  * reviews.php — серверная обработка отзывов в салон Neonka.
- * Принимаю POST-запрос, валидирую данные и сохраняю
- * в таблицу reviews через PDO с bindParam.
+ * Подключаюсь к БД через PDO, принимаю данные через $_POST,
+ * валидирую и сохраняю через bindParam.
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -33,15 +33,15 @@ try {
 // ОБРАБОТКА POST-ЗАПРОСОВ
 // ============================================
 
-// Обработка добавления отзыва
-if (isset($_POST['action']) && $_POST['action'] === 'review') {
+// Добавление отзыва
+if (isset($_POST['name']) && isset($_POST['rating']) && isset($_POST['text'])) {
     try {
         // Получаю данные и экранирую
-        $name = htmlspecialchars(trim($_POST['name'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $rating = (int)($_POST['rating'] ?? 0);
-        $text = htmlspecialchars(trim($_POST['text'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+        $rating = (int)$_POST['rating'];
+        $text = htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8');
 
-        // Валидация обязательных полей
+        // Валидация
         if (!$name || !$text) {
             http_response_code(400);
             echo json_encode(['status' => 'error', 'message' => 'Заполните имя и текст отзыва']);
@@ -55,7 +55,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'review') {
             exit;
         }
 
-        // Минимальная длина отзыва — 10 символов
+        // Минимальная длина отзыва
         if (strlen($text) < 10) {
             http_response_code(400);
             echo json_encode(['status' => 'error', 'message' => 'Отзыв слишком короткий (минимум 10 символов)']);

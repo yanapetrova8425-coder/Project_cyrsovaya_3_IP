@@ -1,7 +1,6 @@
 /*
- * main.js — главный файл клиентской логики салона Neonka.
- * Здесь обрабатываются все формы: запись, вход, регистрация, отзывы.
- * Данные отправляются асинхронно на сервер через fetch + FormData.
+ * main.js — обработка отправки всех форм через AJAX (fetch + FormData).
+ * Данные уходят методом POST. Сервер принимает через $_POST.
  */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -19,14 +18,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  /* Минимальная дата — сегодня (нельзя выбрать прошедшую) */
+  /* Минимальная дата — сегодня */
   var dateInput = document.getElementById("booking-date");
   if (dateInput) {
     dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
   }
 
   /* ============================================
-     Форма записи — AJAX через FormData
+     Форма записи — POST через FormData
      ============================================ */
   var bookingForm = document.getElementById("booking-form");
   if (bookingForm) {
@@ -34,11 +33,17 @@ document.addEventListener("DOMContentLoaded", function () {
       e.preventDefault();
       if (!validBooking()) return;
 
-      // Собираю данные через FormData — браузер сам ставит правильные заголовки
       var formData = new FormData(bookingForm);
-      formData.append("action", "booking"); //告诉 сервер что это запись
+      // Переименовываю поля под PHP (name → name, service → service и т.д.)
+      formData.set("name", formData.get("client_name"));
+      formData.set("phone", formData.get("client_phone"));
+      formData.set("email", formData.get("client_email") || "");
+      formData.set("service", formData.get("service"));
+      formData.set("master", formData.get("master") || "");
+      formData.set("date", formData.get("booking_date"));
+      formData.set("time", formData.get("booking_time"));
+      formData.set("comment", formData.get("comment") || "");
 
-      // Отправляю данные методом POST через FormData
       fetch("php/booking.php", {
         method: "POST",
         body: formData,
@@ -60,7 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================================
-     Форма входа — AJAX через FormData
+     Форма входа — POST через FormData
      ============================================ */
   var loginForm = document.getElementById("login-form");
   if (loginForm) {
@@ -69,7 +74,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validLogin()) return;
 
       var formData = new FormData(loginForm);
-      formData.append("action", "login");
+      // Переименовываю поля под PHP (login_email → email, login_password → password)
+      formData.set("email", formData.get("login_email"));
+      formData.set("password", formData.get("login_password"));
+      formData.set("action", "login");
 
       fetch("php/auth.php", {
         method: "POST",
@@ -91,7 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================================
-     Форма регистрации — AJAX через FormData
+     Форма регистрации — POST через FormData
      ============================================ */
   var regForm = document.getElementById("register-form");
   if (regForm) {
@@ -100,7 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validReg()) return;
 
       var formData = new FormData(regForm);
-      formData.append("action", "register");
+      // Переименовываю поля под PHP (reg_name → name, reg_phone → phone и т.д.)
+      formData.set("name", formData.get("reg_name"));
+      formData.set("phone", formData.get("reg_phone"));
+      formData.set("email", formData.get("reg_email"));
+      formData.set("password", formData.get("reg_password"));
 
       fetch("php/auth.php", {
         method: "POST",
@@ -125,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   /* ============================================
-     Форма отзыва — AJAX через FormData
+     Форма отзыва — POST через FormData
      ============================================ */
   var reviewForm = document.getElementById("review-form");
   if (reviewForm) {
@@ -141,7 +153,10 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!valid) return;
 
       var formData = new FormData(reviewForm);
-      formData.append("action", "review");
+      // Переименовываю поля под PHP
+      formData.set("name", formData.get("review_name"));
+      formData.set("rating", formData.get("review_rating"));
+      formData.set("text", formData.get("review_text"));
 
       fetch("php/reviews.php", {
         method: "POST",

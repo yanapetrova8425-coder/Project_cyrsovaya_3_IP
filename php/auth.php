@@ -1,23 +1,20 @@
 <?php
 /**
- * auth.php — серверная логика регистрации и входа в салон Neonka.
- * Подключаюсь к БД neonka_db через PDO, обрабатываю POST-запросы
- * от клиентских форм (AJAX через fetch).
- * Пароль хеширую через password_hash() — стандарт безопасности.
- * Валидацию дублирую на сервере, даже если клиент уже проверил.
+ * auth.php — регистрация и вход пользователей салона Neonka.
+ * Подключаюсь к БД через PDO, принимаю данные через $_POST,
+ * экранирую через htmlspecialchars(), вставляю через bindParam.
  */
 
 // Заголовки для JSON-ответа
 header('Content-Type: application/json; charset=utf-8');
 
-// Настройки подключения к моей базе данных
+// Настройки подключения к базе данных
 $host = '127.0.0.1';
 $db = 'neonka_db';
 $user = 'root';
 $pass_db = '';
 $charset = 'utf8mb4';
 
-// Формирую DSN-строку для PDO
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 $opt = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -25,7 +22,6 @@ $opt = [
     PDO::ATTR_EMULATE_PREPARES => false,
 ];
 
-// Пытаюсь подключиться к БД через PDO
 try {
     $pdo = new PDO($dsn, $user, $pass_db, $opt);
 } catch (PDOException $e) {
@@ -38,37 +34,16 @@ try {
 // ОБРАБОТКА POST-ЗАПРОСОВ
 // ============================================
 
-// --- Регистрация нового пользователя ---
-if (isset($_POST['action']) && $_POST['action'] === 'register') {
+// Регистрация нового пользователя
+if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])) {
     try {
         // Получаю данные из формы и экранирую через htmlspecialchars
-        $name = htmlspecialchars(trim($_POST['name'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars(trim($_POST['phone'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $email = htmlspecialchars(trim($_POST['email'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $password = $_POST['password'] ?? '';
+        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['password'];
 
-        // Серверная валидация: все поля обязательны
-        if (!$name || !$phone || !$email || !$password) {
-            http_response_code(400);
-            echo json_encode(['status' => 'error', 'message' => 'Заполните все обязательные поля']);
-            exit;
-        }
-
-        // Проверяю email через регулярное выражение
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            http_response_code(400);
-            echo json_encode(['status' => 'error', 'message' => 'Некорректный email']);
-            exit;
-        }
-
-        // Проверяю длину пароля (минимум 6 символов)
-        if (strlen($password) < 6) {
-            http_response_code(400);
-            echo json_encode(['status' => 'error', 'message' => 'Пароль должен содержать минимум 6 символов']);
-            exit;
-        }
-
-        // Хеширую пароль — нельзя хранить пароли в открытом виде
+        // Хеширую пароль — нельзя хранить в открытом виде
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         // Подготовленный запрос с ?-плейсхолдерами — защита от SQL-инъекций
@@ -82,7 +57,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'register') {
         echo json_encode(['status' => 'success', 'message' => 'Регистрация прошла успешно!']);
 
     } catch (PDOException $e) {
-        // Код 23000 = нарушение уникальности (email уже есть в БД)
+        // Код 23000 = email уже существует (нарушение UNIQUE)
         if ($e->getCode() == 23000) {
             http_response_code(400);
             echo json_encode(['status' => 'error', 'message' => 'Этот email уже зарегистрирован']);
@@ -94,17 +69,11 @@ if (isset($_POST['action']) && $_POST['action'] === 'register') {
     exit;
 }
 
-// --- Вход пользователя (login) ---
+// Вход пользователя (login)
 if (isset($_POST['action']) && $_POST['action'] === 'login') {
     try {
-        $email = htmlspecialchars(trim($_POST['email'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $password = $_POST['password'] ?? '';
-
-        if (!$email || !$password) {
-            http_response_code(400);
-            echo json_encode(['status' => 'error', 'message' => 'Введите email и пароль']);
-            exit;
-        }
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['password'];
 
         // Ищу пользователя по email
         $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE email = ?");
@@ -112,9 +81,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'login') {
         $stmt->execute();
         $user = $stmt->fetch();
 
-        // Сравниваю пароль с хешем через password_verify
+        // Сравниваю пароль с хешем
         if ($user && password_verify($password, $user['password'])) {
-            echo json_encode(['status' => 'success', 'message' => 'Вход выполнен!', 'user_id' => $user['id']]);
+            echo json_encode(['status' => 'success', 'message' => 'Вход выполнен!']);
         } else {
             http_response_code(401);
             echo json_encode(['status' => 'error', 'message' => 'Неверный email или пароль']);
@@ -127,9 +96,9 @@ if (isset($_POST['action']) && $_POST['action'] === 'login') {
     exit;
 }
 
-// Если POST-запрос пришёл, но без известного action
+// Неизвестный POST-запрос
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(400);
-    echo json_encode(['status' => 'error', 'message' => 'Неизвестное действие']);
+    echo json_encode(['status' => 'error', 'message' => 'Неверный запрос']);
     exit;
 }

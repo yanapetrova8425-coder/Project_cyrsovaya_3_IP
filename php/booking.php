@@ -1,8 +1,8 @@
 <?php
 /**
  * booking.php — серверная обработка онлайн-записи в салон Neonka.
- * Принимаю POST-запрос с данными формы, валидирую и сохраняю
- * в таблицу bookings через PDO с bindParam.
+ * Подключаюсь к БД через PDO, принимаю данные через $_POST,
+ * валидирую и сохраняю через bindParam.
  */
 
 header('Content-Type: application/json; charset=utf-8');
@@ -33,18 +33,18 @@ try {
 // ОБРАБОТКА POST-ЗАПРОСОВ
 // ============================================
 
-// Обработка записи на приём
-if (isset($_POST['action']) && $_POST['action'] === 'booking') {
+// Запись на приём
+if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['service']) && isset($_POST['date']) && isset($_POST['time'])) {
     try {
         // Получаю данные и экранирую
-        $name = htmlspecialchars(trim($_POST['name'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars(trim($_POST['phone'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $email = htmlspecialchars(trim($_POST['email'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $service = htmlspecialchars(trim($_POST['service'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $master = htmlspecialchars(trim($_POST['master'] ?? ''), ENT_QUOTES, 'UTF-8');
-        $date = trim($_POST['date'] ?? '');
-        $time = trim($_POST['time'] ?? '');
-        $comment = htmlspecialchars(trim($_POST['comment'] ?? ''), ENT_QUOTES, 'UTF-8');
+        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
+        $email = isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : null;
+        $service = htmlspecialchars($_POST['service'], ENT_QUOTES, 'UTF-8');
+        $master = isset($_POST['master']) ? htmlspecialchars($_POST['master'], ENT_QUOTES, 'UTF-8') : null;
+        $date = $_POST['date'];
+        $time = $_POST['time'];
+        $comment = isset($_POST['comment']) ? htmlspecialchars($_POST['comment'], ENT_QUOTES, 'UTF-8') : null;
 
         // Валидация обязательных полей
         if (!$name || !$phone || !$service || !$date || !$time) {
@@ -74,12 +74,7 @@ if (isset($_POST['action']) && $_POST['action'] === 'booking') {
             exit;
         }
 
-        // Пустые строки → null
-        $email = $email ?: null;
-        $master = $master ?: null;
-        $comment = $comment ?: null;
-
-        // Подготовленный запрос с bindParam — защита от SQL-инъекций
+        // Подготовленный запрос с bindParam
         $stmt = $pdo->prepare(
             "INSERT INTO bookings (client_name, client_phone, client_email, service, master, booking_date, booking_time, comment)
              VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
