@@ -61,13 +61,13 @@
       <h2>Вход в аккаунт</h2>
       <form class="form" id="login-form" novalidate method="POST">
         <div class="field">
-          <label for="login-email">Email</label>
-          <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@mail.ru" required>
           <span class="err" id="login-email-error"></span>
         </div>
         <div class="field">
-          <label for="login-password">Пароль</label>
-          <input type="password" id="login-password" name="login_password" placeholder="Введите пароль" required>
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" placeholder="Введите пароль" required>
           <span class="err" id="login-password-error"></span>
         </div>
         <button type="submit" class="btn btn-dark btn-full">Войти</button>
@@ -84,32 +84,32 @@
       <h2>Регистрация</h2>
       <form class="form" id="register-form" novalidate method="POST">
         <div class="field">
-          <label for="reg-name">Имя *</label>
-          <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
+          <label for="name">Имя *</label>
+          <input type="text" id="name" name="name" placeholder="Ваше имя" required>
           <span class="err" id="reg-name-error"></span>
         </div>
         <div class="field">
-          <label for="reg-phone">Телефон *</label>
-          <input type="tel" id="reg-phone" name="reg_phone" placeholder="+7 (999) 123-45-67" required>
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
           <span class="err" id="reg-phone-error"></span>
         </div>
         <div class="field">
-          <label for="reg-email">Email *</label>
-          <input type="email" id="reg-email" name="reg_email" placeholder="example@mail.ru" required>
+          <label for="remail">Email *</label>
+          <input type="email" id="remail" name="remail" placeholder="example@mail.ru" required>
           <span class="err" id="reg-email-error"></span>
         </div>
         <div class="field">
-          <label for="reg-password">Пароль *</label>
-          <input type="password" id="reg-password" name="reg_password" placeholder="Минимум 6 символов" required>
+          <label for="rpassword">Пароль *</label>
+          <input type="password" id="rpassword" name="rpassword" placeholder="Минимум 6 символов" required>
           <span class="err" id="reg-password-error"></span>
         </div>
         <div class="field">
-          <label for="reg-password-confirm">Подтвердите пароль *</label>
-          <input type="password" id="reg-password-confirm" name="reg_password_confirm" placeholder="Повторите пароль" required>
+          <label for="rpassword2">Подтвердите пароль *</label>
+          <input type="password" id="rpassword2" name="rpassword2" placeholder="Повторите пароль" required>
           <span class="err" id="reg-password-confirm-error"></span>
         </div>
         <div class="field">
-          <label class="check"><input type="checkbox" id="reg-agree" name="reg_agree" required> Согласен(а) на обработку данных</label>
+          <label class="check"><input type="checkbox" id="agree" name="agree" required> Согласен(а) на обработку данных</label>
           <span class="err" id="reg-agree-error"></span>
         </div>
         <button type="submit" class="btn btn-dark btn-full">Зарегистрироваться</button>

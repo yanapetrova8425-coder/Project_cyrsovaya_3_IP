@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Минимальная дата — сегодня */
-  var dateInput = document.getElementById("booking-date");
+  var dateInput = document.getElementById("date");
   if (dateInput) {
     dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
   }
@@ -34,15 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validBooking()) return;
 
       var formData = new FormData(bookingForm);
-      // Переименовываю поля под PHP (name → name, service → service и т.д.)
-      formData.set("name", formData.get("client_name"));
-      formData.set("phone", formData.get("client_phone"));
-      formData.set("email", formData.get("client_email") || "");
-      formData.set("service", formData.get("service"));
-      formData.set("master", formData.get("master") || "");
-      formData.set("date", formData.get("booking_date"));
-      formData.set("time", formData.get("booking_time"));
-      formData.set("comment", formData.get("comment") || "");
 
       fetch("php/booking.php", {
         method: "POST",
@@ -74,9 +65,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validLogin()) return;
 
       var formData = new FormData(loginForm);
-      // Переименовываю поля под PHP (login_email → email, login_password → password)
-      formData.set("email", formData.get("login_email"));
-      formData.set("password", formData.get("login_password"));
       formData.set("action", "login");
 
       fetch("php/auth.php", {
@@ -108,11 +96,6 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validReg()) return;
 
       var formData = new FormData(regForm);
-      // Переименовываю поля под PHP (reg_name → name, reg_phone → phone и т.д.)
-      formData.set("name", formData.get("reg_name"));
-      formData.set("phone", formData.get("reg_phone"));
-      formData.set("email", formData.get("reg_email"));
-      formData.set("password", formData.get("reg_password"));
 
       fetch("php/auth.php", {
         method: "POST",
@@ -143,20 +126,16 @@ document.addEventListener("DOMContentLoaded", function () {
   if (reviewForm) {
     reviewForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      var nameEl = document.getElementById("review-name");
-      var textEl = document.getElementById("review-text");
+      var nameEl = document.getElementById("rname");
+      var textEl = document.getElementById("text");
       var valid = true;
-      if (!nameEl.value.trim()) { showErr("review-name", "review-name-error", "Введите имя"); valid = false; }
-      else { clearErr("review-name", "review-name-error"); }
-      if (!textEl.value.trim()) { showErr("review-text", "review-text-error", "Напишите отзыв"); valid = false; }
-      else { clearErr("review-text", "review-text-error"); }
+      if (!nameEl.value.trim()) { showErr("rname", "review-name-error", "Введите имя"); valid = false; }
+      else { clearErr("rname", "review-name-error"); }
+      if (!textEl.value.trim()) { showErr("text", "review-text-error", "Напишите отзыв"); valid = false; }
+      else { clearErr("text", "review-text-error"); }
       if (!valid) return;
 
       var formData = new FormData(reviewForm);
-      // Переименовываю поля под PHP
-      formData.set("name", formData.get("review_name"));
-      formData.set("rating", formData.get("review_rating"));
-      formData.set("text", formData.get("review_text"));
 
       fetch("php/reviews.php", {
         method: "POST",

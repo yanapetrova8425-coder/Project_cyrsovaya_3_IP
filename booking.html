@@ -45,29 +45,29 @@
 
         <!-- type="text" -->
         <div class="field">
-          <label for="client-name">Ваше имя *</label>
-          <input type="text" id="client-name" name="client_name" placeholder="Иванова Анна" required>
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" placeholder="Иванова Анна" required>
           <span class="err" id="name-error"></span>
         </div>
 
         <!-- type="tel" -->
         <div class="field">
-          <label for="client-phone">Телефон *</label>
-          <input type="tel" id="client-phone" name="client_phone" placeholder="+7 (999) 123-45-67" required>
+          <label for="phone">Телефон *</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
           <span class="err" id="phone-error"></span>
         </div>
 
         <!-- type="email" -->
         <div class="field">
-          <label for="client-email">Email</label>
-          <input type="email" id="client-email" name="client_email" placeholder="example@mail.ru">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="example@mail.ru">
           <span class="err" id="email-error"></span>
         </div>
 
         <!-- type="select" — выпадающий список с услугами -->
         <div class="field">
-          <label for="service-select">Услуга *</label>
-          <select id="service-select" name="service" required>
+          <label for="service">Услуга *</label>
+          <select id="service" name="service" required>
             <option value="">— Выберите услугу —</option>
             <optgroup label="Парикмахерский зал">
               <option value="haircut_woman">Стрижка женская</option>
@@ -97,8 +97,8 @@
 
         <!-- type="select" — выбор мастера -->
         <div class="field">
-          <label for="master-select">Мастер</label>
-          <select id="master-select" name="master">
+          <label for="master">Мастер</label>
+          <select id="master" name="master">
             <option value="">Любой мастер</option>
             <option value="elena">Елена — парикмахер-стилист</option>
             <option value="marina">Марина — мастер маникюра</option>
@@ -109,15 +109,15 @@
 
         <!-- type="date" -->
         <div class="field">
-          <label for="booking-date">Дата *</label>
-          <input type="date" id="booking-date" name="booking_date" required>
+          <label for="date">Дата *</label>
+          <input type="date" id="date" name="date" required>
           <span class="err" id="date-error"></span>
         </div>
 
         <!-- type="time" -->
         <div class="field">
-          <label for="booking-time">Время *</label>
-          <input type="time" id="booking-time" name="booking_time" min="09:00" max="20:00" required>
+          <label for="time">Время *</label>
+          <input type="time" id="time" name="time" min="09:00" max="20:00" required>
           <span class="err" id="time-error"></span>
         </div>
 
@@ -125,22 +125,22 @@
         <div class="field">
           <label>Подтверждение записи</label>
           <div class="radios">
-            <label class="radio"><input type="radio" name="confirm_method" value="phone" checked> По телефону</label>
-            <label class="radio"><input type="radio" name="confirm_method" value="email"> На email</label>
-            <label class="radio"><input type="radio" name="confirm_method" value="Telegram"> Telegram</label>
+            <label class="radio"><input type="radio" name="confirm" value="phone" checked> По телефону</label>
+            <label class="radio"><input type="radio" name="confirm" value="email"> На email</label>
+            <label class="radio"><input type="radio" name="confirm" value="Telegram"> Telegram</label>
           </div>
         </div>
 
         <!-- type="checkbox" -->
         <div class="field">
-          <label class="check"><input type="checkbox" id="agree-terms" name="agree_terms" required> Согласен(а) на обработку данных *</label>
+          <label class="check"><input type="checkbox" id="agree" name="agree" required> Согласен(а) на обработку данных *</label>
           <span class="err" id="agree-error"></span>
         </div>
 
         <!-- textarea -->
         <div class="field">
-          <label for="client-comment">Комментарий</label>
-          <textarea id="client-comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
+          <label for="comment">Комментарий</label>
+          <textarea id="comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
         </div>
 
         <button type="submit" class="btn btn-dark btn-full">Записаться</button>
