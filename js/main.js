@@ -1,11 +1,4 @@
-/*
- * main.js — обработка отправки всех форм через async/await + URLSearchParams.
- * Данные уходят методом POST. Сервер принимает через $_POST.
- */
 
-// URL сервера (измените если ваш сайт доступен по другому пути)
-// Если c:\Курсовая — корень сайта: http://localhost/php/post.php
-// Если в папке myserver: http://localhost/myserver/php/post.php
 const API_URL = "http://localhost/myserver/";
 
 /* ============================================
