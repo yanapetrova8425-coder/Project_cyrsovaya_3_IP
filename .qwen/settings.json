@@ -3,7 +3,10 @@
     "allow": [
       "Bash(move *)",
       "Bash(xcopy *)",
-      "Bash(git checkout *)"
+      "Bash(git checkout *)",
+      "WebFetch(github.com)",
+      "WebFetch(gitverse.ru)",
+      "Bash(del *)"
     ]
   },
   "$version": 3
