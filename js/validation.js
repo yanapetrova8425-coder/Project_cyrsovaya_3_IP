@@ -70,23 +70,23 @@ function checkCheck(id, errId) {
 // Валидация формы входа
 function validLogin() {
   var ok = true;
-  if (!checkEmail("email", "login-email-error")) ok = false;
-  if (!checkPass("password", "login-password-error")) ok = false;
+  if (!checkEmail("login-email", "login-email-error")) ok = false;
+  if (!checkPass("login-password", "login-password-error")) ok = false;
   return ok;
 }
 
 // Валидация формы регистрации
 function validReg() {
   var ok = true;
-  if (!checkName("name", "reg-name-error")) ok = false;
-  if (!checkPhone("phone", "reg-phone-error")) ok = false;
-  if (!checkEmail("email", "reg-email-error")) ok = false;
-  if (!checkPass("password", "reg-password-error")) ok = false;
-  if (!checkCheck("agree", "reg-agree-error")) ok = false;
-  var p1 = document.getElementById("password");
-  var p2 = document.getElementById("password2");
-  if (p1 && p2 && p1.value !== p2.value) { showErr("password2", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
-  else if (p2) { clearErr("password2", "reg-password-confirm-error"); }
+  if (!checkName("reg-name", "reg-name-error")) ok = false;
+  if (!checkPhone("reg-phone", "reg-phone-error")) ok = false;
+  if (!checkEmail("reg-email", "reg-email-error")) ok = false;
+  if (!checkPass("reg-password", "reg-password-error")) ok = false;
+  if (!checkCheck("reg-agree", "reg-agree-error")) ok = false;
+  var p1 = document.getElementById("reg-password");
+  var p2 = document.getElementById("reg-password2");
+  if (p1 && p2 && p1.value !== p2.value) { showErr("reg-password2", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
+  else if (p2) { clearErr("reg-password2", "reg-password-confirm-error"); }
   return ok;
 }
 

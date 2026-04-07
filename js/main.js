@@ -34,6 +34,15 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!validBooking()) return;
 
       var formData = new FormData(bookingForm);
+      formData.set("action", "create_booking");
+      formData.set("client_name", formData.get("name"));
+      formData.set("client_phone", formData.get("phone"));
+      formData.set("client_email", formData.get("email") || "");
+      formData.set("service", formData.get("service"));
+      formData.set("master", formData.get("master") || "");
+      formData.set("booking_date", formData.get("date"));
+      formData.set("booking_time", formData.get("time"));
+      formData.set("comment", formData.get("comment") || "");
 
       fetch("php/post.php", {
         method: "POST",
@@ -67,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
       var formData = new FormData(loginForm);
       formData.set("action", "login");
 
-      fetch("php/auth.php", {
+      fetch("php/post.php", {
         method: "POST",
         body: formData,
       })
@@ -81,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch(function () {
-          showSuccess("login-result", "Демо: вход выполнен (сервер не подключён)");
+          showErr("login-result", "Ошибка подключения к серверу");
         });
     });
   }
@@ -97,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var formData = new FormData(regForm);
 
-      fetch("php/auth.php", {
+      fetch("php/post.php", {
         method: "POST",
         body: formData,
       })
@@ -114,7 +123,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch(function () {
-          showSuccess("register-result", "Демо: регистрация успешна (сервер не подключён)");
+          showErr("register-result", "Ошибка подключения к серверу");
         });
     });
   }
@@ -136,8 +145,11 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!valid) return;
 
       var formData = new FormData(reviewForm);
+      formData.set("action", "create_review");
+      formData.set("client_name", formData.get("name"));
+      formData.set("review_text", formData.get("text"));
 
-      fetch("php/reviews.php", {
+      fetch("php/post.php", {
         method: "POST",
         body: formData,
       })
@@ -151,7 +163,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         })
         .catch(function () {
-          showSuccess("review-result", "Демо: отзыв отправлен (сервер не подключён)");
+          showErr("review-result", "Ошибка подключения к серверу");
           reviewForm.reset();
         });
     });
