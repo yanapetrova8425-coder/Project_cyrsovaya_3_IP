@@ -1110,6 +1110,11 @@ h2 {
   color: #444;
 }
 
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
