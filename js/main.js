@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       var formData = new FormData(bookingForm);
 
-      fetch("php/booking.php", {
+      fetch("php/post.php", {
         method: "POST",
         body: formData,
       })
