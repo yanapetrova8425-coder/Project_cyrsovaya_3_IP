@@ -44,25 +44,25 @@
       <form class="form" id="booking-form" novalidate method="POST">
 
         <div class="field">
-          <label for="name">Ваше имя *</label>
+          <label for="name">Ваше фамилия и имя:</label>
           <input type="text" id="name" name="name" placeholder="Иванова Анна" required>
           <span class="err" id="name-error"></span>
         </div>
 
         <div class="field">
-          <label for="phone">Телефон *</label>
+          <label for="phone">Телефон:</label>
           <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
           <span class="err" id="phone-error"></span>
         </div>
 
         <div class="field">
-          <label for="email">Email</label>
+          <label for="email">Email:</label>
           <input type="email" id="email" name="email" placeholder="example@mail.ru">
           <span class="err" id="email-error"></span>
         </div>
 
         <div class="field">
-          <label for="service">Услуга *</label>
+          <label for="service">Услуга:</label>
           <select id="service" name="service" required>
             <option value="">— Выберите услугу —</option>
             <optgroup label="Парикмахерский зал">
@@ -92,7 +92,7 @@
         </div>
 
         <div class="field">
-          <label for="master">Мастер</label>
+          <label for="master">Мастер:</label>
           <select id="master" name="master">
             <option value="">Любой мастер</option>
             <option value="elena">Елена — парикмахер-стилист</option>
@@ -103,19 +103,19 @@
         </div>
 
         <div class="field">
-          <label for="date">Дата *</label>
+          <label for="date">Дата:</label>
           <input type="date" id="date" name="date" required>
           <span class="err" id="date-error"></span>
         </div>
 
         <div class="field">
-          <label for="time">Время *</label>
+          <label for="time">Время:</label>
           <input type="time" id="time" name="time" min="09:00" max="20:00" required>
           <span class="err" id="time-error"></span>
         </div>
 
         <div class="field">
-          <label>Подтверждение записи</label>
+          <label>Подтверждение записи:</label>
           <div class="radios">
             <label class="radio"><input type="radio" name="confirm" value="phone" checked> По телефону</label>
             <label class="radio"><input type="radio" name="confirm" value="email"> На email</label>
@@ -129,7 +129,7 @@
         </div>
 
         <div class="field">
-          <label for="comment">Комментарий</label>
+          <label for="comment">Комментарий:</label>
           <textarea id="comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
         </div>
 
