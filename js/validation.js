@@ -78,41 +78,41 @@ function checkCheck(id, errId) {
   return true;
 }
 
-// Валидация формы входа (email, password)
+// Валидация формы входа (login_email, login_pass)
 function validLogin() {
   var ok = true;
-  if (!checkEmail("email", "login-email-error")) ok = false;
-  if (!checkPass("password", "login-password-error")) ok = false;
+  if (!checkEmail("login_email", "login-email-error")) ok = false;
+  if (!checkPass("login_pass", "login-password-error")) ok = false;
   return ok;
 }
 
-// Валидация формы регистрации (name, phone, remail, rpassword, rpassword2, agree)
+// Валидация формы регистрации (reg_name, reg_phone, reg_email, reg_pass, reg_pass2, reg_agree)
 function validReg() {
   var ok = true;
-  if (!checkName("name", "reg-name-error")) ok = false;
-  if (!checkPhone("phone", "reg-phone-error")) ok = false;
-  if (!checkEmail("remail", "reg-email-error")) ok = false;
-  if (!checkPass("rpassword", "reg-password-error")) ok = false;
-  if (!checkCheck("agree", "reg-agree-error")) ok = false;
+  if (!checkName("reg_name", "reg-name-error")) ok = false;
+  if (!checkPhone("reg_phone", "reg-phone-error")) ok = false;
+  if (!checkEmail("reg_email", "reg-email-error")) ok = false;
+  if (!checkPass("reg_pass", "reg-password-error")) ok = false;
+  if (!checkCheck("reg_agree", "reg-agree-error")) ok = false;
   // Сравнение паролей
-  var p1 = document.getElementById("rpassword");
-  var p2 = document.getElementById("rpassword2");
-  if (p1 && p2 && p1.value !== p2.value) { showErr("rpassword2", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
-  else if (p2) { clearErr("rpassword2", "reg-password-confirm-error"); }
+  var p1 = document.getElementById("reg_pass");
+  var p2 = document.getElementById("reg_pass2");
+  if (p1 && p2 && p1.value !== p2.value) { showErr("reg_pass2", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
+  else if (p2) { clearErr("reg_pass2", "reg-password-confirm-error"); }
   return ok;
 }
 
-// Валидация формы записи (name, phone, service, date, time, agree)
+// Валидация формы записи (client_name, client_phone, service, book_date, book_time, book_agree)
 function validBooking() {
   var ok = true;
-  if (!checkName("name", "name-error")) ok = false;
-  if (!checkPhone("phone", "phone-error")) ok = false;
-  if (!checkCheck("agree", "agree-error")) ok = false;
+  if (!checkName("client_name", "name-error")) ok = false;
+  if (!checkPhone("client_phone", "phone-error")) ok = false;
+  if (!checkCheck("book_agree", "agree-error")) ok = false;
   var svc = document.getElementById("service");
   if (svc && svc.required && !svc.value) { showErr("service", "service-error", "Выберите услугу"); ok = false; }
-  var dt = document.getElementById("date");
+  var dt = document.getElementById("book_date");
   if (dt && dt.required && !dt.value) { showErr("date", "date-error", "Выберите дату"); ok = false; }
-  var tm = document.getElementById("time");
+  var tm = document.getElementById("book_time");
   if (tm && tm.required && !tm.value) { showErr("time", "time-error", "Выберите время"); ok = false; }
   return ok;
 }
@@ -123,18 +123,22 @@ document.addEventListener("DOMContentLoaded", function () {
   inputs.forEach(function (inp) {
     inp.addEventListener("blur", function () {
       var id = inp.id;
-      if (id === "email") checkEmail("email", "login-email-error");
-      if (id === "password") checkPass("password", "login-password-error");
-      if (id === "name") checkName("name", "reg-name-error");
-      if (id === "phone") checkPhone("phone", "reg-phone-error");
-      if (id === "remail") checkEmail("remail", "reg-email-error");
-      if (id === "rpassword") checkPass("rpassword", "reg-password-error");
-      if (id === "rpassword2") {
-        var p = document.getElementById("rpassword");
-        if (p && inp.value !== p.value) showErr("rpassword2", "reg-password-confirm-error", "Пароли не совпадают");
-        else clearErr("rpassword2", "reg-password-confirm-error");
+      if (id === "login_email") checkEmail("login_email", "login-email-error");
+      if (id === "login_pass") checkPass("login_pass", "login-password-error");
+      if (id === "reg_name") checkName("reg_name", "reg-name-error");
+      if (id === "reg_phone") checkPhone("reg_phone", "reg-phone-error");
+      if (id === "reg_email") checkEmail("reg_email", "reg-email-error");
+      if (id === "reg_pass") checkPass("reg_pass", "reg-password-error");
+      if (id === "reg_pass2") {
+        var p = document.getElementById("reg_pass");
+        if (p && inp.value !== p.value) showErr("reg_pass2", "reg-password-confirm-error", "Пароли не совпадают");
+        else clearErr("reg_pass2", "reg-password-confirm-error");
       }
-      if (id === "agree") checkCheck("agree", "reg-agree-error");
+      if (id === "reg_agree") checkCheck("reg_agree", "reg-agree-error");
+      if (id === "client_name") checkName("client_name", "name-error");
+      if (id === "client_phone") checkPhone("client_phone", "phone-error");
+      if (id === "book_agree") checkCheck("book_agree", "agree-error");
+      if (id === "review_name") checkName("review_name", "review-name-error");
     });
   });
 });

@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   /* Минимальная дата — сегодня */
-  var dateInput = document.getElementById("date");
+  var dateInput = document.getElementById("book_date");
   if (dateInput) {
     dateInput.setAttribute("min", new Date().toISOString().split("T")[0]);
   }
@@ -126,13 +126,13 @@ document.addEventListener("DOMContentLoaded", function () {
   if (reviewForm) {
     reviewForm.addEventListener("submit", function (e) {
       e.preventDefault();
-      var nameEl = document.getElementById("rname");
-      var textEl = document.getElementById("text");
+      var nameEl = document.getElementById("review_name");
+      var textEl = document.getElementById("review_text");
       var valid = true;
-      if (!nameEl.value.trim()) { showErr("rname", "review-name-error", "Введите имя"); valid = false; }
-      else { clearErr("rname", "review-name-error"); }
-      if (!textEl.value.trim()) { showErr("text", "review-text-error", "Напишите отзыв"); valid = false; }
-      else { clearErr("text", "review-text-error"); }
+      if (!nameEl.value.trim()) { showErr("review_name", "review-name-error", "Введите имя"); valid = false; }
+      else { clearErr("review_name", "review-name-error"); }
+      if (!textEl.value.trim()) { showErr("review_text", "review-text-error", "Напишите отзыв"); valid = false; }
+      else { clearErr("review_text", "review-text-error"); }
       if (!valid) return;
 
       var formData = new FormData(reviewForm);

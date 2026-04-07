@@ -45,22 +45,22 @@
 
         <!-- type="text" -->
         <div class="field">
-          <label for="name">Ваше имя *</label>
-          <input type="text" id="name" name="name" placeholder="Иванова Анна" required>
+          <label for="client_name">Ваше имя *</label>
+          <input type="text" id="client_name" name="client_name" placeholder="Иванова Анна" required>
           <span class="err" id="name-error"></span>
         </div>
 
         <!-- type="tel" -->
         <div class="field">
-          <label for="phone">Телефон *</label>
-          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+          <label for="client_phone">Телефон *</label>
+          <input type="tel" id="client_phone" name="client_phone" placeholder="+7 (999) 123-45-67" required>
           <span class="err" id="phone-error"></span>
         </div>
 
         <!-- type="email" -->
         <div class="field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="example@mail.ru">
+          <label for="client_email">Email</label>
+          <input type="email" id="client_email" name="client_email" placeholder="example@mail.ru">
           <span class="err" id="email-error"></span>
         </div>
 
@@ -109,15 +109,15 @@
 
         <!-- type="date" -->
         <div class="field">
-          <label for="date">Дата *</label>
-          <input type="date" id="date" name="date" required>
+          <label for="book_date">Дата *</label>
+          <input type="date" id="book_date" name="book_date" required>
           <span class="err" id="date-error"></span>
         </div>
 
         <!-- type="time" -->
         <div class="field">
-          <label for="time">Время *</label>
-          <input type="time" id="time" name="time" min="09:00" max="20:00" required>
+          <label for="book_time">Время *</label>
+          <input type="time" id="book_time" name="book_time" min="09:00" max="20:00" required>
           <span class="err" id="time-error"></span>
         </div>
 
@@ -133,14 +133,14 @@
 
         <!-- type="checkbox" -->
         <div class="field">
-          <label class="check"><input type="checkbox" id="agree" name="agree" required> Согласен(а) на обработку данных *</label>
+          <label class="check"><input type="checkbox" id="book_agree" name="book_agree" required> Согласен(а) на обработку данных *</label>
           <span class="err" id="agree-error"></span>
         </div>
 
         <!-- textarea -->
         <div class="field">
-          <label for="comment">Комментарий</label>
-          <textarea id="comment" name="comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
+          <label for="book_comment">Комментарий</label>
+          <textarea id="book_comment" name="book_comment" rows="4" placeholder="Пожелания, особенности..."></textarea>
         </div>
 
         <button type="submit" class="btn btn-dark btn-full">Записаться</button>

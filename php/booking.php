@@ -34,17 +34,17 @@ try {
 // ============================================
 
 // Запись на приём
-if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['service']) && isset($_POST['date']) && isset($_POST['time'])) {
+if (isset($_POST['client_name']) && isset($_POST['client_phone']) && isset($_POST['service']) && isset($_POST['book_date']) && isset($_POST['book_time'])) {
     try {
         // Получаю данные и экранирую
-        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
-        $email = isset($_POST['email']) ? htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8') : null;
+        $name = htmlspecialchars($_POST['client_name'], ENT_QUOTES, 'UTF-8');
+        $phone = htmlspecialchars($_POST['client_phone'], ENT_QUOTES, 'UTF-8');
+        $email = isset($_POST['client_email']) ? htmlspecialchars($_POST['client_email'], ENT_QUOTES, 'UTF-8') : null;
         $service = htmlspecialchars($_POST['service'], ENT_QUOTES, 'UTF-8');
         $master = isset($_POST['master']) ? htmlspecialchars($_POST['master'], ENT_QUOTES, 'UTF-8') : null;
-        $date = $_POST['date'];
-        $time = $_POST['time'];
-        $comment = isset($_POST['comment']) ? htmlspecialchars($_POST['comment'], ENT_QUOTES, 'UTF-8') : null;
+        $date = $_POST['book_date'];
+        $time = $_POST['book_time'];
+        $comment = isset($_POST['book_comment']) ? htmlspecialchars($_POST['book_comment'], ENT_QUOTES, 'UTF-8') : null;
 
         // Валидация обязательных полей
         if (!$name || !$phone || !$service || !$date || !$time) {

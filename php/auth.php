@@ -35,13 +35,13 @@ try {
 // ============================================
 
 // Регистрация нового пользователя
-if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])) {
+if (isset($_POST['reg_name']) && isset($_POST['reg_phone']) && isset($_POST['reg_email']) && isset($_POST['reg_pass'])) {
     try {
         // Получаю данные из формы и экранирую через htmlspecialchars
-        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
-        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
-        $password = $_POST['password'];
+        $name = htmlspecialchars($_POST['reg_name'], ENT_QUOTES, 'UTF-8');
+        $phone = htmlspecialchars($_POST['reg_phone'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($_POST['reg_email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['reg_pass'];
 
         // Хеширую пароль — нельзя хранить в открытом виде
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
@@ -72,8 +72,8 @@ if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) &&
 // Вход пользователя (login)
 if (isset($_POST['action']) && $_POST['action'] === 'login') {
     try {
-        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
-        $password = $_POST['password'];
+        $email = htmlspecialchars($_POST['login_email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['login_pass'];
 
         // Ищу пользователя по email
         $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE email = ?");

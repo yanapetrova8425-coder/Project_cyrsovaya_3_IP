@@ -34,12 +34,12 @@ try {
 // ============================================
 
 // Добавление отзыва
-if (isset($_POST['name']) && isset($_POST['rating']) && isset($_POST['text'])) {
+if (isset($_POST['review_name']) && isset($_POST['review_rating']) && isset($_POST['review_text'])) {
     try {
         // Получаю данные и экранирую
-        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
-        $rating = (int)$_POST['rating'];
-        $text = htmlspecialchars($_POST['text'], ENT_QUOTES, 'UTF-8');
+        $name = htmlspecialchars($_POST['review_name'], ENT_QUOTES, 'UTF-8');
+        $rating = (int)$_POST['review_rating'];
+        $text = htmlspecialchars($_POST['review_text'], ENT_QUOTES, 'UTF-8');
 
         // Валидация
         if (!$name || !$text) {
