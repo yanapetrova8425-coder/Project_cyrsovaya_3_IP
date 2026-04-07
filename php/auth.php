@@ -5,7 +5,6 @@
  * экранирую через htmlspecialchars(), вставляю через bindParam.
  */
 
-// Заголовки для JSON-ответа
 header('Content-Type: application/json; charset=utf-8');
 
 // Настройки подключения к базе данных
@@ -35,18 +34,15 @@ try {
 // ============================================
 
 // Регистрация нового пользователя
-if (isset($_POST['reg_name']) && isset($_POST['reg_phone']) && isset($_POST['reg_email']) && isset($_POST['reg_pass'])) {
+if (isset($_POST['name']) && isset($_POST['phone']) && isset($_POST['email']) && isset($_POST['password'])) {
     try {
-        // Получаю данные из формы и экранирую через htmlspecialchars
-        $name = htmlspecialchars($_POST['reg_name'], ENT_QUOTES, 'UTF-8');
-        $phone = htmlspecialchars($_POST['reg_phone'], ENT_QUOTES, 'UTF-8');
-        $email = htmlspecialchars($_POST['reg_email'], ENT_QUOTES, 'UTF-8');
-        $password = $_POST['reg_pass'];
+        $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
+        $phone = htmlspecialchars($_POST['phone'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['password'];
 
-        // Хеширую пароль — нельзя хранить в открытом виде
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // Подготовленный запрос с ?-плейсхолдерами — защита от SQL-инъекций
         $stmt = $pdo->prepare("INSERT INTO users (name, phone, email, password) VALUES (?, ?, ?, ?)");
         $stmt->bindParam(1, $name);
         $stmt->bindParam(2, $phone);
@@ -57,7 +53,6 @@ if (isset($_POST['reg_name']) && isset($_POST['reg_phone']) && isset($_POST['reg
         echo json_encode(['status' => 'success', 'message' => 'Регистрация прошла успешно!']);
 
     } catch (PDOException $e) {
-        // Код 23000 = email уже существует (нарушение UNIQUE)
         if ($e->getCode() == 23000) {
             http_response_code(400);
             echo json_encode(['status' => 'error', 'message' => 'Этот email уже зарегистрирован']);
@@ -72,16 +67,14 @@ if (isset($_POST['reg_name']) && isset($_POST['reg_phone']) && isset($_POST['reg
 // Вход пользователя (login)
 if (isset($_POST['action']) && $_POST['action'] === 'login') {
     try {
-        $email = htmlspecialchars($_POST['login_email'], ENT_QUOTES, 'UTF-8');
-        $password = $_POST['login_pass'];
+        $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+        $password = $_POST['password'];
 
-        // Ищу пользователя по email
         $stmt = $pdo->prepare("SELECT id, name, password FROM users WHERE email = ?");
         $stmt->bindParam(1, $email);
         $stmt->execute();
         $user = $stmt->fetch();
 
-        // Сравниваю пароль с хешем
         if ($user && password_verify($password, $user['password'])) {
             echo json_encode(['status' => 'success', 'message' => 'Вход выполнен!']);
         } else {
@@ -96,7 +89,6 @@ if (isset($_POST['action']) && $_POST['action'] === 'login') {
     exit;
 }
 
-// Неизвестный POST-запрос
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     http_response_code(400);
     echo json_encode(['status' => 'error', 'message' => 'Неверный запрос']);
