@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(move *)",
-      "Bash(xcopy *)"
+      "Bash(xcopy *)",
+      "Bash(git checkout *)"
     ]
   },
   "$version": 3
