@@ -38,9 +38,10 @@ document.addEventListener("DOMContentLoaded", function () {
       var formData = new FormData(bookingForm);
       formData.append("action", "booking"); //告诉 сервер что это запись
 
+      // Отправляю данные методом POST через FormData
       fetch("php/booking.php", {
         method: "POST",
-        body: formData, // отправляю как FormData, не JSON
+        body: formData,
       })
         .then(function (r) { return r.json(); })
         .then(function (result) {

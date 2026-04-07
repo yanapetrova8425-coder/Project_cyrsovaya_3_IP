@@ -59,7 +59,7 @@
     <div class="modal-box">
       <button class="modal-x" id="modal-login-close">&times;</button>
       <h2>Вход в аккаунт</h2>
-      <form class="form" id="login-form" novalidate>
+      <form class="form" id="login-form" novalidate method="POST">
         <div class="field">
           <label for="login-email">Email</label>
           <input type="email" id="login-email" name="login_email" placeholder="example@mail.ru" required>
@@ -82,7 +82,7 @@
     <div class="modal-box">
       <button class="modal-x" id="modal-register-close">&times;</button>
       <h2>Регистрация</h2>
-      <form class="form" id="register-form" novalidate>
+      <form class="form" id="register-form" novalidate method="POST">
         <div class="field">
           <label for="reg-name">Имя *</label>
           <input type="text" id="reg-name" name="reg_name" placeholder="Ваше имя" required>
