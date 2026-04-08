@@ -1,8 +1,4 @@
-/*
- * modal.js — открытие/закрытие модалок входа и регистрации.
- * Модалки открываются по кнопкам, закрываются по крестику, клику на фон и Escape.
- * Также есть переключение между модалками (ссылки «Зарегистрируйтесь» / «Войдите»).
- */
+
 document.addEventListener("DOMContentLoaded", function () {
   // Нахожу все элементы модалок
   var openLogin = document.getElementById("btn-open-login");

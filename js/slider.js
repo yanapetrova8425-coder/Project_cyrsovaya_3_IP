@@ -1,7 +1,5 @@
-/*
- * slider.js — слайдер на чистом JS (без jQuery).
- * Поддерживает: кнопки «Назад/Вперёд», точки, автопрокрутку, паузу при наведении, свайпы.
- */
+
+
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("work-slider");
   initSlider("gallery-slider");
