@@ -7,7 +7,9 @@
       "WebFetch(github.com)",
       "WebFetch(gitverse.ru)",
       "Bash(del *)",
-      "Bash(rmdir *)"
+      "Bash(rmdir *)",
+      "Bash(dir *)",
+      "Bash(ren *)"
     ]
   },
   "$version": 3
