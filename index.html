@@ -322,43 +322,15 @@
   <script src="js/modal.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/main.js"></script>
-  
-  <!-- Scroll Animations -->
+
+  <!-- Header scroll effect -->
   <script>
-    // Scroll animations
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-    
-    document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => {
-      observer.observe(el);
-    });
-    
-    // Header scroll effect
-    const header = document.querySelector('.header');
-    window.addEventListener('scroll', () => {
+    var header = document.querySelector('.header');
+    window.addEventListener('scroll', function () {
       if (window.scrollY > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
-      }
-    });
-    
-    // Parallax effect for hero
-    window.addEventListener('scroll', () => {
-      const hero = document.querySelector('.hero');
-      if (hero) {
-        const scrolled = window.scrollY;
-        hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
       }
     });
   </script>
