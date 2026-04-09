@@ -350,11 +350,11 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!nameEl || !nameEl.value.trim()) {
                 if (nameEl) showErr(nameEl.id, "review-name-error", "Введите имя");
                 valid = false;
-            } else { clearErr(nameEl.id, "review-name-error"); }
+            } else { markValid(nameEl.id, "review-name-error"); }
             if (!textEl || !textEl.value.trim()) {
                 if (textEl) showErr(textEl.id, "review-text-error", "Напишите отзыв");
                 valid = false;
-            } else { clearErr(textEl.id, "review-text-error"); }
+            } else { markValid(textEl.id, "review-text-error"); }
             if (!valid) return;
 
             var name = nameEl.value.trim();
@@ -386,4 +386,12 @@ function showSuccess(id, msg) {
 function showErr(id, msg) {
     var el = document.getElementById(id);
     if (el) { el.className = "result bad"; el.textContent = msg; }
+}
+
+/* Подсветить поле зелёным (из validation.js) */
+function markValid(id, errId) {
+    var el = document.getElementById(id);
+    var err = document.getElementById(errId);
+    if (el) { el.classList.remove("error"); el.classList.add("valid"); }
+    if (err) err.textContent = "";
 }

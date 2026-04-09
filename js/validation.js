@@ -3,21 +3,23 @@
 var regex = {
   email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
   phone: /^\+7\s?\(?[0-9]{3}\)?\s?[0-9]{3}[-\s]?[0-9]{2}[-\s]?[0-9]{2}$/,
-  pass: /^[a-zA-Z0-9!@#$%^&*()_+]{6,}$/,
+  pass: /^[a-zA-Z0-9!@#$%^&*()_+]{8,}$/,
   name: /^[a-zA-Zа-яА-ЯёЁ\s-]{2,50}$/
 };
 
+// Красная рамка + текст ошибки
 function showErr(id, errId, msg) {
   var el = document.getElementById(id);
   var err = document.getElementById(errId);
-  if (el) el.classList.add("error");
+  if (el) { el.classList.remove("valid"); el.classList.add("error"); }
   if (err) err.textContent = msg;
 }
 
-function clearErr(id, errId) {
+// Зелёная рамка, убираю ошибку
+function markValid(id, errId) {
   var el = document.getElementById(id);
   var err = document.getElementById(errId);
-  if (el) el.classList.remove("error");
+  if (el) { el.classList.remove("error"); el.classList.add("valid"); }
   if (err) err.textContent = "";
 }
 
@@ -26,7 +28,7 @@ function checkEmail(id, errId) {
   if (!el || !el.required) return true;
   if (!el.value.trim()) { showErr(id, errId, "Введите email"); return false; }
   if (!regex.email.test(el.value.trim())) { showErr(id, errId, "Некорректный email"); return false; }
-  clearErr(id, errId);
+  markValid(id, errId);
   return true;
 }
 
@@ -35,7 +37,7 @@ function checkPhone(id, errId) {
   if (!el || !el.required) return true;
   if (!el.value.trim()) { showErr(id, errId, "Введите телефон"); return false; }
   if (!regex.phone.test(el.value.trim())) { showErr(id, errId, "Формат: +7 (999) 123-45-67"); return false; }
-  clearErr(id, errId);
+  markValid(id, errId);
   return true;
 }
 
@@ -43,8 +45,8 @@ function checkPass(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
   if (!el.value) { showErr(id, errId, "Введите пароль"); return false; }
-  if (!regex.pass.test(el.value)) { showErr(id, errId, "Минимум 6 символов"); return false; }
-  clearErr(id, errId);
+  if (!regex.pass.test(el.value)) { showErr(id, errId, "Минимум 8 символов"); return false; }
+  markValid(id, errId);
   return true;
 }
 
@@ -53,7 +55,7 @@ function checkName(id, errId) {
   if (!el || !el.required) return true;
   if (!el.value.trim()) { showErr(id, errId, "Введите имя"); return false; }
   if (!regex.name.test(el.value.trim())) { showErr(id, errId, "Только буквы, 2-50 символов"); return false; }
-  clearErr(id, errId);
+  markValid(id, errId);
   return true;
 }
 
@@ -61,7 +63,7 @@ function checkCheck(id, errId) {
   var el = document.getElementById(id);
   if (!el || !el.required) return true;
   if (!el.checked) { showErr(id, errId, "Необходимо согласие"); return false; }
-  clearErr(id, errId);
+  markValid(id, errId);
   return true;
 }
 
@@ -84,7 +86,7 @@ function validReg() {
   var p1 = document.getElementById("reg-password");
   var p2 = document.getElementById("reg-password2");
   if (p1 && p2 && p1.value !== p2.value) { showErr("reg-password2", "reg-password-confirm-error", "Пароли не совпадают"); ok = false; }
-  else if (p2) { clearErr("reg-password2", "reg-password-confirm-error"); }
+  else if (p2) { markValid("reg-password2", "reg-password-confirm-error"); }
   return ok;
 }
 
@@ -108,16 +110,36 @@ document.addEventListener("DOMContentLoaded", function () {
   inputs.forEach(function (inp) {
     inp.addEventListener("blur", function () {
       var id = inp.id;
-      if (id === "email") checkEmail("email", "login-email-error");
-      if (id === "password") checkPass("password", "login-password-error");
-      if (id === "name") checkName("name", "reg-name-error");
-      if (id === "phone") checkPhone("phone", "reg-phone-error");
-      if (id === "password2") {
-        var p = document.getElementById("password");
-        if (p && inp.value !== p.value) showErr("password2", "reg-password-confirm-error", "Пароли не совпадают");
-        else clearErr("password2", "reg-password-confirm-error");
+
+      // Форма входа
+      if (id === "login-email") checkEmail("login-email", "login-email-error");
+      if (id === "login-password") checkPass("login-password", "login-password-error");
+
+      // Форма регистрации
+      if (id === "reg-name") checkName("reg-name", "reg-name-error");
+      if (id === "reg-phone") checkPhone("reg-phone", "reg-phone-error");
+      if (id === "reg-email") checkEmail("reg-email", "reg-email-error");
+      if (id === "reg-password") checkPass("reg-password", "reg-password-error");
+      if (id === "reg-password2") {
+        var p = document.getElementById("reg-password");
+        if (p && inp.value !== p.value) showErr("reg-password2", "reg-password-confirm-error", "Пароли не совпадают");
+        else markValid("reg-password2", "reg-password-confirm-error");
       }
-      if (id === "agree") checkCheck("agree", "reg-agree-error");
+
+      // Форма записи
+      if (id === "name") checkName("name", "name-error");
+      if (id === "phone") checkPhone("phone", "phone-error");
+      if (id === "email" && document.getElementById("booking-form")) checkEmail("email", "email-error");
+      if (id === "date") {
+        var el = document.getElementById("date");
+        if (el && el.value) markValid("date", "date-error");
+        else if (el && el.required) showErr("date", "date-error", "Выберите дату");
+      }
+      if (id === "time") {
+        var el = document.getElementById("time");
+        if (el && el.value) markValid("time", "time-error");
+        else if (el && el.required) showErr("time", "time-error", "Выберите время");
+      }
     });
   });
 });

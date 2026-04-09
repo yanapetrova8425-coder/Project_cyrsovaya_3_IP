@@ -546,6 +546,7 @@ h2::after {
   outline: none; border-color: #888; box-shadow: 0 0 0 3px rgba(0,0,0,0.06); background: #fff;
 }
 .field input.error, .field select.error, .field textarea.error { border-color: #c0392b; background: #fef0ef; }
+.field input.valid, .field select.valid, .field textarea.valid { border-color: #27ae60; background: #f0faf4; }
 .err { display: block; color: #888; font-size: 13px; margin-top: 6px; }
 .radios { display: flex; gap: 20px; flex-wrap: wrap; }
 .radio { display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 15px; color: #555; }
