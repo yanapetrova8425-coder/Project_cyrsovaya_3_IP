@@ -114,50 +114,12 @@
   </section>
 
   <!-- Услуги (якорная секция #services) -->
+  <!-- Карточки услуг загружаются динамически из базы данных через JS -->
   <section id="services" class="services">
     <div class="container">
       <h2>Наши услуги</h2>
-      <div class="svc-grid">
-        <div class="svc-card fade-in stagger-1">
-          <div class="svc-img"><img src="img/strishka.jpg" alt="Стрижка" loading="lazy"></div>
-          <h3>Стрижка</h3><p>Классика, каскад, боб, стрижка под машинку</p>
-          <div class="svc-price">от 1500₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-2">
-          <div class="svc-img"><img src="img/okras.jpg" alt="Окрашивание" loading="lazy"></div>
-          <h3>Окрашивание</h3><p>Однотонное, мелирование, омбре, балаяж</p>
-          <div class="svc-price">от 3000₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-3">
-          <div class="svc-img"><img src="img/ykladka.jpg" alt="Укладка" loading="lazy"></div>
-          <h3>Укладка</h3><p>Повседневная, вечерняя, праздничная укладка</p>
-          <div class="svc-price">от 1000₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-4">
-          <div class="svc-img"><img src="img/manukur.jpg" alt="Маникюр" loading="lazy"></div>
-          <h3>Маникюр</h3><p>Классика, аппаратный, дизайн, покрытие гель</p>
-          <div class="svc-price">от 1200₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-5">
-          <div class="svc-img"><img src="img/pedukur.jpg" alt="Педикюр" loading="lazy"></div>
-          <h3>Педикюр</h3><p>Полный уход за стопами, аппаратный педикюр</p>
-          <div class="svc-price">от 1500₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-6">
-          <div class="svc-img"><img src="img/vizash.jpg" alt="Визаж" loading="lazy"></div>
-          <h3>Визаж</h3><p>Дневной, вечерний, свадебный макияж</p>
-          <div class="svc-price">от 2000₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-7">
-          <div class="svc-img"><img src="img/keratin.jpg" alt="Кератин" loading="lazy"></div>
-          <h3>Кератиновое выпрямление</h3><p>Гладкость и блеск волос до 4 месяцев</p>
-          <div class="svc-price">от 4000₽</div>
-        </div>
-        <div class="svc-card fade-in stagger-8">
-          <div class="svc-img"><img src="img/laminirovanie.jpg" alt="Ламинирование" loading="lazy"></div>
-          <h3>Ламинирование волос</h3><p>Защита, объём и здоровый блеск</p>
-          <div class="svc-price">от 3000₽</div>
-        </div>
+      <div class="svc-grid" id="services-container">
+        <!-- Сюда JavaScript подставит карточки услуг из БД -->
       </div>
     </div>
   </section>

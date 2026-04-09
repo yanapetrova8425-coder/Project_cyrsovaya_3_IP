@@ -2,6 +2,68 @@
 const API_URL = "http://localhost/myserver/";
 
 /* ============================================
+// ЗАГРУЗКА УСЛУГ ИЗ БАЗЫ ДАННЫХ (таблица services)
+// Делаю GET-запрос к API и вывожу карточки услуг
+// ============================================ */
+async function loadServices() {
+    // Нахожу контейнер для услуг на главной странице
+    var container = document.getElementById("services-container");
+    if (!container) return; // Если контейнера нет — выходим
+
+    try {
+        // Делаю GET-запрос к API для получения списка услуг
+        // Запрос идёт на корень API, .htaccess перенаправляет в index.php
+        let response = await fetch(API_URL, {
+            method: "GET",
+            headers: { Accept: "application/json" }
+        });
+
+        let result = await response.json();
+        console.log("Загруженные услуги из БД:", result.services);
+
+        // Если услуги есть — отрисовываю карточки
+        if (result.services && result.services.length > 0) {
+            var html = "";
+            // Перебираю каждую услугу и создаю карточку
+            result.services.forEach(function (svc, index) {
+                // Задержка анимации для каждой карточки (stagger-эффект)
+                var staggerClass = "stagger-" + (index + 1);
+                // Формирую HTML карточки услуги
+                html += '<div class="svc-card fade-in ' + staggerClass + '">' +
+                    '<div class="svc-img"><img src="' + svc.image + '" alt="' + svc.name + '" loading="lazy"></div>' +
+                    '<h3>' + svc.name + '</h3>' +
+                    '<p>' + svc.description + '</p>' +
+                    '<div class="svc-price">от ' + Number(svc.price).toLocaleString() + '₽</div>' +
+                    '</div>';
+            });
+            // Вставляю готовый HTML в контейнер
+            container.innerHTML = html;
+
+            // Перезапускаю анимацию появления карточек (IntersectionObserver)
+            document.querySelectorAll('#services-container .fade-in').forEach(function (el) {
+                el.classList.remove('visible');
+                servicesObserver.observe(el);
+            });
+        } else {
+            // Если услуг нет — показываю сообщение
+            container.innerHTML = '<p>Услуги временно недоступны.</p>';
+        }
+    } catch (error) {
+        console.error("Ошибка загрузки услуг:", error);
+        container.innerHTML = '<p>Не удалось загрузить услуги.</p>';
+    }
+}
+
+// Создаю observer для анимации карточек услуг
+var servicesObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+/* ============================================
 // РЕГИСТРАЦИЯ ПОЛЬЗОВАТЕЛЯ (таблица users)
 // ============================================ */
 async function registerUser(name, phone, email, password) {
@@ -173,6 +235,9 @@ async function createReview(clientName, rating, reviewText) {
 // ИНИЦИАЛИЗАЦИЯ ВСЕХ ФОРМ
 // ============================================ */
 document.addEventListener("DOMContentLoaded", function () {
+
+    /* Загрузка услуг из базы данных (только на главной странице) */
+    loadServices();
 
     /* Плавная прокрутка по якорям */
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
