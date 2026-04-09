@@ -310,10 +310,8 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             if (!validLogin()) return;
 
-            var email = document.querySelector("#login-email") ? document.querySelector("#login-email").value.trim()
-                              : document.querySelector("#email") ? document.querySelector("#email").value.trim() : "";
-            var password = document.querySelector("#login-password") ? document.querySelector("#login-password").value
-                           : document.querySelector("#password") ? document.querySelector("#password").value : "";
+            var email = document.querySelector("#login-email").value.trim();
+            var password = document.querySelector("#login-password").value;
 
             console.log("Отправка входа:", { email });
             loginUser(email, password);
@@ -329,17 +327,12 @@ document.addEventListener("DOMContentLoaded", function () {
             e.preventDefault();
             if (!validReg()) return;
 
-            var nameEl = regForm.querySelector("#reg-name") || regForm.querySelector("#name");
-            var phoneEl = regForm.querySelector("#reg-phone") || regForm.querySelector("#phone");
-            var emailEl = regForm.querySelector("#reg-email") || regForm.querySelector("#login-email") || regForm.querySelector("#email");
-            var passEl = regForm.querySelector("#reg-password") || regForm.querySelector("#login-password") || regForm.querySelector("#password");
+            var name = regForm.querySelector("#reg-name").value.trim();
+            var phone = regForm.querySelector("#reg-phone").value.trim();
+            var email = regForm.querySelector("#reg-email").value.trim();
+            var password = regForm.querySelector("#reg-password").value;
 
-            var name = nameEl ? nameEl.value.trim() : "";
-            var phone = phoneEl ? phoneEl.value.trim() : "";
-            var email = emailEl ? emailEl.value.trim() : "";
-            var password = passEl ? passEl.value : "";
-
-            console.log("Отправка регистрации:", { name, phone, email, password });
+            console.log("Отправка регистрации:", { name, phone, email });
             registerUser(name, phone, email, password);
         });
     }
