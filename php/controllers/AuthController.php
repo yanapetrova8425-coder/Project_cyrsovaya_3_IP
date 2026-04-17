@@ -18,10 +18,56 @@ class AuthController
     public function register($data)
     {
         try {
+            // Валидация данных
             $name = trim($data['name']);
             $phone = trim($data['phone']);
             $email = trim($data['email']);
             $password = $data['password'];
+
+            // Проверка обязательных полей
+            if (empty($name) || empty($phone) || empty($email) || empty($password)) {
+                http_response_code(400);
+                return [
+                    'status' => 'error',
+                    'message' => 'Все поля обязательны для заполнения'
+                ];
+            }
+
+            // Проверка email формата
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                http_response_code(400);
+                return [
+                    'status' => 'error',
+                    'message' => 'Некорректный формат email'
+                ];
+            }
+
+            // Проверка длины пароля
+            if (strlen($password) < 6) {
+                http_response_code(400);
+                return [
+                    'status' => 'error',
+                    'message' => 'Пароль должен быть не менее 6 символов'
+                ];
+            }
+
+            // Проверка формата телефона (простая валидация)
+            if (!preg_match('/^\+7\s?\(?\d{3}\)?\s?\d{3}[-\s]?\d{2}[-\s]?\d{2}$/', $phone)) {
+                http_response_code(400);
+                return [
+                    'status' => 'error',
+                    'message' => 'Некорректный формат телефона'
+                ];
+            }
+
+            // Проверка длины имени
+            if (strlen($name) < 2 || strlen($name) > 50) {
+                http_response_code(400);
+                return [
+                    'status' => 'error',
+                    'message' => 'Имя должно быть от 2 до 50 символов'
+                ];
+            }
 
             // Подготавливаю и выполняю INSERT
             $stmt = $this->pdo->prepare(

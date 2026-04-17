@@ -28,7 +28,7 @@ CREATE TABLE `services` (
   `sort_order` int(11) DEFAULT 0,
   `is_active` tinyint(1) DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `services`
@@ -56,7 +56,7 @@ CREATE TABLE `masters` (
   `experience` int(11) DEFAULT 0 COMMENT 'лет опыта',
   `is_active` tinyint(1) DEFAULT 1,
   `sort_order` int(11) DEFAULT 0
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `masters`
@@ -82,7 +82,7 @@ CREATE TABLE `bookings` (
   `confirm_method` varchar(20) DEFAULT 'phone',
   `comment` text DEFAULT '',
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `bookings`
@@ -105,7 +105,7 @@ CREATE TABLE `reviews` (
   `rating` int(11) NOT NULL DEFAULT 5,
   `review_text` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `reviews`
@@ -132,7 +132,7 @@ CREATE TABLE `users` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `users`

@@ -1,6 +1,10 @@
 
 const API_URL = "http://localhost/myserver/";
 
+// Глобальные переменные для хранения данных
+let allServices = [];
+let allMasters = [];
+
 /* ============================================
 // ЗАГРУЗКА УСЛУГ ИЗ БАЗЫ ДАННЫХ (таблица services)
 // Делаю GET-запрос к API и вывожу карточки услуг
@@ -52,6 +56,214 @@ async function loadServices() {
         console.error("Ошибка загрузки услуг:", error);
         container.innerHTML = '<p>Не удалось загрузить услуги.</p>';
     }
+}
+
+/* ============================================
+// ЗАГРУЗКА УСЛУГ И МАСТЕРОВ В ФОРМУ ЗАПИСИ
+// ============================================ */
+async function loadDataForBooking() {
+    var serviceSelect = document.getElementById("service");
+    var masterSelect = document.getElementById("master");
+    
+    console.log("loadDataForBooking вызвана");
+    console.log("serviceSelect:", serviceSelect);
+    console.log("masterSelect:", masterSelect);
+    
+    // Если нет формы записи — выходим
+    if (!serviceSelect) {
+        console.log("Нет serviceSelect, выходим");
+        return;
+    }
+    
+    try {
+        console.log("Отправка запроса к API:", API_URL);
+        
+        let response = await fetch(API_URL, {
+            method: "GET",
+            headers: { Accept: "application/json" }
+        });
+
+        console.log("Статус ответа:", response.status);
+        
+        if (!response.ok) {
+            throw new Error('HTTP error! status: ' + response.status);
+        }
+
+        let result = await response.json();
+        console.log("Полученный результат:", result);
+        
+        // Сохраняем данные в глобальные переменные
+        allServices = result.services || [];
+        allMasters = result.masters || [];
+        
+        console.log("allServices:", allServices);
+        console.log("allMasters:", allMasters);
+        
+        // Загружаем мастеров в select
+        if (masterSelect && allMasters.length > 0) {
+            // Очищаем все кроме первого option
+            masterSelect.innerHTML = '<option value="">Любой мастер</option>';
+            
+            allMasters.forEach(function(master) {
+                console.log("Добавляем мастера:", master);
+                var option = document.createElement('option');
+                option.value = master.name.toLowerCase(); // Используем имя мастера (в нижнем регистре)
+                option.textContent = master.name + ' — ' + master.role;
+                option.dataset.specialization = master.specialization;
+                masterSelect.appendChild(option);
+            });
+        } else {
+            console.log("Мастера не загружены или masterSelect не найден");
+        }
+        
+        // Загружаем услуги в select
+        if (serviceSelect && allServices.length > 0) {
+            renderServices(serviceSelect, allServices);
+        } else {
+            console.log("Услуги не загружены или serviceSelect не найден");
+        }
+        
+        // Добавляем обработчик изменения мастера
+        if (masterSelect) {
+            masterSelect.addEventListener('change', function() {
+                filterServicesByMaster();
+            });
+        }
+        
+    } catch (error) {
+        console.error("Ошибка загрузки данных для формы:", error);
+        if (serviceSelect) serviceSelect.innerHTML = '<option value="">— Ошибка загрузки —</option>';
+    }
+}
+
+/* Функция для отрисовки услуг в select */
+function renderServices(select, services) {
+    // Очищаем select
+    select.innerHTML = '<option value="">— Выберите услугу —</option>';
+    
+    // Группируем услуги по категориям
+    var categories = {};
+    services.forEach(function(svc) {
+        if (!categories[svc.category]) {
+            categories[svc.category] = [];
+        }
+        categories[svc.category].push(svc);
+    });
+    
+    // Добавляем группы и услуги
+    for (var category in categories) {
+        var optgroup = document.createElement('optgroup');
+        optgroup.label = getCategoryLabel(category);
+        
+        categories[category].forEach(function(svc) {
+            var option = document.createElement('option');
+            option.value = svc.id;
+            option.textContent = svc.name + ' — ' + Number(svc.price).toLocaleString() + '₽';
+            option.dataset.category = svc.category;
+            optgroup.appendChild(option);
+        });
+        
+        select.appendChild(optgroup);
+    }
+}
+
+/* Фильтрация услуг при выборе мастера */
+function filterServicesByMaster() {
+    var masterSelect = document.getElementById("master");
+    var serviceSelect = document.getElementById("service");
+    var hintEl = document.getElementById("master-hint");
+    
+    console.log("filterServicesByMaster вызвана");
+    console.log("allServices:", allServices);
+    console.log("allMasters:", allMasters);
+    
+    if (!masterSelect || !serviceSelect) {
+        console.log("Нет masterSelect или serviceSelect");
+        return;
+    }
+    
+    if (allServices.length === 0) {
+        console.log("allServices пуст");
+        return;
+    }
+    
+    var selectedMaster = masterSelect.value;
+    console.log("Выбранный мастер:", selectedMaster);
+    
+    // Если выбран "Любой мастер" — показываем все услуги
+    if (!selectedMaster) {
+        console.log("Выбран 'Любой мастер', показываем все услуги");
+        renderServices(serviceSelect, allServices);
+        if (hintEl) hintEl.style.display = 'none';
+        return;
+    }
+    
+    // Находим мастера по имени
+    var master = allMasters.find(function(m) {
+        return m.name.toLowerCase() === selectedMaster;
+    });
+    
+    console.log("Найденный мастер:", master);
+    
+    if (!master) {
+        console.log("Мастер не найден, показываем все услуги");
+        renderServices(serviceSelect, allServices);
+        if (hintEl) hintEl.style.display = 'none';
+        return;
+    }
+    
+    // Фильтруем услуги по специализации мастера
+    var filteredServices = allServices;
+    var hint = '';
+    
+    console.log("Специализация мастера:", master.specialization);
+    
+    if (master.specialization !== 'all') {
+        filteredServices = allServices.filter(function(svc) {
+            return svc.category === master.specialization;
+        });
+        console.log("Отфильтрованные услуги:", filteredServices);
+        
+        // Формируем подсказку
+        var specLabels = {
+            'hair': 'парикмахерские услуги',
+            'nails': 'маникюр и педикюр',
+            'makeup': 'визаж'
+        };
+        hint = master.name + ' выполняет только ' + (specLabels[master.specialization] || master.specialization);
+    } else {
+        hint = master.name + ' выполняет все виды услуг';
+    }
+    
+    // Показываем подсказку
+    if (hintEl) {
+        hintEl.textContent = hint;
+        hintEl.style.display = filteredServices.length > 0 ? 'block' : 'none';
+    }
+    
+    // Перерисовываем услуги
+    renderServices(serviceSelect, filteredServices);
+    
+    // Если выбранная услуга не доступна для этого мастера — сбрасываем
+    var currentService = serviceSelect.value;
+    if (currentService) {
+        var serviceExists = filteredServices.find(function(svc) {
+            return svc.id == currentService;
+        });
+        if (!serviceExists) {
+            serviceSelect.value = '';
+        }
+    }
+}
+
+/* Вспомогательная функция для перевода категорий */
+function getCategoryLabel(category) {
+    var labels = {
+        'hair': 'Парикмахерский зал',
+        'nails': 'Ногтевой сервис', 
+        'makeup': 'Визаж и стиль'
+    };
+    return labels[category] || category;
 }
 
 // Создаю observer для анимации карточек услуг
@@ -238,6 +450,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     /* Загрузка услуг из базы данных (только на главной странице) */
     loadServices();
+    
+    /* Загрузка мастеров и услуг в форму записи (если страница booking.html) */
+    loadDataForBooking();
 
     /* Плавная прокрутка по якорям */
     document.querySelectorAll('a[href^="#"]').forEach(function (link) {
@@ -342,8 +557,8 @@ document.addEventListener("DOMContentLoaded", function () {
         reviewForm.addEventListener("submit", function (e) {
             e.preventDefault();
 
-            var nameEl = document.querySelector("#name") || document.querySelector("#review_name");
-            var textEl = document.querySelector("#text") || document.querySelector("#review_text");
+            var nameEl = document.getElementById("review-name");
+            var textEl = document.getElementById("review-text");
             var ratingEl = document.querySelector('input[name="rating"]:checked');
 
             var valid = true;

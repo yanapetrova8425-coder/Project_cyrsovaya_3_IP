@@ -20,6 +20,9 @@ try {
     // Получаю все активные услуги, отсортированные по порядку
     $services = $pdo->query("SELECT id, name, description, price, image, category, sort_order FROM services WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
 
+    // Получаю всех активных мастеров, отсортированных по порядку
+    $masters = $pdo->query("SELECT id, name, role, specialization, image, experience FROM masters WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
+
     // Получаю всех пользователей
     $users = $pdo->query("SELECT id, name, phone, email FROM users")->fetchAll();
 
@@ -32,6 +35,7 @@ try {
     echo json_encode([
         'status' => 'success',
         'services' => $services,
+        'masters' => $masters,
         'users' => $users,
         'bookings' => $bookings,
         'reviews' => $reviews
