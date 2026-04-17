@@ -18,6 +18,8 @@ SET time_zone = "+00:00";
 -- Структура таблицы `services`
 -- Таблица для хранения списка услуг салона
 -- --------------------------------------------------------
+
+
 CREATE TABLE `services` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
@@ -99,6 +101,9 @@ INSERT INTO `bookings` (`id`, `client_name`, `client_phone`, `client_email`, `se
 -- --------------------------------------------------------
 -- Структура таблицы `reviews`
 -- --------------------------------------------------------
+
+
+
 CREATE TABLE `reviews` (
   `id` int(11) NOT NULL,
   `client_name` varchar(100) NOT NULL,
@@ -125,6 +130,8 @@ INSERT INTO `reviews` (`id`, `client_name`, `rating`, `review_text`, `created_at
 -- --------------------------------------------------------
 -- Структура таблицы `users`
 -- --------------------------------------------------------
+
+
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
