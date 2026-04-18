@@ -4,9 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
 }
+
 body {
   font-family: "Poppins", sans-serif;
   line-height: 1.6;
@@ -15,6 +17,7 @@ body {
   overflow-x: hidden;
   padding-top: 70px;
 }
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -83,23 +86,15 @@ body {
 .header.scrolled { padding: 8px 0; box-shadow: 0 4px 30px rgba(0,0,0,0.12); }
 .header .container { display: flex; justify-content: space-between; align-items: center; }
 .logo {
-  font-size: 28px;
-  font-weight: 700;
-  color: #333;
-  text-decoration: none;
+  font-size: 28px; font-weight: 700; color: #333; text-decoration: none;
   transition: transform 0.3s;
 }
 .logo:hover { transform: scale(1.05); }
 .nav { display: flex; align-items: center; gap: 6px; }
 .sep { width: 1px; height: 24px; background: rgba(0,0,0,0.12); margin: 0 2px; }
 .nav a {
-  color: #555;
-  text-decoration: none;
-  font-size: 14px;
-  font-weight: 500;
-  transition: color 0.3s;
-  white-space: nowrap;
-  position: relative;
+  color: #555; text-decoration: none; font-size: 14px; font-weight: 500;
+  transition: color 0.3s; white-space: nowrap; position: relative;
 }
 .nav a::after {
   content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
@@ -110,14 +105,8 @@ body {
 
 /* auth buttons */
 .btn-auth {
-  padding: 8px 18px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  transition: background 0.3s;
-  font-family: "Poppins", sans-serif;
+  padding: 8px 18px; border-radius: 20px; font-size: 13px; font-weight: 500;
+  cursor: pointer; border: none; transition: background 0.3s; font-family: "Poppins", sans-serif;
 }
 .btn-in { background: #555; color: #fff; }
 .btn-in:hover { background: #333; }
@@ -126,10 +115,10 @@ body {
 
 /* ===== HERO ===== */
 .hero {
-  position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  position: relative; min-height: 100vh; display: flex; align-items: center;
+  justify-content: center; background: url('img/salona.jpg') center center / cover no-repeat;
+  margin: 0; border-radius: 0;
+}
 .hero::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: rgba(0,0,0,0.5); z-index: 1;
@@ -226,26 +215,31 @@ h2::after {
   border-radius: 20px;
   background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%);
 }
+
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   align-items: center;
 }
+
 .about-text p {
   color: #666;
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 20px;
 }
+
 .about-text strong {
   color: #333;
 }
+
 .about-stats {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
+
 .stat-card {
   background: #fff;
   border-radius: 16px;
@@ -254,34 +248,30 @@ h2::after {
   box-shadow: 0 4px 15px rgba(0,0,0,0.05);
   transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .stat-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(0,0,0,0.1);
 }
+
 .stat-card .stat-num {
   font-size: 36px;
   font-weight: 700;
   color: #555;
 }
+
 .stat-card .stat-label {
   color: #888;
   font-size: 14px;
   margin-top: 5px;
 }
 
-/* ===== ADVANTAGES (VERTICAL COLUMN) ===== */
-.adv-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  align-items: center; 
-}
+/* ===== ADVANTAGES ===== */
+.adv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
 .adv-card {
   text-align: center; padding: 35px 25px; border-radius: 20px; background: #fff;
   border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
   position: relative; overflow: hidden;
-  width: 100%;
-  max-width: 600px; /* Ограничение ширины для столбика */
 }
 .adv-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
@@ -298,17 +288,12 @@ h2::after {
 }
 .adv-card p { color: #666; font-size: 14px; line-height: 1.6; }
 
-/* ===== SERVICES (VERTICAL COLUMN) ===== */
-.svc-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 25px; 
-  align-items: center; 
-}
+/* ===== SERVICES ===== */
+.svc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; justify-items: center; }
 .svc-card {
   background: #fff; border-radius: 20px; text-align: center; border: none;
   box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s;
-  padding-bottom: 20px; width: 100%; max-width: 400px; display: flex;
+  padding-bottom: 20px; width: 100%; max-width: 300px; display: flex;
   flex-direction: column; align-items: center; overflow: hidden;
 }
 .svc-card:hover { transform: translateY(-10px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
@@ -328,19 +313,12 @@ h2::after {
   padding: 8px 20px; border-radius: 20px; display: inline-block;
 }
 
-/* ===== OFFERS (VERTICAL COLUMN) ===== */
-.offer-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  align-items: center; 
-}
+/* ===== OFFERS ===== */
+.offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .offer-card {
   background: #fff; border-radius: 20px; overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
-  width: 100%;
-  max-width: 500px;
 }
 .offer-card:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
 .offer-hot { border: 2px solid #999; box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
@@ -358,18 +336,11 @@ h2::after {
 .old-price { font-size: 18px; color: #999; text-decoration: line-through; }
 .new-price { font-size: 26px; font-weight: 700; color: #444; }
 
-/* ===== TEAM (VERTICAL COLUMN) ===== */
-.team-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  align-items: center; 
-}
+/* ===== TEAM ===== */
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; }
 .member {
   background: #fff; border-radius: 20px; overflow: hidden; text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
-  max-width: 350px;
 }
 .member:hover { transform: translateY(-8px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
 .photo { width: 100%; height: 380px; overflow: hidden; }
@@ -381,21 +352,14 @@ h2::after {
 .exp { font-size: 13px; color: #888; margin-bottom: 10px; }
 .stars { color: #777; font-size: 18px; }
 
-/* ===== PACKAGES (VERTICAL COLUMN) ===== */
+/* ===== PACKAGES ===== */
 .packages { padding: 100px 0; background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%); margin: 20px; border-radius: 20px; }
 .subtitle { text-align: center; font-size: 16px; color: #666; margin-top: -40px; margin-bottom: 50px; }
-.packs { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  align-items: center; 
-}
+.packs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 .pack {
   background: #fff; border-radius: 24px; padding: 35px 30px; text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
   position: relative; border: none;
-  width: 100%;
-  max-width: 450px;
 }
 .pack::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
@@ -424,20 +388,12 @@ h2::after {
   padding: 4px 12px; border-radius: 20px;
 }
 
-/* ===== REVIEWS (VERTICAL COLUMN) ===== */
-.rev-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  margin-bottom: 40px;
-  align-items: center;
-}
+/* ===== REVIEWS ===== */
+.rev-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 40px; }
 .rev-card {
   background: #fff; padding: 30px; border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
   position: relative; overflow: hidden;
-  width: 100%;
-  max-width: 600px;
 }
 .rev-card::before {
   content: '\201C'; position: absolute; top: 10px; right: 20px; font-size: 80px;
@@ -487,20 +443,13 @@ h2::after {
 }
 .dot.active { background: #555; }
 
-/* ===== GALLERY (VERTICAL COLUMN) ===== */
+/* ===== GALLERY ===== */
 .gallery { padding: 80px 0; background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%); margin: 20px; border-radius: 20px; }
-.gal-grid { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 20px; 
-  align-items: center; 
-}
+.gal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .gal-item {
   position: relative; border-radius: 16px; overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.08); cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
-  max-width: 800px;
 }
 .gal-item:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.15); }
 .gal-item img {
@@ -515,20 +464,13 @@ h2::after {
 }
 .gal-item:hover .overlay { opacity: 1; }
 
-/* ===== STEPS (VERTICAL COLUMN) ===== */
+/* ===== STEPS ===== */
 .steps { padding: 100px 0; background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%); margin: 20px; border-radius: 20px; }
-.step-list { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  max-width: 600px; 
-  margin: 0 auto; 
-}
+.step-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
 .step {
   text-align: center; padding: 35px 20px; background: #fff; border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s;
   position: relative; overflow: hidden;
-  width: 100%;
 }
 .step::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
@@ -545,20 +487,12 @@ h2::after {
 .step h3 { font-size: 18px; color: #333; margin-bottom: 10px; }
 .step p { font-size: 14px; color: #666; }
 
-/* ===== PRICES (VERTICAL COLUMN) ===== */
+/* ===== PRICES ===== */
 .prices { padding: 100px 0; background: linear-gradient(135deg, #f8f8f8 0%, #efefef 100%); margin: 20px; border-radius: 20px; }
-.price-cols { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 30px; 
-  margin-bottom: 40px;
-  align-items: center;
-}
+.price-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 40px; }
 .price-col {
   background: #fff; border-radius: 24px; overflow: hidden;
   box-shadow: 0 4px 15px rgba(0,0,0,0.06); border: none; transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
-  max-width: 700px;
 }
 .price-col:hover { transform: translateY(-5px); box-shadow: 0 12px 35px rgba(0,0,0,0.1); }
 .col-head { background: linear-gradient(135deg, #666, #888); padding: 25px 30px; text-align: center; }
@@ -723,9 +657,11 @@ h2::after {
   h2 { font-size: 30px; }
   .hero-stats { gap: 20px; flex-wrap: wrap; }
   .stat span { font-size: 28px; }
-  
-  /* Удалены старые grid-template-columns, так как теперь везде flex-column */
-  
+  .adv-grid, .price-cols, .rev-grid { grid-template-columns: 1fr; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .offer-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .photo { height: 180px; }
   .contact-wrap { grid-template-columns: 1fr; }
   .nav { gap: 4px; flex-wrap: wrap; justify-content: center; }
   .sep { height: 18px; margin: 0 1px; }
@@ -735,19 +671,21 @@ h2::after {
   .flinks { flex-wrap: wrap; justify-content: center; }
   .slide img { height: 300px; }
   .form, .rev-form, .account-card { padding: 25px; }
-  
-  /* Адаптация ширины для мобильных, если нужно */
-  .adv-card, .svc-card, .offer-card, .member, .pack, .rev-card, .gal-item, .step, .price-col {
-     max-width: 100%;
-  }
+  .gal-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .gal-item img { height: 200px; }
+  .packs { grid-template-columns: 1fr; max-width: 450px; margin: 0 auto; }
 }
-
 @media (max-width: 480px) {
+  .svc-grid, .team-grid { grid-template-columns: 1fr; }
   .hero-btns { flex-direction: column; }
   .account-btns { flex-direction: column; }
   .offer-img { height: 180px; }
   .photo { height: 200px; }
 }
+
+
+
+
 
 /* ===== SMOOTH SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 8px; }
