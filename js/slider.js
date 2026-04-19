@@ -1,5 +1,3 @@
-
-
 document.addEventListener("DOMContentLoaded", function () {
   initSlider("work-slider");
   initSlider("gallery-slider");

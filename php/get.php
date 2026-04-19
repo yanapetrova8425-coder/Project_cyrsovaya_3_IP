@@ -15,19 +15,21 @@ $pdo = $database->connect();
 // ============================================
 // ВОЗВРАЩАЮ ДАННЫЕ ИЗ ВСЕХ ТРЁХ ТАБЛИЦ
 // ============================================
-
 try {
     // Получаю все активные услуги, отсортированные по порядку
-    $services = $pdo->query("SELECT id, name, description, price, image, category, sort_order FROM services WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
+    $services = $pdo->query("SELECT id, name, description, price, 
+    image, category, sort_order FROM services WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
 
     // Получаю всех активных мастеров, отсортированных по порядку
-    $masters = $pdo->query("SELECT id, name, role, specialization, image, experience FROM masters WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
+    $masters = $pdo->query("SELECT id, name, role, specialization, image,
+     experience FROM masters WHERE is_active = 1 ORDER BY sort_order ASC")->fetchAll();
 
     // Получаю всех пользователей
     $users = $pdo->query("SELECT id, name, phone, email FROM users")->fetchAll();
 
     // Получаю все записи
-    $bookings = $pdo->query("SELECT id, client_name, client_phone, client_email, service, master, booking_date, booking_time, confirm_method, comment FROM bookings")->fetchAll();
+    $bookings = $pdo->query("SELECT id, client_name, client_phone, client_email,
+     service, master, booking_date, booking_time, confirm_method, comment FROM bookings")->fetchAll();
 
     // Получаю все отзывы
     $reviews = $pdo->query("SELECT id, client_name, rating, review_text FROM reviews")->fetchAll();
@@ -46,3 +48,5 @@ try {
     echo json_encode(['status' => 'error', 'message' => 'Ошибка при получении данных: ' . $e->getMessage()]);
 }
 exit;
+
+

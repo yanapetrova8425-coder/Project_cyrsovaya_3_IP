@@ -28,8 +28,11 @@ class BookingController
             $confirm = isset($data['confirm']) ? trim($data['confirm']) : 'phone';
             $comment = isset($data['comment']) ? trim($data['comment']) : '';
 
+            $this->pdo->beginTransaction();
+
             $stmt = $this->pdo->prepare(
-                "INSERT INTO bookings (client_name, client_phone, client_email, service, master, booking_date, booking_time, confirm_method, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                "INSERT INTO bookings (client_name, client_phone, client_email, service, 
+                master, booking_date, booking_time, confirm_method, comment) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
             $stmt->execute([
                 $clientName, $clientPhone, $clientEmail,
@@ -37,12 +40,17 @@ class BookingController
                 $confirm, $comment
             ]);
 
+            $this->pdo->commit();
+
             return [
                 'status' => 'success',
-                'message' => 'Вы успешно записаны! Ожидайте подтверждения.'
+                'message' => 'Вы успешно записаны!'
             ];
 
         } catch (PDOException $e) {
+            if ($this->pdo->inTransaction()) {
+                $this->pdo->rollBack();
+            }
             http_response_code(500);
             return [
                 'status' => 'error',
